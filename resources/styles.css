@@ -1,0 +1,184 @@
+body {
+  font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight:300;
+  font-size:18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+h1 {
+  font-weight:300;
+  text-align: center;
+}
+
+span{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top:5.0%
+}
+
+div {
+  max-width: 95%;
+  margin:auto;
+  padding: 10px;
+}
+
+.table-like {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+  border-spacing: 10px 1px;
+  border-collapse: separate;
+}
+
+.disclaimerbox {
+  background-color: #eee;
+  border: 1px solid #eeeeee;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+  padding: 20px;
+}
+
+video {
+  display: block;
+  margin: 0 auto;
+}
+
+video.header-vid {
+  height: 140px;
+  border: 1px solid black;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+img {
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+img.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+iframe {
+  max-width: 100%;
+  display: block;
+  margin:auto;
+}
+
+img.header-img {
+  height: 140px;
+  border: 1px solid black;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+img.rounded {
+  border: 1px solid #eeeeee;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+a:link,a:visited
+{
+  color: #1367a7;
+  font-size:18px;
+  text-decoration: none;
+}
+a:hover {
+  font-size:18px;
+  color: #208799;
+}
+
+td.dl-link {
+  height: 160px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+  box-shadow:
+          0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+          5px 5px 0 0px #fff, /* The second layer */
+          5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+          10px 10px 0 0px #fff, /* The third layer */
+          10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+          15px 15px 0 0px #fff, /* The fourth layer */
+          15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+          20px 20px 0 0px #fff, /* The fifth layer */
+          20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+          25px 25px 0 0px #fff, /* The fifth layer */
+          25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+  margin-left: 10px;
+  margin-right: 45px;
+}
+
+
+.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+  box-shadow:
+          0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+          5px 5px 0 0px #fff, /* The second layer */
+          5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+          10px 10px 0 0px #fff, /* The third layer */
+          10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 30px;
+  margin-bottom: 5px;
+}
+
+.vert-cent {
+  position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+hr
+{
+  border: 30px;
+  height: 2px;
+  width: 1000px;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, rgba(1, 0, 0, 0), rgba(2, 3, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#authors td {
+  padding-bottom:5px;
+  padding-top:30px;
+}
+
+ul {
+  margin-left: 1%;
+
+}
+
+
+#container {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+
+}
+#container > div {
+  width: 200px;
+  height: 200px;
+  border: 0px dashed red;
+}
+
+
+
+
+

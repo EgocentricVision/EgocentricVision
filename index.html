@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en-US">
+<link rel="stylesheet" href="resources/styles.css">
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic'
+      rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="./resources/w3.css">
+<link rel="stylesheet" href="./resources/styles.css">
+<link rel="stylesheet" href="./resources/style2.css">
+
+<head>
+
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Egocentric Vision</title>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="canonical" href="https://egocentricvision.github.io/Egocentric_Vision/index.html"/>
+    <meta name="referrer" content="no-referrer-when-downgrade"/>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Egocentric Vision"/>
+    <meta property="og:title" content="Egocentric Vision"/>
+    <meta property="og:description"
+          content="M. Planamente, C. Plizzari"/>
+    <meta property="og:url" content="https://egocentricvision.github.io/Egocentric_Vision/index.html"/>
+    <meta property="og:image" content="https://egocentricvision.github.io/Egocentric_Vision/resources/Vandal_Logo.png"/>
+    <meta property="og:image:width" content="2848"/>
+    <meta property="og:image:height" content="974"/>
+
+    <meta property="article:publisher" content=""/>
+    <meta name="twitter:card" content="https://egocentricvision.github.io/Egocentric_Vision/resources/Vandal_Logo.png"/>
+    <meta name="twitter:title" content="Egocentric Vision"/>
+    <meta name="twitter:description"
+          content="M. Planamente, C. Plizzari"/>
+    <meta name="twitter:url" content="https://egocentricvision.github.io/Egocentric_Vision/"/>
+    <meta name="twitter:image" content="https://egocentricvision.github.io/Egocentric_Vision/resources/Vandal_Logo.png"/>
+    <meta name="twitter:site" content="https://egocentricvision.github.io/Egocentric_Vision/"/>
+
+
+    <!--
+        <p>
+            <link rel="stylesheet" href="./resources/w3.css">
+        </p>
+        -->
+
+</head>
+
+
+
+<head>
+    <script type="text/javascript"> function scroll(element){
+var ele = document.getElementById(element);
+window.scrollTo(ele.offsetLeft,ele.offsetTop,ele.behavior="smooth"); }
+</script> </head>
+
+<script src="./resources/d3.min.js"></script>
+<script src="./resources/d3-color.v1.min.js"></script>
+<script src="./resources/d3-interpolate.v1.min.js"></script>
+<script src="./resources/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script src="./resources/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./resources/bootstrap.min.css">
+<script src="./resources/loghi.js"></script>
+<body>
+
+<div max-width=100% style="margin-top:-17.0%">
+
+
+    <br><br><br>
+    <a href="http://vandal.polito.it/"><img  style="height:200px;text-align: center;margin-top:14.3%" src="resources/photo/Vandal_Logo.png"></a>
+
+    <span style="color: #1367a9;text-align: center;font-size:44px;font-weight:bold;height:150px;margin-top:10%;margin-top:-0.5%">
+        <i class="fa fa-eye" style="font-size:40px;"></i> Egocentric Vision <i class="fa fa-eye" style="font-size:40px;"></i></span><br/>
+
+    <div id="container" class="table-like" style="text-align: center;max-width:1200px;height:140px;margin-top:-5.0%">
+
+        <div id="mp">
+            <img src="resources/photo/mp.jpg" alt="Avatar" style="height:140px;border-radius:70%;">
+            <p style="font-size:23px;margin-top:0.0%"><a href="https://scholar.google.com/citations?user=GIJ3h4AAAAAJ&hl=en"
+                                            target="_blank">Mirco Planamente</a></p>
+            <p style="font-size:15px;text-align: center;">Politecnico di Torino</p>
+            <p style="font-size:15px;text-align: center;">IIT: Istituto Italiano di Tecnologia</p>
+            <p style="font-size:15px;text-align: center;">Cini Consortium</p>
+        </div>
+
+        <div  id="cp">
+            <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=OlK2hyIAAAAJ&citpid=1" alt="Avatar" style="height:140px;border-radius:70%;margin-top:0.0%">
+            <p  style="font-size:23px;margin-top:0.0%"><a href="https://scholar.google.com/citations?user=OlK2hyIAAAAJ&hl=it"
+                                             target="_blank">Chiara Plizzari</a></p>
+            <p style="font-size:15px;text-align: center;">Politecnico di Torino</p>
+            <p style="font-size:15px;text-align: center;"> </p>
+            <p style="font-size:15px;text-align: center;"> </p>
+        </div>
+
+        <div  id="tt">
+            <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=ykFtI-QAAAAJ&citpid=3" alt="Avatar" style="height:140px;border-radius:70%;">
+            <p style="font-size:23px"><a href="https://scholar.google.com/citations?user=ykFtI-QAAAAJ&hl=en"
+                                             target="_blank">Tatiana Tommasi</a></p>
+            <p style="font-size:15px;text-align: center;">Politecnico di Torino</p>
+            <p style="font-size:15px;text-align: center;">IIT: Istituto Italiano di Tecnologia</p>
+            <p style="font-size:15px;text-align: center;"> </p>
+        </div>
+
+
+        <div  id="bc">
+            <img src="resources/photo/bc.jpeg" alt="Avatar" style="height:140px;border-radius:70%;">
+
+            <p style="font-size:23px"><a href="https://scholar.google.com/citations?user=mHbdIAwAAAAJ&hl=en"
+                                             target="_blank">Barbara Caputo</a></p>
+            <p style="font-size:15px;text-align: center;">Politecnico di Torino</p>
+            <p style="font-size:15px;text-align: center;">Cini Consortium</p>
+            <p style="font-size:15px;text-align: center;"> </p>
+        </div>
+    </div>
+
+
+    <div style="width:800px; margin:0 auto; text-align: center;margin-top:13.0%">
+        <!--
+        <p>
+            <b>Summary:</b>...
+        </p>
+        -->
+
+
+
+        <p>
+            <b>Abstract:</b> Piccola Descrizione.
+        </p>
+    </div>
+
+
+    <br>
+    <hr>
+    <h1>Overview
+        <div style="width:800px; margin:0 auto; text-align: center"></div>
+    </h1>
+    <div style="width:800px; margin:0 auto; text-align: center">
+        <!-- qui grafo che mostra la struttara ad alto livello della divsione del lavoro -->
+        <br/>
+    </div>
+
+
+    <hr>
+
+
+    <br id="main">
+    <div class="d"><ul class="menu"></ul>
+    </div>
+        <script>
+            function parserREF (linea) {
+                $href_pdf = "";
+                $href_code = "";
+                $href_project = "";
+                $href_video = "";
+                $href_demo = "";
+                $href_paper = "";
+
+
+                // pdf
+                $string_parser = "](";
+                if (linea.includes($string_parser)){
+                    $start_index=parseInt(linea.indexOf("](")) + 2;
+                    $stop_index=parseInt(linea.indexOf(")",$start_index));
+                    $href_pdf = linea.substring($start_index, $stop_index);
+                }
+
+                $string_parser = "[code]";
+                if (linea.includes($string_parser,$stop_index)) {
+                    $start_index_code=parseInt(linea.indexOf("[code]")) + 8;
+                    $stop_index_code=parseInt(linea.indexOf(")",$start_index_code));
+                    $href_code = linea.substring($start_index_code, $stop_index_code);
+                    //console.log($href_code)
+                }
+
+                $string_parser = "[project page]";
+                if (linea.includes($string_parser,$stop_index)) {
+                    $start_index_pp=parseInt(linea.indexOf("[project page]")) + 16;
+                    $stop_index_pp=parseInt(linea.indexOf(")",$start_index_pp));
+                    $href_project = linea.substring($start_index_pp, $stop_index_pp);
+                    //console.log($href_project)
+
+                }
+
+                $string_parser = "[demo]";
+                if (linea.includes($string_parser,$stop_index)) {
+                    $start_index_demo=parseInt(linea.indexOf("[demo]")) + 8;
+                    $stop_index_demo=parseInt(linea.indexOf(")",$start_index_demo));
+                    $href_demo = linea.substring($start_index_demo, $stop_index_demo);
+                    //console.log($href_demo)
+                }
+
+                $string_parser = "[video]";
+                if (linea.includes($string_parser,$stop_index)) {
+                    $start_index_video=parseInt(linea.indexOf("[video]")) + 9;
+                    $stop_index_video=parseInt(linea.indexOf(")",$start_index_video));
+                    $href_video = linea.substring($start_index_video, $stop_index_video);
+                    //console.log($href_video)
+                }
+
+                $string_parser = "[paper]";
+                if (linea.includes($string_parser,$stop_index)) {
+                    $start_index_paper=parseInt(linea.indexOf("[paper]")) + 9;
+                    $stop_index_paper=parseInt(linea.indexOf(")",$start_index_paper));
+                    $href_paper= linea.substring($start_index_paper, $stop_index_paper);
+                    //console.log($href_paper)
+                }
+
+
+
+                // code
+                // project
+                // demo
+                // video
+
+
+                return $href_pdf, $href_code, $href_project, $href_video, $href_demo, $href_paper
+            }
+
+
+            function readIndex() {
+
+                $.ajax({
+                    url: "./papers/README.md",
+                    dataType: "text",
+                    success: function (data) {
+                        $html = "";
+                        $toPrint = false;
+                        var lines = data.split("\n");
+
+                        for (var i = 1, len = lines.length; i < len; i++) {
+                            $start = "";
+                            $end = "";
+
+                            if ("" == lines[i]) {
+                                $toPrint = false;
+                            }
+
+                            for (var j = 0, len_string = lines[i].length; j < len_string; j++) {
+                                if ("#" == lines[i][0]) {
+                                    $toPrint = true;
+                                } else {
+                                    $toPrint = false;
+                                }
+
+                                if ("#" == lines[i][j]) {
+                                    $start += "<ul>";
+                                    $end += "</ul>";
+                                } else {
+                                    continue;
+                                }
+                            }
+
+                            if ($toPrint) {
+                                //href="javascript:void(0)"
+                                //
+                                $prova = lines[i];
+                                $find = '#';
+                                $re = new RegExp($find, 'g');
+                                $prova =  $prova.replace($re, '');
+
+                                $find = ' ';
+                                $re = new RegExp($find, 'g');
+                                $prova =  $prova.replace($re, '');
+
+
+
+                                $html += $start + '<li><a onclick=document.getElementById("'+ $prova +'").scrollIntoView()>' + lines[i] + '</a></li>' + $end;
+                                $start = "";
+                                $end = "";
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        var find = '#';
+                        var re = new RegExp(find, 'g');
+                        $html = $html.replace(re, '');
+                        $("body").append($html);
+                        return $html;
+
+
+                    }
+                })
+            }
+
+           readIndex();
+
+            </script>
+            <script>
+            function readIndex_Allpapper(index_to_start) {
+                $.ajax({
+                    url: "./papers/README.md",
+                    dataType: "text",
+                    success: function (data) {
+                        $html = "";
+                        $toPrint = false;
+                        var lines = data.split("\n");
+                        $start_old = "";
+                        $end_old = "";
+                        for (var i = index_to_start, len = lines.length; i < len; i++) {
+                            $start = "";
+                            $end = "";
+                            $href_pdf = "";
+                            $href_code = "";
+                            $href_project = "";
+                            $href_video = "";
+                            $href_demo = "";
+                            $href_paper = "";
+
+
+                            if ("" == lines[i]) {
+                                $toPrint = false;
+                            }
+                            else{
+                            if ("-" == lines[i][0]) {
+                                    $href_pdf, $href_code, $href_project, $href_video, $href_demo, $href_paper = parserREF(lines[i])
+                                }}
+
+                            for (var j = 0, len_string = lines[i].length; j < len_string; j++) {
+                                if ("#" == lines[i][0] || "-" == lines[i][0]) {
+                                    $toPrint = true;
+                                } else {
+                                    $toPrint = false;
+                                }
+
+                                if ("#" == lines[i][j] && "#" == lines[i][0]) {
+                                    $start += "<ul>";
+                                    $end += "</ul>";
+                                }
+                                else {
+                                    continue;
+                                }
+                            }
+
+                            if ($toPrint) {
+                                if ($start == ""){
+                                    //paper
+                                    $paper = lines[i].replace( "(" + $href_pdf + ")", '');
+                                    $paper = $paper.replace( "[", '');
+                                    $paper = $paper.replace( "]", '');
+
+                                    $paper = $paper.replace( "(" + $href_code + ")", '');
+                                    $paper = $paper.replace( "(" + $href_project + ")", '');
+                                    $paper = $paper.replace( "(" + $href_demo + ")", '');
+                                    $paper = $paper.replace( "(" + $href_video + ")", '');
+
+                                    var find = '\\[\\[';
+                                    var re = new RegExp(find, 'g');
+                                    $paper = $paper.replace(re, '[');
+                                    var find = '\\]\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper = $paper.replace(re, ']');
+
+
+                                    var find = '\\[code\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper_string = $paper.replace(re, '');
+
+                                    var find = '\\[project page\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper_string = $paper_string.replace(re, '');
+
+                                    var find = '\\[demo\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper_string = $paper_string.replace(re, '');
+
+                                    var find = '\\[video\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper_string = $paper_string.replace(re, '');
+
+                                    var find = '\\[paper\\]';
+                                    var re = new RegExp(find, 'g');
+                                    $paper_string = $paper_string.replace(re, '');
+
+
+                                    $html += $start_old + '<li>';
+                                    $html += '<a href='+$href_pdf + ' >' + $paper_string + '</a>';
+
+                                    $string_parser = "[code]";
+                                    if ($paper.includes($string_parser)) {
+                                         $html += '<a href='+$href_code + ' >' + "[code]" + '</a>';
+                                    }
+
+                                    $string_parser = "[project page]";
+                                    if ($paper.includes($string_parser)) {
+                                         console.log($href_project);
+                                         $html += '<a href='+$href_project + ' >' + '[project page]' + '</a>';
+                                    }
+
+                                    $string_parser = "[demo]";
+                                    if ($paper.includes($string_parser)) {
+                                         $html += '<a href='+$href_demo + ' >' + "[demo]" + '</a>';
+                                    }
+
+                                    $string_parser = "[video]";
+                                    if ($paper.includes($string_parser)) {
+                                         $html += '<a href='+$href_video + ' >' + "[video]" + '</a>';
+                                    }
+
+                                    $string_parser = "[paper]";
+                                    if ($paper.includes($string_parser)) {
+                                         $html += '<a href='+$href_paper + ' >' + "[paper]" + '</a>';
+                                    }
+
+                                    $html += '</li>' + $end_old;
+                                }
+                                else {
+                                    $prova_new=lines[i];
+                                    var find = '#';
+                                    var re = new RegExp(find, 'g');
+                                    $prova_new = $prova_new.replace(re, '');
+
+                                    var find = ' ';
+                                    var re = new RegExp(find, 'g');
+                                    $prova_new =  $prova_new.replace(re, '');
+
+                                    //$html += $start + '<li><a href=javascript:void(0) style="font-weight: bold">' + lines[i] + '</a></li>' + $end;
+                                    $html += $start + '<li><a id=' + $prova_new + ' href=javascript:void(0) style="font-weight: bold">' + lines[i] + '</a></li>' + $end
+                                    ;
+                                    $start_old = $start;
+                                    $end_old = $end;
+                                }
+
+                                $start = "";
+                                $end = "";
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        var find = '#';
+                        var re = new RegExp(find, 'g');
+                        $html = $html.replace(re, '');
+                        $("body").append('<hr><h4><ul style="color: #1367a9">' + "All Egocentric Vision Projects " + '<i class=\"fa fa-database\" style=\"font-size:18px;\"></i></ul></h4></hr>' );
+                        $("body").append($html);
+                        return $html;
+
+
+                    }
+                })
+            }
+
+
+            </script>
+        </div>
+</body>
+
+
+
+
+<section>
+    <div>
+    <script>
+        $("body").append("<h3><ul style=\"color: #1367a7\">  Egocentric Vision Index <i class=\"fa fa-book\" style=\"font-size:18px;\"></i></ul></h3>");
+        readIndex_Allpapper(12);</script></div>
+
+
+</section>
+
+
+
+
+
+
+</html>
