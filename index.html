@@ -336,6 +336,7 @@ window.scrollTo(ele.offsetLeft,ele.offsetTop,ele.behavior="smooth"); }
                                     $paper = lines[i].replace( "(" + $href_pdf + ")", '');
                                     $paper = $paper.replace( "[", '');
                                     $paper = $paper.replace( "]", '');
+                                    $paper = $paper.replace( "-", '');
 
                                     $paper = $paper.replace( "(" + $href_code + ")", '');
                                     $paper = $paper.replace( "(" + $href_project + ")", '');
