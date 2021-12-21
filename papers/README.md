@@ -548,7 +548,7 @@ TODO short description
 
 ## Challenges
 
-- [Epic Kithchen Challente](https://epic-kitchens.github.io/2021) - Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval
+- [Epic Kithchen Challenge](https://epic-kitchens.github.io/2021) - Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval
 
 ## Devices
 
