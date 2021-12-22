@@ -1,7 +1,7 @@
 body {
   font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight:300;
-  font-size:18px;
+  font-size:22px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -95,18 +95,18 @@ img.rounded {
 a:link,a:visited
 {
   color: #1367a7;
-  font-size:18px;
+  font-size:20px;
   text-decoration: none;
 }
 a:hover {
-  font-size:18px;
+  font-size:20px;
   color: #208799;
 }
 
 td.dl-link {
   height: 160px;
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
@@ -162,6 +162,7 @@ hr
 
 ul {
   margin-left: 1%;
+  font-size: 20px;
 
 }
 
