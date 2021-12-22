@@ -20,18 +20,19 @@ span{
 }
 
 div {
-  max-width: 95%;
+  max-width: 85%;
   margin:auto;
   padding: 10px;
 }
 
 .table-like {
   display: flex;
-  flex-wrap: wrap;
   flex-flow: row wrap;
   justify-content: center;
-  border-spacing: 10px 1px;
-  border-collapse: separate;
+
+
+
+
 }
 
 .disclaimerbox {
@@ -165,18 +166,7 @@ ul {
 }
 
 
-#container {
-  display: flex;                  /* establish flex container */
-  flex-direction: row;            /* default value; can be omitted */
-  flex-wrap: nowrap;              /* default value; can be omitted */
-  justify-content: space-between; /* switched from default (flex-start, see below) */
 
-}
-#container > div {
-  width: 200px;
-  height: 200px;
-  border: 0px dashed red;
-}
 
 
 
