@@ -308,7 +308,7 @@ TODO short description
 
 - [Scene Semantic Reconstruction from Egocentric RGB-D-Thermal Videos](https://ieeexplore.ieee.org/abstract/document/8374614) - Rachel Luo, Ozan Sener, Silvio Savarese, 3DV 2017
 
-#### Event 
+#### Event-Data (DVS-Sensor)
 
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo, 2021
 
