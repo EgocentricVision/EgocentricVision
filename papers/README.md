@@ -308,6 +308,10 @@ TODO short description
 
 - [Scene Semantic Reconstruction from Egocentric RGB-D-Thermal Videos](https://ieeexplore.ieee.org/abstract/document/8374614) - Rachel Luo, Ozan Sener, Silvio Savarese, 3DV 2017
 
+#### Event 
+
+- [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo, 2021
+
 ### Temporal Segmentation (Action Detection)
 
 - [Temporal Action Segmentation from Timestamp Supervision](https://openaccess.thecvf.com/content/CVPR2021/papers/Li_Temporal_Action_Segmentation_From_Timestamp_Supervision_CVPR_2021_paper.pdf) - Zhe Li, Yazan Abu Farha, Jurgen Gall, CVPR 2021
@@ -547,6 +551,8 @@ TODO short description
 
 
 ## Challenges
+
+- [Ego4D](https://ego4d-data.org) - Episodic Memory, Hand-Object Interactions, AV Diarization, Social, Forecasting.
 
 - [Epic Kithchen Challenge](https://epic-kitchens.github.io/2021) - Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval
 
