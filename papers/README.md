@@ -308,11 +308,13 @@ TODO short description
 
 - [Scene Semantic Reconstruction from Egocentric RGB-D-Thermal Videos](https://ieeexplore.ieee.org/abstract/document/8374614) - Rachel Luo, Ozan Sener, Silvio Savarese, 3DV 2017
 
-#### Event-Data (DVS-Sensor)
+#### Event 
 
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo, 2021
 
 ### Temporal Segmentation (Action Detection)
+
+- [UnweaveNet: Unweaving Activity Stories](https://arxiv.org/pdf/2112.10194.pdf) - Will Price, Carl Vondrick, Dima Damen, 2021
 
 - [Temporal Action Segmentation from Timestamp Supervision](https://openaccess.thecvf.com/content/CVPR2021/papers/Li_Temporal_Action_Segmentation_From_Timestamp_Supervision_CVPR_2021_paper.pdf) - Zhe Li, Yazan Abu Farha, Jurgen Gall, CVPR 2021
 
