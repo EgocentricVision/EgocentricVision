@@ -1,6 +1,6 @@
 # Egocentric Vision
 
-TODO short description
+
 
 - [Surveys](#surveys) 
 - [Papers](#papers)
