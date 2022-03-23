@@ -580,7 +580,7 @@
 - [Xiaomi Smart Glasses]
 - [Ray-Ban Stories](https://www.ray-ban.com/italy/ray-ban-stories)
 - [dynaEdge](https://it.dynabook.com/generic/dynaedge/)
-- [Apple Glas] 
+- [Apple Glass] 
 - [Alpha Glass]()
 - [GWD HiiDii](https://www.gwdbi.com/)
 - [Spectacles](https://www.spectacles.com/it/shop/spectacles-3/)
