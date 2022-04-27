@@ -417,13 +417,22 @@
 
 ### Video summarization
 
+- [Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language](https://arxiv.org/abs/2204.00598) - Andy Zeng, Adrian Wong, Stefan Welker, Krzysztof Choromanski, Federico Tombari, Aveek Purohit, Michael Ryoo, Vikas Sindhwani, Johnny Lee, Vincent Vanhoucke, Pete Florence, 2022
+
+
 - [Egocentric video summarisation via purpose-oriented frame scoring and selection](https://www.sciencedirect.com/science/article/pii/S0957417421014159) - V. Javier Traver and Dima Damen, Expert Systems with Applications 2022
+
+- [Multi-stream dynamic video Summarization](https://openaccess.thecvf.com/content/WACV2022/html/Elfeki_Multi-Stream_Dynamic_Video_Summarization_WACV_2022_paper.html) - Mohamed Elfeki, Liqiang Wang, Ali Borji,  WACV 2022
 
 - [Together Recognizing, Localizing and Summarizing Actions in Egocentric Videos](https://ieeexplore.ieee.org/abstract/document/9399266?casa_token=R8LKJM45-MgAAAAA:Pfjxjt8k7l4SD_iopfL9JYsq2k6ShpZGATkXg-z5B4BTuPQV3A4HqhtZ2VqhVPtiIVbPIi_oaPU) - Abhimanyu Sahu; Ananda S. Chowdhury, TIP 2021
 
 - [First person video summarization using different graph representations](https://www.sciencedirect.com/science/article/pii/S0167865521001008?casa_token=H7rMpQAduAsAAAAA:Aq6ryy4IihojkZ9Tj3LoYRxT66VO3KmdBIiRTJoDvd_WBNIsHJxhruPTSNrzR6NniRg8iYyk) - Abhimanyu Sahu, Ananda S.Chowdhury, Pattern Recognition Letters 2021
 
+- [Summarizing egocentric videos using deep features and optimal clustering](https://www.sciencedirect.com/science/article/pii/S0925231220302952) - Abhimanyu Sahu, Ananda S.Chowdhury,  Neurocomputing 2020
+
 - [Text Synopsis Generation for Egocentric Videos](https://ieeexplore.ieee.org/abstract/document/9412111?casa_token=Vf3uXoASupsAAAAA:CHg-misMhCLcZn-CWdUFFBLJ_SGlvsmZrAc-lfujd5yxVQSF0pr13RAYSdmrOTfYaTB0xKTj_Wg) - Aidean Sharghi; Niels da Vitoria Lobo; Mubarak Shah, ICPR 2020
+
+- [Shot Level Egocentric Video Co-summarization](https://ieeexplore.ieee.org/document/8546119) - Abhimanyu Sahu; Ananda S. Chowdhury, ICPR 2018
 
 - [Personalized Egocentric Video Summarization of Cultural Tour on User Preferences Input](https://ieeexplore.ieee.org/abstract/document/7931584?casa_token=gsvjlImpjQQAAAAA:F420NFVZd0V3igjGLVv8VpXnD1Ul5SakMxlfwcdAYCwNTsEjPgrLAKMhnUKX2VgOpoJgRm03XzI) - Patrizia Varini; Giuseppe Serra; Rita Cucchiara, IEEE Transactions on Multimedia 2017
 
