@@ -519,7 +519,7 @@
 
 ### Datasets
 
-- [Assembly101](https://assembly101.github.io/) - Procedural activity dataset featuring 4321 videos of people assembling and disassembling 101 “take-apart” toy vehicles. - Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities [paper](https://arxiv.org/pdf/2203.14712.pdf) - Fadime Sener, Dibyadip Chatterjee, Daniel Shelepov, Kun He, Dipika Singhania, Robert Wang, Angela Yao, CVPR 2022. 
+- [Assembly101](https://assembly101.github.io/) - Procedural activity dataset featuring 4321 videos of people assembling and disassembling 101 “take-apart” toy vehicles. - Assembly101: A Large-Scale Multi-View Video Dataset for Understanding Procedural Activities [[paper]](https://arxiv.org/pdf/2203.14712.pdf) - Fadime Sener, Dibyadip Chatterjee, Daniel Shelepov, Kun He, Dipika Singhania, Robert Wang, Angela Yao, CVPR 2022. 
 
 - [EgoPAT3D](https://ai4ce.github.io/EgoPAT3D/) - A large multimodality dataset of more than 1 million frames of RGB-D and IMU streams, with evaluation metrics based on high-quality 2D and 3D labels from semi-automatic annotation. - [Egocentric Prediction of Action Target in 3D](https://arxiv.org/abs/2203.13116) - Yiming Li, Ziang Cao, Andrew Liang, Benjamin Liang, Luoyao Chen, Hang Zhao, Chen Feng, CVPR 2022. 
 
