@@ -472,6 +472,8 @@
 
 ### Human to Robot
 
+- [R3M: A Universal Visual Representation for Robot Manipulation](https://arxiv.org/abs/2203.12601) - Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn, Abhinav Gupta 2022
+
 - [Learning Robot Activities From First-Person Human Videos Using Convolutional Future Regression](https://openaccess.thecvf.com/content_cvpr_2017_workshops/w5/html/Lee_Learning_Robot_Activities_CVPR_2017_paper.html) - Jangwon Lee, Michael S. Ryoo, CVPR 2017
 
 - [One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning](http://www.roboticsproceedings.org/rss14/p02.pdf) - Tianhe Yu, Chelsea Finn, Annie Xie, Sudeep Dasari, Tianhao Zhang, Pieter Abbeel, Sergey Levine, RSS 2014
