@@ -93,6 +93,8 @@
 
 #### Hand-Object Interactions
 
+- [Egocentric Human-Object Interaction Detection Exploiting Synthetic Data](https://arxiv.org/abs/2204.07061) - Rosario Leonardi, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella ICIAP 2022
+
 - [Learning Visual Affordance Grounding from Demonstration Videos](https://arxiv.org/abs/2108.05675) - Hongchen Luo, Wei Zhai, Jing Zhang, Yang Cao, Dacheng Tao, 2021
 
 - [Domain and View-point Agnostic Hand Action Recognition](https://arxiv.org/abs/2103.02303) - Alberto Sabater, Iñigo Alonso, Luis Montesano, Ana C. Murillo, 2021
@@ -330,6 +332,14 @@
 
 - [Fine-Grained Action Retrieval Through Multiple Parts-of-Speech Embeddings](https://openaccess.thecvf.com/content_ICCV_2019/papers/Wray_Fine-Grained_Action_Retrieval_Through_Multiple_Parts-of-Speech_Embeddings_ICCV_2019_paper.pdf) - Michael Wray, Diane Larlus, Gabriela Csurka, Dima Damen, ICCV 2019
 
+
+### Video-Language
+
+- [Egocentric Video-Language Pretraining](https://arxiv.org/pdf/2206.01670.pdf) - Kevin Qinghong Lin, Alex Jinpeng Wang, Mattia Soldan, Michael Wray, Rui Yan, Eric Zhongcong Xu, Difei Gao, Rongcheng Tu, Wenzhe Zhao, Weijie Kong, Chengfei Cai, Hongfa Wang, Dima Damen, Bernard Ghanem, Wei Liu, Mike Zheng Shou 2022
+
+- [Episodic Memory Question Answering](https://arxiv.org/pdf/2205.01652.pdf) - Samyak Datta, Sameer Dharur, Vincent Cartillier, Ruta Desai, Mukul Khanna, Dhruv Batra, Devi Parikh CVPR 2022 
+
+
 ### Few-Shot Action Recognition
 
 - [Unifying Few- and Zero-Shot Egocentric Action Recognition](https://arxiv.org/abs/2006.11393) - Tyler R. Scott, Michael Shvartsman, Karl Ridgeway, CVPRW 2021
@@ -508,6 +518,7 @@
 
 #### Transformer 
 
+- [Ego-STAN][Building Spatio-temporal Transformers for Egocentric 3D Pose Estimation](https://arxiv.org/abs/2206.04785) - Jinman Park, Kimathi Kaai, Saad Hossain, Norikatsu Sumi, Sirisha Rambhatla, Paul Fieguth WCVPR2022 
 - [XViT] [Space-time Mixing Attention for Video Transformer](https://proceedings.neurips.cc/paper/2021/file/a34bacf839b923770b2c360eefa26748-Paper.pdf) - Adrian Bulat, Juan-Manuel Perez-Rua, Swathikiran Sudhakaran, Brais Martinez, Georgios Tzimiropoulos, NIPS 2021
 - [ViViT] [ViViT: A Video Vision Transformer](https://openaccess.thecvf.com/content/ICCV2021/html/Arnab_ViViT_A_Video_Vision_Transformer_ICCV_2021_paper.html) Anurag Arnab, Mostafa Dehghani, Georg Heigold, Chen Sun, Mario Lučić, Cordelia Schmid, ICCV 2021
 - [TimeSformer] [Is Space-Time Attention All You Need for Video Understanding?](https://arxiv.org/abs/2102.05095) - Gedas Bertasius, Heng Wang, Lorenzo Torresani, ICML 2021
