@@ -25,6 +25,7 @@
 
 ## Papers
 
+### Action / Activity Recognition
 #### Action Recognition
 - [Integrating Human Gaze Into Attention for Egocentric Activity Recognition](https://openaccess.thecvf.com/content/WACV2021/html/Min_Integrating_Human_Gaze_Into_Attention_for_Egocentric_Activity_Recognition_WACV_2021_paper.html) - Kyle Min, Jason J. Corso, WACV 2021.
 
@@ -165,6 +166,7 @@
 #### Domain Generalization
 - [Domain Generalization through Audio-Visual Relative Norm Alignment in First Person Action Recognition](https://arxiv.org/abs/2110.10101) - Mirco Planamente, Chiara Plizzari, Emanuele Alberti, Barbara Caputo, WACV 2022.
 
+### Action Anticipation
 #### Short-Term Action Anticipation
 - [Towards Streaming Egocentric Action Anticipation](https://arxiv.org/abs/2110.05386) - Antonino Furnari, Giovanni Maria Farinella, arXiv 2021.
 
@@ -252,6 +254,7 @@
 
 - [First Person Action-Object Detection with EgoNet](https://arxiv.org/abs/1603.04908) - G Bertasius, HS Park, SX Yu, J Shi, arXiv 2016.
 
+### Multi-Modalities
 #### Audio-Visual
 - [Domain Generalization through Audio-Visual Relative Norm Alignment in First Person Action Recognition](https://arxiv.org/abs/2110.10101) - Mirco Planamente, Chiara Plizzari, Emanuele Alberti, Barbara Caputo, WACV 2022.
 
@@ -442,6 +445,7 @@
 
 - [A Computational Model of Early Word Learning from the Infant's Point of View](https://arxiv.org/abs/2006.02802) - Satoshi Tsutsui, Arjun Chandrasekaran, Md Alimoor Reza, David Crandall, Chen Yu, CogSci 2020.
 
+### Popular Architectures
 #### 2D
 - [GSM](https://openaccess.thecvf.com/content_CVPR_2020/html/Sudhakaran_Gate-Shift_Networks_for_Video_Action_Recognition_CVPR_2020_paper.html) - Swathikiran Sudhakaran, Sergio Escalera, Oswald Lanz, CVPR 2020. [[code]](https://github.com/swathikirans/GSM)
 
