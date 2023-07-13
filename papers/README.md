@@ -6,6 +6,10 @@
 - [Challenges](#challenges) 
 - [Devices](#devices)
 
+
+
+
+
 ## Surveys
 
 - [Egocentric Vision-based Action Recognition: A survey](https://www.sciencedirect.com/science/article/pii/S0925231221017586) - Adrián Núñez-Marcos, Gorka Azkune, Ignacio Arganda-Carreras, Neurocomputing 2021.
