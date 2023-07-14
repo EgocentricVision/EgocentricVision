@@ -9,7 +9,6 @@
 
 
 
-
 ## Surveys
 
 - [Egocentric Vision-based Action Recognition: A survey](https://www.sciencedirect.com/science/article/pii/S0925231221017586) - Adrián Núñez-Marcos, Gorka Azkune, Ignacio Arganda-Carreras, Neurocomputing 2021.
@@ -585,4 +584,62 @@
 - [Multimodal Focused Interaction Dataset](https://cvip.computing.dundee.ac.uk/datasets/focusedinteraction/) - Contains 377 minutes of continuous multimodal recording captured during 19 sessions, with 17 conversational partners in 18 different indoor/outdoor locations. 
 
 ### Not Yet Explored Task
+
+## Challenges
+
+- [Ego4D](https://ego4d-data.org)- Episodic Memory, Hand-Object Interactions, AV Diarization, Social, Forecasting.
+
+- [Epic Kithchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
+
+
+## Devices
+
+- [GoPro](https://gopro.com/it/it/)
+
+- [Narrative clip](http://getnarrative.com/)
+
+- [Autographer5](https://en.wikipedia.org/wiki/Autographer)
+
+- [Microsoft SenseCam](https://www.microsoft.com/en-us/research/project/sensecam/)
+
+- [SMI eye-tracker](https://imotions.com/hardware/smi-eye-tracking-glasses/)
+
+- [ASL Mobile eye](https://est-kl.com/manufacturer/asl/mobile-eye-5.html)
+
+- [Tobii eye-tracker](https://www.tobii.com/)
+
+- [Pupil Invisible](https://pupil-labs.com/)
+
+- [Microsoft Hololens 2](https://www.microsoft.com/it-it/hololens/)
+
+- [Google Glass](https://www.google.com/glass/start/)
+
+- [Vusix Blade](https://www.vuzix.com/products/vuzix-blade-smart-glasses-upgraded)
+
+- [Magic Leap](https://www.magicleap.com/)
+
+- [Nreal Light](https://www.nreal.ai/)
+
+- [Epson Moverio](https://www.epson.it/products/see-through-mobile-viewer)
+
+- [Realwear](https://www.realwear.com/)
+
+- [TCL Smart Glasses Thunderbird]
+
+- [OrCam](https://www.orcam.com/it/)
+
+- [Xiaomi Smart Glasses]
+
+- [Ray-Ban Stories](https://www.ray-ban.com/italy/ray-ban-stories)
+
+- [dynaEdge](https://it.dynabook.com/generic/dynaedge/)
+
+- [Apple Glass]
+
+- [Alpha Glass]
+
+- [GWD HiiDii](https://www.gwdbi.com/)
+
+- [Spectacles](https://www.spectacles.com/it/shop/spectacles-3/)
+
 This is a work in progress... 
