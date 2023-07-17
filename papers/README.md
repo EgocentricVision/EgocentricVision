@@ -1,5 +1,5 @@
 # Egocentric Vision  
-better view here -> https://egocentricvision.github.io/EgocentricVision/)
+better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Surveys](#surveys) 
 - [Papers](#papers) 
