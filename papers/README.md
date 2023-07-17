@@ -1,4 +1,4 @@
-# Egocentric Vision  
+# Egocentric Vision
 better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Surveys](#surveys) 
@@ -39,11 +39,11 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Slow-Fast Auditory Streams For Audio Recognition](https://arxiv.org/abs/2103.03516) - Evangelos Kazakos, Arsha Nagrani, Andrew Zisserman, Dima Damen, ICASSP 2021.
 
+- [ACTION-Net: Multipath Excitation for Action Recognition](https://openaccess.thecvf.com/content/CVPR2021/papers/Wang_ACTION-Net_Multipath_Excitation_for_Action_Recognition_CVPR_2021_paper.pdf) - Zhengwei Wang, Qi She, Aljosa Smolic, CVPR 2021. [[code]](https://github.com/V-Sense/ACTION-Net)
+
 - [Stacked Temporal Attention: Improving First-person Action Recognition by Emphasizing Discriminative Clips](https://arxiv.org/abs/2112.01038) - Lijin Yang, Yifei Huang, Yusuke Sugano, Yoichi Sato, BMVC 2021.
 
 - [With a Little Help from my Temporal Context: Multimodal Egocentric Action Recognition](https://arxiv.org/abs/2111.01024) - Evangelos Kazakos, Jaesung Huh, Arsha Nagrani, Andrew Zisserman, Dima Damen, BMVC 2021.
-
-- [ACTION-Net: Multipath Excitation for Action Recognition](https://openaccess.thecvf.com/content/CVPR2021/papers/Wang_ACTION-Net_Multipath_Excitation_for_Action_Recognition_CVPR_2021_paper.pdf) - Zhengwei Wang, Qi She, Aljosa Smolic,  2021. [[code]](https://github.com/V-Sense/ACTION-Net)
 
 - [Trear: Transformer-based RGB-D Egocentric Action Recognition](https://ieeexplore.ieee.org/abstract/document/9312201?casa_token=VjrXPrZDuSgAAAAA:ezQgxMoeH7q3fxl8su7zg1yghkp60nbxCwU3FxyZEKWghbUVozmKmS_YE99AYceBr3lxA6Ud) - Xiangyu Li, Yonghong Hou, Pichao Wang, Zhimin Gao, Mingliang Xu, Wanqing Li, TCDS 2020.
 
@@ -157,7 +157,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Usupervised Domain Adaptation
 - [Domain Generalization through Audio-Visual Relative Norm Alignment in First Person Action Recognition](https://arxiv.org/abs/2110.10101) - Mirco Planamente, Chiara Plizzari, Emanuele Alberti, Barbara Caputo, WACV 2022.
 
-- [Interact before Align: Leveraging Cross-Modal Knowledge for Domain Adaptive Action Recognition](https://openaccess.thecvf.com/content/CVPR2022/papers/Yang_Interact_Before_Align_Leveraging_Cross-Modal_Knowledge_for_Domain_Adaptive_Action_CVPR_2022_paper.pdf) - Lijin Yang, Yifei Huang, Yusuke Sugano, Yoichi Sato,  2022.
+- [Interact before Align: Leveraging Cross-Modal Knowledge for Domain Adaptive Action Recognition](https://openaccess.thecvf.com/content/CVPR2022/papers/Yang_Interact_Before_Align_Leveraging_Cross-Modal_Knowledge_for_Domain_Adaptive_Action_CVPR_2022_paper.pdf) - Lijin Yang, Yifei Huang, Yusuke Sugano, Yoichi Sato, CVPR 2022.
 
 - [Contrast and Mix: Temporal Contrastive Video Domain Adaptation with Background Mixing](https://openreview.net/forum?id=a1wQOh27zcy) - Aadarsh Sahoo, Rutav Shah, Rameswar Panda, Kate Saenko, Abir Das, NIPS 2021.
 
@@ -184,6 +184,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [What If We Could Not See? Counterfactual Analysis for Egocentric Action Anticipation](ijcai.org/proceedings/2021/182) - T Zhang, W Min, J Yang, T Liu, S Jiang, Y Rui, IJCAI 2021.
 
+- [What If We Could Not See? Counterfactual Analysis for Egocentric Action Anticipation](https://www.ijcai.org/proceedings/2021/0182.pdf) - Tianyu Zhang, Weiqing Min, Jiahao Yang, Tao Liu, Shuqiang Jiang, Yong Rui, IJCAI 2021.
+
+- [Knowledge Distillation for Human Action Anticipation](https://ieeexplore.ieee.org/abstract/document/9506693?casa_token=BecLRxlT_acAAAAA:AT3srfvaOxi3pcMZ5jNhPziC75sADNRNhHLRXYAUWAe9yo5pUNlKIJvDw1a4Geg087evZvEkEA) - Vinh Tran Stony Brook University, Stony Brook NY, Yang Wang,  Zekun Zhang, Minh Hoai, ICIP 2021.
+
 - [Anticipative Video Transformer](https://arxiv.org/abs/2106.02036) - Rohit Girdhar, Kristen Grauman, ICCV 2021.
 
 - [Multi-Modal Temporal Convolutional Network for Anticipating Actions in Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2021W/Precognition/html/Zatsarynna_Multi-Modal_Temporal_Convolutional_Network_for_Anticipating_Actions_in_Egocentric_Videos_CVPRW_2021_paper.html) - Olga Zatsarynna, Yazan Abu Farha, Juergen Gall, CVPRW 2021.
@@ -193,10 +197,6 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Higher Order Recurrent Space-Time Transformer for Video Action Prediction](https://arxiv.org/abs/2104.08665) - Tsung-Ming Tai, Giuseppe Fiameni, Cheng-Kuang Lee, Oswald Lanz, ArXiv 2021.
 
 - [Multimodal Global Relation Knowledge Distillation for Egocentric Action Anticipation](https://dl.acm.org/doi/abs/10.1145/3474085.3475327?casa_token=S_eM0ZcL9G8AAAAA:n9-Xa3-WzAD5NGx9h9WA7ZnBFW5Xzv-QYu-wWYtUaqpYAagALI37qL1rc3WWawgiNf_0VrtOWX0) - Y Huang, X Yang, C Xu, ACM 2021.
-
-- [Knowledge Distillation for Human Action Anticipation](https://ieeexplore.ieee.org/abstract/document/9506693?casa_token=BecLRxlT_acAAAAA:AT3srfvaOxi3pcMZ5jNhPziC75sADNRNhHLRXYAUWAe9yo5pUNlKIJvDw1a4Geg087evZvEkEA) - Vinh Tran Stony Brook University, Stony Brook NY, Yang Wang,  Zekun Zhang, Minh Hoai,  2021.
-
-- [What If We Could Not See? Counterfactual Analysis for Egocentric Action Anticipation](https://www.ijcai.org/proceedings/2021/0182.pdf) - Tianyu Zhang, Weiqing Min, Jiahao Yang, Tao Liu, Shuqiang Jiang, Yong Rui,  2021.
 
 - [Rolling-Unrolling LSTMs for Action Anticipation from First-Person Video](https://arxiv.org/abs/2005.02190) - Antonino Furnari, Giovanni Maria Farinella, T-PAMI 2020.
 
@@ -254,6 +254,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Going deeper into first-person activity recognition](http://www.cs.cmu.edu/~kkitani/pdf/MFK-CVPR2016.pdf) - Ma, M., Fan, H., & Kitani, K. M., CVPR 2016.
 
 #### Region prediction
+- [Joint Hand Motion and Interaction Hotspots Prediction From Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2022/papers/Liu_Joint_Hand_Motion_and_Interaction_Hotspots_Prediction_From_Egocentric_Videos_CVPR_2022_paper.pdf) - Shaowei Liu, Subarna Tripathi, Somdeb Majumdar, Xiaolong Wang, CVPR 2022. [[code]](https://github.com/stevenlsw/hoi-forecast) [[project page]](https://stevenlsw.github.io/hoi-forecast/)
+
 - [EGO-TOPO: Environment Affordances from Egocentric Video](https://openaccess.thecvf.com/content_CVPR_2020/papers/Nagarajan_Ego-Topo_Environment_Affordances_From_Egocentric_Video_CVPR_2020_paper.pdf) - Nagarajan, Tushar and Li, Yanghao and Feichtenhofer, Christoph and Grauman, Kristen, CVPR 2020.
 
 - [Forecasting human object interaction: Joint prediction of motor attention and egocentric activity](http://arxiv.org/abs/1911.10967) - Liu, M., Tang, S., Li, Y., Rehg, J., arXiv 2019.
@@ -283,7 +285,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [EPIC-Fusion: Audio-Visual Temporal Binding for Egocentric Action Recognition](https://openaccess.thecvf.com/content_ICCV_2019/papers/Kazakos_EPIC-Fusion_Audio-Visual_Temporal_Binding_for_Egocentric_Action_Recognition_ICCV_2019_paper.pdf) - Kazakos, Evangelos and Nagrani, Arsha and Zisserman, Andrew and Damen, Dima, ICCV 2019.
 
 #### Depth
-- [Moving SLAM: Fully Unsupervised Deep Learning in Non-Rigid Scenes](https://ieeexplore.ieee.org/abstract/document/9636075?casa_token=UYaHkHj4TJcAAAAA:NketkffyE1V5tUn7UeG_ko9rQGzgiwgSPrliBqW2uhuihLNYtSJa2vU-ufaRzWxRvWZzCMLqGw) - Dan Xu, Andrea Vedaldi, João F. Henriques,  2021.
+- [Moving SLAM: Fully Unsupervised Deep Learning in Non-Rigid Scenes](https://ieeexplore.ieee.org/abstract/document/9636075?casa_token=UYaHkHj4TJcAAAAA:NketkffyE1V5tUn7UeG_ko9rQGzgiwgSPrliBqW2uhuihLNYtSJa2vU-ufaRzWxRvWZzCMLqGw) - Dan Xu, Andrea Vedaldi, João F. Henriques, IROS 2021.
 
 - [Trear: Transformer-based RGB-D Egocentric Action Recognition](https://ieeexplore.ieee.org/abstract/document/9312201?casa_token=VjrXPrZDuSgAAAAA:ezQgxMoeH7q3fxl8su7zg1yghkp60nbxCwU3FxyZEKWghbUVozmKmS_YE99AYceBr3lxA6Ud) - Xiangyu Li, Yonghong Hou, Pichao Wang, Zhimin Gao, Mingliang Xu, Wanqing Li, TCDS 2020.
 
@@ -304,10 +306,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo,  2021.
 
 #### IMU
-- [How You Move Your Head Tells What You Do: Self-supervised Video Representation Learning with Egocentric Cameras and IMU Sensors](https://arxiv.org/abs/2110.01680) - Satoshi Tsutsui, Ruta Desai, Karl Ridgeway,  2021.
+- [How You Move Your Head Tells What You Do: Self-supervised Video Representation Learning with Egocentric Cameras and IMU Sensors](https://arxiv.org/abs/2110.01680) - Satoshi Tsutsui, Ruta Desai, Karl Ridgeway, WICCV 2021.
 
 ### Temporal Segmentation (Action Detection)
-- [Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos](https://openaccess.thecvf.com/content/CVPR2022/papers/Li_Bridge-Prompt_Towards_Ordinal_Action_Understanding_in_Instructional_Videos_CVPR_2022_paper.pdf) - Muheng Li, Lei Chen, Yueqi Duan, Zhilan Hu, Jianjiang Feng, Jie Zhou, Jiwen Lu,  2022. [[code]](https://github.com/ttlmh/Bridge-Prompt)
+- [Bridge-Prompt: Towards Ordinal Action Understanding in Instructional Videos](https://openaccess.thecvf.com/content/CVPR2022/papers/Li_Bridge-Prompt_Towards_Ordinal_Action_Understanding_in_Instructional_Videos_CVPR_2022_paper.pdf) - Muheng Li, Lei Chen, Yueqi Duan, Zhilan Hu, Jianjiang Feng, Jie Zhou, Jiwen Lu, CVPR 2022. [[code]](https://github.com/ttlmh/Bridge-Prompt)
 
 - [Temporal Action Segmentation from Timestamp Supervision](https://openaccess.thecvf.com/content/CVPR2021/papers/Li_Temporal_Action_Segmentation_From_Timestamp_Supervision_CVPR_2021_paper.pdf) - Zhe Li, Yazan Abu Farha, Jurgen Gall, CVPR 2021.
 
@@ -343,7 +345,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Actor and Observer: Joint Modeling of First and Third-Person Videos](https://openaccess.thecvf.com/content_cvpr_2018/papers/Sigurdsson_Actor_and_Observer_CVPR_2018_paper.pdf) - Gunnar A. Sigurdsson and Abhinav Gupta and Cordelia Schmid and Ali Farhadi and Karteek Alahari, CVPR 2018. [[code]](https://github.com/gsig/actor-observer)
 
 ### User Data from an Egocentric Point of View
-- [Robust Egocentric Photo-realistic Facial Expression Transfer for Virtual Reality](https://openaccess.thecvf.com/content/CVPR2022/papers/Jourabloo_Robust_Egocentric_Photo-Realistic_Facial_Expression_Transfer_for_Virtual_Reality_CVPR_2022_paper.pdf) - Amin Jourabloo, Fernando De la Torre, Jason Saragih, Shih-En Wei, Stephen Lombardi, Te-Li Wang, Danielle Belko, Autumn Trimble, Hernan Badino,  2022.
+- [Robust Egocentric Photo-realistic Facial Expression Transfer for Virtual Reality](https://openaccess.thecvf.com/content/CVPR2022/papers/Jourabloo_Robust_Egocentric_Photo-Realistic_Facial_Expression_Transfer_for_Virtual_Reality_CVPR_2022_paper.pdf) - Amin Jourabloo, Fernando De la Torre, Jason Saragih, Shih-En Wei, Stephen Lombardi, Te-Li Wang, Danielle Belko, Autumn Trimble, Hernan Badino, CVPR 2022.
 
 - [Whose Hand Is This? Person Identification From Egocentric Hand Gestures](https://openaccess.thecvf.com/content/WACV2021/html/Tsutsui_Whose_Hand_Is_This_Person_Identification_From_Egocentric_Hand_Gestures_WACV_2021_paper.html) - Satoshi Tsutsui, Yanwei Fu, David J. Crandall, WACV 2021.
 
@@ -452,14 +454,14 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Applications
 - [Wearable System for Personalized and Privacy-preserving Egocentric Visual Context Detection using On-device Deep Learning](https://dl.acm.org/doi/abs/10.1145/3450614.3461684) - Mina Khan, Glenn Fernandes, Akash Vaish, Mayank Manuja, Pattie Maes, UMAP 2021.
 
-- [NeuralDiff: Segmenting 3D objects that move in egocentric videos](https://ieeexplore.ieee.org/abstract/document/9665956?casa_token=MCT217Rr7zAAAAAA:i-kwUh6jAScWI81EYHQU2vcze3AF5OPWNoy5EdU3t2UP2JQ2s55gDT6QYDbVapahhQdHKpTU7A) - Vadim Tschernezki, Diane Larlus, Andrea Vedaldi,  2021.
+- [NeuralDiff: Segmenting 3D objects that move in egocentric videos](https://ieeexplore.ieee.org/abstract/document/9665956?casa_token=MCT217Rr7zAAAAAA:i-kwUh6jAScWI81EYHQU2vcze3AF5OPWNoy5EdU3t2UP2JQ2s55gDT6QYDbVapahhQdHKpTU7A) - Vadim Tschernezki, Diane Larlus, Andrea Vedaldi, 3DV 2021.
 
 - [Learning Robot Activities From First-Person Human Videos Using Convolutional Future Regression](https://openaccess.thecvf.com/content_cvpr_2017_workshops/w5/html/Lee_Learning_Robot_Activities_CVPR_2017_paper.html) - Jangwon Lee, Michael S. Ryoo, CVPR 2017.
 
 ### Human to Robot
 - [R3M: A Universal Visual Representation for Robot Manipulation](https://arxiv.org/abs/2203.12601) - Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn,  Abhinav Gupta,  2022.
 
-- [ManipulaTHOR: A Framework for Visual Object Manipulation](https://openaccess.thecvf.com/content/CVPR2021/papers/Ehsani_ManipulaTHOR_A_Framework_for_Visual_Object_Manipulation_CVPR_2021_paper.pdf) - Kiana Ehsani, Winson Han, Alvaro Herrasti, Eli VanderBilt, Luca Weihs, Eric Kolve, Aniruddha Kembhavi, Roozbeh Mottaghi,  2021. [[project page]](https://ai2thor.allenai.org/manipulathor/)
+- [ManipulaTHOR: A Framework for Visual Object Manipulation](https://openaccess.thecvf.com/content/CVPR2021/papers/Ehsani_ManipulaTHOR_A_Framework_for_Visual_Object_Manipulation_CVPR_2021_paper.pdf) - Kiana Ehsani, Winson Han, Alvaro Herrasti, Eli VanderBilt, Luca Weihs, Eric Kolve, Aniruddha Kembhavi, Roozbeh Mottaghi, CVPR 2021. [[project page]](https://ai2thor.allenai.org/manipulathor/)
 
 - [Learning Robot Activities From First-Person Human Videos Using Convolutional Future Regression](https://openaccess.thecvf.com/content_cvpr_2017_workshops/w5/html/Lee_Learning_Robot_Activities_CVPR_2017_paper.html) - Jangwon Lee, Michael S. Ryoo, CVPR 2017.
 
@@ -511,6 +513,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Datasets
 - [Touch and Go](https://touch-and-go.github.io/) - we present a dataset, called Touch and Go, in which human data collectors walk through a variety of environments, probing objects with tactile sensors and simultaneously recording their actions on video. NeurIPS 2022. [[paper]](https://arxiv.org/pdf/2211.12498.pdf)
 
+- [EPIC-Visor](https://epic-kitchens.github.io/VISOR/) - VISOR, a new dataset of pixel annotations and a benchmark suite for segmenting hands and active objects in egocentric video. NeurIPS 2022. [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/590a7ebe0da1f262c80d0188f5c4c222-Abstract-Datasets_and_Benchmarks.html)
+
 - [Assembly101](https://assembly101.github.io/) - Procedural activity dataset featuring 4321 videos of people assembling and disassembling 101 “take-apart” toy vehicles. CVPR 2022. [[paper]](https://arxiv.org/pdf/2203.14712.pdf)
 
 - [EgoPAT3D](https://ai4ce.github.io/EgoPAT3D/) - A large multimodality dataset of more than 1 million frames of RGB-D and IMU streams, with evaluation metrics based on high-quality 2D and 3D labels from semi-automatic annotation. CVPR 2022. [[paper]](https://arxiv.org/abs/2203.13116)
@@ -529,17 +533,15 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [First2Third-Pose](https://github.com/nudlesoup/First2Third-Pose) - A new paired synchronized dataset of nearly 2,000 videos depicting human activities captured from both first- and third-view perspectives.  2022. [[paper]](https://arxiv.org/abs/2201.02017)
 
-- [EPIC-Visor](https://epic-kitchens.github.io/VISOR/) - VISOR, a new dataset of pixel annotations and a benchmark suite for segmenting hands and active objects in egocentric video.  2022. [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/590a7ebe0da1f262c80d0188f5c4c222-Abstract-Datasets_and_Benchmarks.html)
-
 - [TREK-100](https://machinelearning.uniud.it/datasets/trek100/) - Object tracking in first person vision. WICCV 2021. [[paper]](https://openaccess.thecvf.com/content/ICCV2021W/VOT/html/Dunnhofer_Is_First_Person_Vision_Challenging_for_Object_Tracking_ICCVW_2021_paper.html)
 
 - [MECCANO](https://iplab.dmi.unict.it/MECCANO/) - 20 subject assembling a toy motorbike. WACV 2021. [[paper]](https://openaccess.thecvf.com/content/WACV2021/html/Ragusa_The_MECCANO_Dataset_Understanding_Human-Object_Interactions_From_Egocentric_Videos_in_WACV_2021_paper.html)
 
 - [EPIC-Kitchens 2020](https://epic-kitchens.github.io/2020-100) - Subjects performing unscripted actions in their native environments. IJCV 2021. [[paper]](https://link.springer.com/article/10.1007/s11263-021-01531-2)
 
-- [HOMAGE](https://homeactiongenome.org/) - Home Action Genome (HOMAGE): a multi-view action dataset with multiple modalities and view-points supplemented with hierarchical activity and atomic action labels together with dense scene composition labels.  2021. [[paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Rai_Home_Action_Genome_Cooperative_Compositional_Action_Understanding_CVPR_2021_paper.pdf)
+- [H2O](https://taeinkwon.com/projects/h2o/) - H2O (2 Hands and Objects), provides synchronized multi-view RGB-D images, interaction labels, object classes, ground-truth 3D poses for left & right hands, 6D object poses, ground-truth camera poses, object meshes and scene point clouds. ICCV 2021. [[paper]](https://openaccess.thecvf.com/content/ICCV2021/papers/Kwon_H2O_Two_Hands_Manipulating_Objects_for_First_Person_Interaction_Recognition_ICCV_2021_paper.pdf)
 
-- [H2O](https://taeinkwon.com/projects/h2o/) - H2O (2 Hands and Objects), provides synchronized multi-view RGB-D images, interaction labels, object classes, ground-truth 3D poses for left & right hands, 6D object poses, ground-truth camera poses, object meshes and scene point clouds.  2021. [[paper]](https://openaccess.thecvf.com/content/ICCV2021/papers/Kwon_H2O_Two_Hands_Manipulating_Objects_for_First_Person_Interaction_Recognition_ICCV_2021_paper.pdf)
+- [HOMAGE](https://homeactiongenome.org/) - Home Action Genome (HOMAGE): a multi-view action dataset with multiple modalities and view-points supplemented with hierarchical activity and atomic action labels together with dense scene composition labels. CVPR 2021. [[paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Rai_Home_Action_Genome_Cooperative_Compositional_Action_Understanding_CVPR_2021_paper.pdf)
 
 - [EgoCom](https://github.com/facebookresearch/EgoCom-Dataset) - A natural conversations dataset containing multi-modal human communication data captured simultaneously from the participants' egocentric perspectives. TPAMI 2020. [[paper]](https://ieeexplore.ieee.org/document/9200754)
 
