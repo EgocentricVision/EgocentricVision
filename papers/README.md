@@ -1,4 +1,4 @@
-# Egocentric Vision
+# Egocentric Vision (https://egocentricvision.github.io/EgocentricVision/index.html)
 
 - [Surveys](#surveys) 
 - [Papers](#papers) 
