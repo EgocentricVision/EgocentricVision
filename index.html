@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="resources/style.css">
+     <!-- Aggiungi il CSS di Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- Aggiungi jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Aggiungi il JavaScript di Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -16,30 +27,30 @@
             padding: 0;
             background-color: #f1f1f1;
         }
-        
+
         .header {
             background-color: #1367a9;
             color: #fff;
             text-align: center;
             padding: 20px;
         }
-        
+
         .logo {
             display: block;
             max-width: 150px;
             margin: 0 auto;
         }
-        
+
         .title {
             font-size: 32px;
             margin: 10px 0;
         }
-        
+
         .subtitle {
             font-size: 18px;
             margin: 5px 0;
         }
-        
+
         .container {
             display: flex;
             justify-content: center;
@@ -48,24 +59,24 @@
             margin-top: 40px;
             padding: 0 20px;
         }
-        
+
         .person {
             flex: 0 0 200px;
             text-align: center;
             margin: 10px;
         }
-        
+
         .person img {
             width: 150px;
             height: 150px;
             object-fit: cover;
             border-radius: 50%;
         }
-        
+
         .person p {
             margin: 10px 0;
         }
-        
+
         .intro {
             max-width: 800px;
             margin: 0 auto;
@@ -74,26 +85,26 @@
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         .intro p {
             margin-bottom: 10px;
         }
-        
+
         .intro a {
             color: #1367a9;
             font-weight: bold;
             text-decoration: none;
         }
-        
+
         .intro a:hover {
             text-decoration: underline;
         }
-        
+
         .intro .contact {
             color: #136700;
             font-style: italic;
         }
-       
+
         a {
             color: #1367a9; /* Colore normale del link */
             text-decoration: none; /* Rimuovi sottolineato predefinito */
@@ -104,6 +115,49 @@
             color: #ff5733; /* Cambia colore del link quando il mouse si avvicina */
             text-decoration: underline; /* Aggiungi sottolineato al link quando il mouse si avvicina */
         }
+
+        /* Stile per il carosello di immagini */
+.owl-carousel {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto; /* Aggiungi uno spazio tra il blocco di testo e il carosello */
+    border: 1px solid #ddd; /* Aggiungi una cornice leggera */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungi ombreggiatura */
+}
+
+/* Stile per le immagini nel carosello */
+.owl-carousel .carousel-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Stile per le frecce di navigazione */
+.owl-nav {
+    text-align: center;
+    margin-top: 10px; /* Aggiungi spazio sopra le frecce */
+}
+
+.owl-nav [class*=owl-] {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #1367a9;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.owl-nav [class*=owl-prev] {
+    margin-right: 5px;
+}
+
+.owl-nav [class*=owl-next] {
+    margin-left: 5px;
+}
+<div class="owl-nav">
+    <div class="owl-prev"><i class="fas fa-chevron-left"></i></div>
+    <div class="owl-next"><i class="fas fa-chevron-right"></i></div>
+</div>
 
     </style>
 </head>
@@ -123,12 +177,38 @@
     </div>
 
     <div class="intro">
-        <p>We present a curated collection of research papers, datasets, challenges, and real-world applications in the field of Egocentric Vision. Explore the latest advancements and contribute to this evolving repository!</p>
+        <p>Discover a carefully curated selection of research papers, datasets, challenges, and real-world applications in the fascinating realm of Egocentric Vision. Stay up-to-date with the latest advancements and become a part of this dynamic repository by contributing your insights!</p>
         <p>This is a work-in-progress repository, and we welcome your contributions to keep it up-to-date. Visit our <a href="https://github.com/EgocentricVision/EgocentricVision" target="_blank">GitHub repository</a> to get involved.</p>
         <p class="contact">Contact: &lt;nome.cognome&gt;@polito.it</p>
     </div>
-    
-    
+
+    <!-- Aggiungi questa sezione prima della lista -->
+<section>
+    <div class="owl-carousel">
+        <div><img src="image/TouchAndGo.png" alt="Immagine 1" class="carousel-image"></div>
+        <div><img src="image/ActionSense.png" alt="Immagine 2" class="carousel-image"></div>
+        <div><img src="image/UnweaveNet.png" alt="Immagine 3" class="carousel-image"></div>
+        <div><img src="image/EgoPrivacy.png" alt="Immagine 4" class="carousel-image"></div>
+        <!-- Aggiungi tutte le immagini che desideri -->
+    </div>
+</section>
+
+
+    <script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            nav: true,
+            dots: false,
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            slideBy: 1 // Imposta il numero di slide da scorrere
+        });
+    });
+</script>
+
     <div>
         <script>
             $(document).ready(function() {
@@ -140,7 +220,7 @@
 
 
 
-    
+
     <section>
     <div>
     <br id="main">
