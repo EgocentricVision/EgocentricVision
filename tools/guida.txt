@@ -1,0 +1,8 @@
+Salvare il google sheet (Egocentric_Vision_Survey) https://docs.google.com/spreadsheets/d/1LLqVWLdmDyUdh8lNB-FpsJ-Mow8BoZbWrrXq1J2DHrw/edit#gid=862477722
+dal foglio "RisposteEgocentric"
+nel file di nome egodata.csv
+
+se ci sono altre sezioni o subsection li devi aggiungere alla classe Egoindex del file read_cvs_generate_readme.py
+lo stesso file deve essere runnato per estrarre il file README.md ed incollarlo nella repo.
+
+
