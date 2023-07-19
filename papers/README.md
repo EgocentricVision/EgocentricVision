@@ -751,4 +751,6 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Spectacles](https://www.spectacles.com/it/shop/spectacles-3/)
 
+- [ProjectAria](https://about.meta.com/it/realitylabs/projectaria/)
+
 This is a work in progress... 
