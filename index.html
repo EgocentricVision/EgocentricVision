@@ -1,81 +1,122 @@
 <!doctype html>
 <html lang="en-US">
-<link rel="stylesheet" href="resources/styles.css">
-<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic'
-      rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./resources/w3.css">
-<link rel="stylesheet" href="./resources/styles.css">
-<link rel="stylesheet" href="./resources/style2.css">
-
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Egocentric Vision</title>
-    <meta name="HandheldFriendly" content="True"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,
-user-scalable=no">
-    <link rel="canonical" href="https://egocentricvision.github.io/EgocentricVision/index.html"/>
-    <meta name="referrer" content="no-referrer-when-downgrade"/>
-    <meta property="og:image:width" content="10">
-    <meta property="og:image:height" content="10">
-    <meta property="og:site_name" content="Egocentric Vision"/>
-    <meta property="og:title" content="Egocentric Vision"/>
-    <meta property="og:description" content="M. Planamente"/>
-    <meta property="og:url" content="https://egocentricvision.github.io/EgocentricVision/index.html"/>
-    <meta property="og:image" content="https://egocentricvision.github.io/EgocentricVision/resources/photo/preview.png"/>
-    <meta property="article:publisher" content=""/>
-    <meta name="twitter:card" content="https://egocentricvision.github.io/EgocentricVision/resources/photo/preview.png"/>
-    <meta name="twitter:title" content="Egocentric Vision"/>
-    <meta name="twitter:description" content="M. Planamente"/>
-    <meta name="twitter:url" content="https://egocentricvision.github.io/EgocentricVision/"/>
-    <meta name="twitter:image" content="https://egocentricvision.github.io/EgocentricVision/resources/Vandal_Logo.png"/>
-    <meta name="twitter:site" content="https://egocentricvision.github.io/EgocentricVision/"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="resources/style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+        
+        .header {
+            background-color: #1367a9;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            display: block;
+            max-width: 150px;
+            margin: 0 auto;
+        }
+        
+        .title {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+        
+        .person {
+            flex: 0 0 200px;
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .person img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .person p {
+            margin: 10px 0;
+        }
+        
+        .intro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro p {
+            margin-bottom: 10px;
+        }
+        
+        .intro a {
+            color: #1367a9;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .intro a:hover {
+            text-decoration: underline;
+        }
+        
+        .intro .contact {
+            color: #136700;
+            font-style: italic;
+        }
+    </style>
 </head>
-
-<head>
-    <script type="text/javascript"> function scroll(element){
-var ele = document.getElementById(element);
-window.scrollTo(ele.offsetLeft,ele.offsetTop,ele.behavior="smooth"); }
-</script> </head>
-
-<script src="./resources/d3.min.js"></script>
-<script src="./resources/d3-color.v1.min.js"></script>
-<script src="./resources/d3-interpolate.v1.min.js"></script>
-<script src="./resources/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-<script src="./resources/bootstrap.min.js"></script>
-<link rel="stylesheet" href="./resources/bootstrap.min.css">
-<script src="./resources/loghi.js"></script>
 <body>
-
-<div style="margin-top:-20.0%;position:relative">
-    <br><br><br>
-    <a href="http://vandal.polito.it/"><img  style="height:200px;text-align: center;margin-top:19.3%; position:relative" src="resources/photo/Vandal_Logo.png"></a>
-
-    <span style="color: #1367a9;text-align: center;font-size:250%;font-weight:bold;height:150px;margin-top:-0.5%; position:relative">
-        <i class="fa fa-eye" style="font-size:40px;"></i> Egocentric Vision <i class="fa fa-eye" style="font-size:40px;"></i></span><br/>
-
-    <div id="container" class="table-like" style="text-align: center;margin-top:0.0%;position:relative">
-        <div id="mp" style="weight:20%;height:10%;">
-            <img src="resources/photo/mp.jpg" alt="Avatar" style="height:150px;border-radius:70%;">
-            <p style="font-size:26px;margin-top:0.0%"><a href="https://scholar.google.com/citations?user=GIJ3h4AAAAAJ&hl=en"
-                                            target="_blank">Mirco Planamente</a></p>
-            <p style="font-size:99%;text-align: center;position:relative">Politecnico di Torino, IIT, Cini </p>
-        </div>
-</div>
-
-    <div id="intro" style="color: #1367a9; font-size:24px; margin-top:120.0%; max-width:70%; margin:0 auto; text-align: center;  position: center">
-        <p>
-            We present a paper list of Egocentric Vision and all related area resources. In addition to all the papers grouped by task, we list all the available datasets and related challenges, and all the available devices which allow putting this research area into amazing real-world applications.
-        </p>
-        <p>
-            This is a work in progress repository, thus feel free to help us in keeping it up-to-date! <i style="color: #1367a9"; class="fa fa-pencil" aria-hidden="true"></i>
-        </p>
-        <p <i class="fab fa-github"></i> style="color: #000000;font-style: bold" <a href="https://github.com/EgocentricVision/EgocentricVision"> github.com/EgocentricVision </a></p>
-        <p style="color: #136700;font-style: italic" >Contact: &lt;nome.cognome&gt;@polito.it</p>
+    <div class="header">
+        <a href="http://vandal.polito.it/"><img class="logo" src="resources/photo/Vandal_Logo.png" alt="Vandal Logo"></a>
+        <h1 class="title"><i class="fas fa-eye"></i> Egocentric Vision <i class="fas fa-eye"></i></h1>
+        <h2 class="subtitle">Mirco Planamente</h2>
     </div>
 
-    <hr>
+    <div class="container">
+        <div class="person">
+            <img src="resources/photo/mp.jpg" alt="Mirco Planamente">
+            <p><a href="https://scholar.google.com/citations?user=GIJ3h4AAAAAJ&hl=en" target="_blank">Mirco Planamente</a></p>
+            <p>Politecnico di Torino, IIT, Cini</p>
+        </div>
+    </div>
+
+    <div class="intro">
+        <p>We present a curated collection of research papers, datasets, challenges, and real-world applications in the field of Egocentric Vision. Explore the latest advancements and contribute to this evolving repository!</p>
+        <p>This is a work-in-progress repository, and we welcome your contributions to keep it up-to-date. Visit our <a href="https://github.com/EgocentricVision/EgocentricVision" target="_blank">GitHub repository</a> to get involved.</p>
+        <p class="contact">Contact: &lt;nome.cognome&gt;@polito.it</p>
+    </div>
+</body>
+</html>
+
 
 
 
