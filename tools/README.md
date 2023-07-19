@@ -700,6 +700,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Epic Kithchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
 
+- [MECCANO](https://iplab.dmi.unict.it/MECCANO/challenge.html)- Multimodal Action Recognition (RGB-Depth-Gaze).
+
 
 ## Devices
 
