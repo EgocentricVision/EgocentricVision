@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="resources/style.css">
+
      <!-- Aggiungi il CSS di Owl Carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -19,7 +19,7 @@
     <!-- Aggiungi il JavaScript di Owl Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <link rel="stylesheet" href="resources/style2.css">
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -115,49 +115,54 @@
             color: #ff5733; /* Cambia colore del link quando il mouse si avvicina */
             text-decoration: underline; /* Aggiungi sottolineato al link quando il mouse si avvicina */
         }
-
         /* Stile per il carosello di immagini */
-.owl-carousel {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto; /* Aggiungi uno spazio tra il blocco di testo e il carosello */
-    border: 1px solid #ddd; /* Aggiungi una cornice leggera */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungi ombreggiatura */
-}
+        .owl-carousel {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto; /* Aggiungi uno spazio tra il blocco di testo e il carosello */
+            border: 1px solid #ddd; /* Aggiungi una cornice leggera */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungi ombreggiatura */
+        }
 
-/* Stile per le immagini nel carosello */
-.owl-carousel .carousel-image {
-    max-width: 100%;
-    height: auto;
-}
+        /* Stile per le immagini nel carosello */
+        .owl-carousel .carousel-image {
+            max-width: 100%;
+            height: auto;
+        }
 
-/* Stile per le frecce di navigazione */
-.owl-nav {
-    text-align: center;
-    margin-top: 10px; /* Aggiungi spazio sopra le frecce */
-}
+        /* Stile per le frecce di navigazione */
+        .owl-nav {
+            text-align: center;
+            margin-top: 10px; /* Aggiungi spazio sopra le frecce */
+        }
 
-.owl-nav [class*=owl-] {
-    display: inline-block;
-    padding: 5px 10px;
-    font-size: 24px;
-    color: #fff;
-    background-color: #1367a9;
-    border-radius: 4px;
-    cursor: pointer;
-}
+        .owl-nav [class*=owl-] {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 24px;
+            color: #fff;
+            background-color: #1367a9;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-.owl-nav [class*=owl-prev] {
-    margin-right: 5px;
-}
+        .owl-nav [class*=owl-prev] {
+            margin-right: 5px;
+        }
 
-.owl-nav [class*=owl-next] {
-    margin-left: 5px;
-}
-<div class="owl-nav">
-    <div class="owl-prev"><i class="fas fa-chevron-left"></i></div>
-    <div class="owl-next"><i class="fas fa-chevron-right"></i></div>
-</div>
+        .owl-nav [class*=owl-next] {
+            margin-left: 5px;
+        }
+        <div class="owl-nav">
+            <div class="owl-prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="owl-next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        ul.menu {
+            list-style-type: none; /* Rimuovi i bullet predefiniti */
+            padding: 0;
+        }
+
 
     </style>
 </head>
@@ -165,9 +170,55 @@
     <div class="header">
         <a href="http://vandal.polito.it/"><img class="logo" src="resources/photo/Vandal_Logo.png" alt="Vandal Logo"></a>
         <h1 class="title"><i class="fas fa-eye"></i> Egocentric Vision <i class="fas fa-eye"></i></h1>
-        <h2 class="subtitle">Mirco Planamente</h2>
+        <h2 class="subtitle"></h2>
     </div>
 
+    <style>
+        .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+.person {
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.person-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.person-info h3 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.person-info p {
+    margin: 5px 0;
+}
+
+.person-info a {
+    color: #1367a9;
+    text-decoration: none;
+}
+
+.person-info a:hover {
+    text-decoration: underline;
+}
+
+    </style>
     <div class="container">
         <div class="person">
             <img src="resources/photo/mp.jpg" alt="Mirco Planamente">
@@ -175,6 +226,7 @@
             <p>Politecnico di Torino, IIT, Cini</p>
         </div>
     </div>
+
 
     <div class="intro">
         <p>Discover a carefully curated selection of research papers, datasets, challenges, and real-world applications in the fascinating realm of Egocentric Vision. Stay up-to-date with the latest advancements and become a part of this dynamic repository by contributing your insights!</p>
@@ -185,7 +237,8 @@
     <!-- Aggiungi questa sezione prima della lista -->
 <section>
     <div class="owl-carousel">
-        <div><img src="image/ProjectAria.png" alt="Immagine 2223" class="carousel-image"></div>
+        <div><img src="image/egovideo_to_robot.png" alt="Immagine 2023" class="carousel-image"></div>
+        <div><img src="image/ProjectAria.png" alt="Immagine 2023" class="carousel-image"></div>
         <div><img src="image/TouchAndGo.png" alt="Immagine nips22" class="carousel-image"></div>
         <div><img src="image/ActionSense.png" alt="Immagine nips22" class="carousel-image"></div>
         <div><img src="image/ego4d.png" alt="Immagine cvpr22" class="carousel-image"></div>
