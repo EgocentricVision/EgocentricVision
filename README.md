@@ -1,4 +1,4 @@
-# [Egocentric Vision]
+# [Egocentric Vision](https://egocentricvision.github.io/EgocentricVision/)
 better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Surveys](#surveys) 
