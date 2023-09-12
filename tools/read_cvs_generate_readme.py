@@ -202,7 +202,7 @@ class Egoindex:
         self.devices = list(df_tmp["Git Command"])
 
     def set_init_readme(self):
-        self.init_readme += "# Egocentric Vision" + \
+        self.init_readme += "# [Egocentric Vision](https://egocentricvision.github.io/EgocentricVision/)" + \
                             "\n" + \
                             "better view here -> https://egocentricvision.github.io/EgocentricVision/" + "\n" + \
                             "\n" + "- [Surveys](#surveys)" + \
