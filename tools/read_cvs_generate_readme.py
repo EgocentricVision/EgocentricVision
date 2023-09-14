@@ -133,6 +133,7 @@ class Egoindex:
     papers["Action / Activity Recognition"]["Domain Generalization"] = []
     papers["Action / Activity Recognition"]["Source Free Domain Adaptation"] = []
     papers["Action / Activity Recognition"]["Test Time Training (Adaptation)"] = []
+    papers["Action / Activity Recognition"]["Zero-Shot Learning"] = []
 
     papers["Action Anticipation"]["Short-Term Action Anticipation"] = []
     papers["Action Anticipation"]["Long-Term Action Anticipation"] = []

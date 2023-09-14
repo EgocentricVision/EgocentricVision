@@ -1,4 +1,4 @@
-# Egocentric Vision
+# [Egocentric Vision](https://egocentricvision.github.io/EgocentricVision/)
 better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Surveys](#surveys) 
@@ -35,6 +35,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Action / Activity Recognition
 #### Action Recognition
+- [Learning from Semantic Alignment between Unpaired Multiviews for Egocentric Video Recognition](https://arxiv.org/abs/2308.11489) - Qitong Wang, Long Zhao, Liangzhe Yuan, Ting Liu, Xi Peng, ICCV 2023. [[code]](https://github.com/wqtwjt1996/SUM-L)
+
 - [Use Your Head: Improving Long-Tail Video Recognition](https://arxiv.org/abs/2304.01143) - Toby Perrett, Saptarshi Sinha, Tilo Burghardt, Majid Mirmehdi, Dima Damen, CVPR 2023. [[project page]](https://tobyperrett.github.io/lmr/)
 
 - [How Can Objects Help Action Recognition?](https://openaccess.thecvf.com/content/CVPR2023/html/Zhou_How_Can_Objects_Help_Action_Recognition_CVPR_2023_paper.html) - Xingyi Zhou, Anurag Arnab, Chen Sun, Cordelia Schmid, CVPR 2023. [[code]](https://github.com/google-research/scenic)
@@ -107,6 +109,14 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Fine-grained Affordance Annotation for Egocentric Hand-Object Interaction Videos](https://openaccess.thecvf.com/content/WACV2023/papers/Yu_Fine-Grained_Affordance_Annotation_for_Egocentric_Hand-Object_Interaction_Videos_WACV_2023_paper.pdf) - Zecheng Yu, Yifei Huang, Ryosuke Furuta, Takuma Yagi, Yusuke Goutsu, Yoichi Sato, WACV 2023. [[project page]](https://github.com/zch-yu/epic-affordance-annotation)
 
 - [InterTracker: Discovering and Tracking General Objects Interacting with Hands in the Wild](https://arxiv.org/abs/2308.03061) - Yanyan Shao, Qi Ye, Wenhan Luo, Kaihao Zhang, Jiming Chen, IROS 2023.
+
+- [Improved Deep Learning-Based Efficientpose Algorithm for Egocentric Marker-Less Tool and Hand Pose Estimation in Manual Assembly](https://link.springer.com/chapter/10.1007/978-981-99-4761-4_25) - Zihan Niu, Yi Xia, Jun Zhang, Bing Wang, Peng Chen, ICIC 2023.
+
+- [Helping Hands: An Object-Aware Ego-Centric Video Recognition Model](https://arxiv.org/abs/2308.07918) - Chuhan Zhang, Ankush Gupta, Andrew Zisserman, ICCV 2023.
+
+- [Spectral Graphormer: Spectral Graph-based Transformer for Egocentric Two-Hand Reconstruction using Multi-View Color Images](https://arxiv.org/abs/2308.11015) - Tze Ho Elden Tse, Franziska Mueller, Zhengyang Shen, Danhang Tang, Thabo Beeler, Mingsong Dou, Yinda Zhang, Sasa Petrovic, Hyung Jin Chang, Jonathan Taylor, Bardia Doosti, ICCV 2023.
+
+- [EgoPCA: A New Framework for Egocentric Hand-Object Interaction Understanding](https://arxiv.org/abs/2309.02423) - Yue Xu, Yong-Lu Li, Zhemin Huang, Michael Xu Liu, Cewu Lu, Yu-Wing Tai, Chi-Keung Tang, ICCV 2023. [[project page]](https://mvig-rhos.com/ego_pca)
 
 - [Egocentric Human-Object Interaction Detection Exploiting Synthetic Data](https://arxiv.org/abs/2204.07061) - Rosario Leonardi, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2022.
 
@@ -196,8 +206,15 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Test Time Training (Adaptation)
 - [Test-time adaptation for egocentric action recognition](https://link.springer.com/chapter/10.1007/978-3-031-06433-3_18) - Mirco Plananamente, Chiara Plizzari, Barbara Caputo, ICIAP 2022. [[code]](https://github.com/EgocentricVision/RNA-TTA)
 
+#### Zero-Shot Learning
+- [Opening the Vocabulary of Egocentric Actions](https://arxiv.org/abs/2308.11488) - Dibyadip Chatterjee, Fadime Sener, Shugao Ma, Angela Yao,  2023. [[project page]](https://dibschat.github.io/openvocab-egoAR/)
+
 ### Action Anticipation
 #### Short-Term Action Anticipation
+- [Leveraging Next-Active Objects for Context-Aware Anticipation in Egocentric Videos](https://arxiv.org/pdf/2308.08303.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, WACV 2024.
+
+- [Dynamic Context Removal: A General Training Strategy for Robust Models on Video Action Predictive Tasks](https://link.springer.com/article/10.1007/s11263-023-01850-6) - Xinyu Xu, Yong-Lu Li, Cewu Lu, IJCV 2023.
+
 - [The Wisdom of Crowds: Temporal Progressive Attention for Early Action Prediction](https://openaccess.thecvf.com/content/CVPR2023/papers/Stergiou_The_Wisdom_of_Crowds_Temporal_Progressive_Attention_for_Early_Action_CVPR_2023_paper.pdf) - Alexandros Stergiou, Dima Damen, CVPR 2023. [[project page]](https://alexandrosstergiou.github.io/project_pages/TemPr/index.html)
 
 - [Streaming egocentric action anticipation: An evaluation scheme and approach](https://arxiv.org/pdf/2306.16682.pdf) - Antonino Furnari, Giovanni Maria Farinella, CVIU 2023.
@@ -351,6 +368,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Scene Semantic Reconstruction from Egocentric RGB-D-Thermal Videos](https://ieeexplore.ieee.org/abstract/document/8374614) - Rachel Luo, Ozan Sener, Silvio Savarese, 3DV 2017.
 
 #### Event
+- [EventTransAct: A video transformer-based framework for Event-camera based action recognition](https://arxiv.org/abs/2308.13711) - Tristan de Blegiers, Ishan Rajendrakumar Dave, Adeel Yousaf, Mubarak Shah, IROS 2023. [[project page]](https://tristandb8.github.io/EventTransAct_webpage/)
+
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo,  2021.
 
 #### IMU
@@ -358,6 +377,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Temporal Segmentation (Action Detection)
 - [Quasi-Online Detection of Take and Release Actions from Egocentric Videos](https://link.springer.com/chapter/10.1007/978-3-031-43153-1_2) - Rosario Scavo, Francesco Ragusa, Giovanni Maria Farinella, Antonino Furnari, ICIAP 2023. [[code]](https://github.com/fpv-iplab/Quasi-Online-Detection-Take-Release)
+
+- [Memory-and-Anticipation Transformer for Online Action Understanding](https://arxiv.org/abs/2308.07893) - Jiahao Wang, Guo Chen, Yifei Huang, Limin Wang, Tong Lu, ICCV 2023. [[code]](https://github.com/Echo0125/Memory-and-Anticipation-Transformer)
 
 - [My View is the Best View: Procedure Learning from Egocentric Videos](https://arxiv.org/abs/2207.10883) - Siddhant Bansal, Chetan Arora, C.V. Jawahar, ECCV 2022.
 
@@ -386,6 +407,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Generative Adversarial Network for Future Hand Segmentation from Egocentric Video](https://arxiv.org/abs/2203.11305) - Wenqi Jia, Miao Liu, James M. Rehg, ECCV 2022. [[project page]](https://vjwq.github.io/EgoGAN/)
 
 ### Video-Language
+- [HERO: A Multi-modal Approach on Mobile Devices for Visual-Aware Conversational Assistance in Industrial Domains](https://link.springer.com/chapter/10.1007/978-3-031-43148-7_36) - Claudia Bonanno, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2023.
+
 - [EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone](https://arxiv.org/abs/2307.05463) - Shraman Pramanick, Yale Song, Sayan Nag, Kevin Qinghong Lin, Hardik Shah, Mike Zheng Shou, Rama Chellappa, Pengchuan Zhang, ICCV 2023. [[project page]](https://shramanpramanick.github.io/EgoVLPv2/)
 
 - [NaQ: Leveraging Narrations As Queries To Supervise Episodic Memory](https://openaccess.thecvf.com/content/CVPR2023/papers/Ramakrishnan_NaQ_Leveraging_Narrations_As_Queries_To_Supervise_Episodic_Memory_CVPR_2023_paper.pdf) - Santhosh Kumar Ramakrishnan, Ziad Al-Halah, Kristen Grauman, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/naq/)
@@ -450,6 +473,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Object Goal Navigation with Recursive Implicit Maps](https://arxiv.org/pdf/2308.05602.pdf) - hizhe Chen, Thomas Chabal, Ivan Laptev, Cordelia Schmid, IROS 2023. [[project page]](https://www.di.ens.fr/willow/research/onav_rim/)
 
+- [An Optimized Pipeline for Image-Based Localization in Museums from Egocentric Images](https://link.springer.com/chapter/10.1007/978-3-031-43148-7_43) - Nicola Messina, Fabrizio Falchi, Antonino Furnari, Claudio Gennaro, Giovanni Maria Farinella, ICIAP 2023.
+
 - [Chat2Map: Efficient Scene Mapping from Multi-Ego Conversations](https://openaccess.thecvf.com/content/CVPR2023/papers/Majumder_Chat2Map_Efficient_Scene_Mapping_From_Multi-Ego_Conversations_CVPR_2023_paper.pdf) - Sagnik Majumder, Hao Jiang, Pierre Moulon, Ethan Henderson, Paul Calamia, Kristen Grauman, Vamsi Krishna Ithapu, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/chat2map/)
 
 - [Egocentric Indoor Localization From Room Layouts and Image Outer Corners](https://openaccess.thecvf.com/content/ICCV2021W/EPIC/html/Chen_Egocentric_Indoor_Localization_From_Room_Layouts_and_Image_Outer_Corners_ICCVW_2021_paper.html) - Xiaowei Chen, Guoliang Fan, WICCV 2021.
@@ -491,6 +516,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Egocentric Video Task Translation](https://openaccess.thecvf.com/content/CVPR2023/papers/Xue_Egocentric_Video_Task_Translation_CVPR_2023_paper.pdf) - Zihui Xue, Yale Song, Kristen Grauman, Lorenzo Torresani, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/egot2/)
 
 ### Activity-context
+- [Multi-label affordance mapping from egocentric vision](https://arxiv.org/abs/2309.02120) - Lorenzo Mur-Labadia, Jose J. Guerrero, Ruben Martinez-Cantin, ICCV 2023.
+
 - [Shaping embodied agent behavior with activity-context priors from egocentric video](https://proceedings.neurips.cc/paper/2021/file/f8b7aa3a0d349d9562b424160ad18612-Paper.pdf) - Tushar Nagarajan, Kristen Grauman, NIPS 2021.
 
 - [Learning Visual Affordance Grounding from Demonstration Videos](https://arxiv.org/abs/2108.05675) - Hongchen Luo, Wei Zhai, Jing Zhang, Yang Cao, Dacheng Tao,  2021.
