@@ -217,6 +217,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Short-Term Action Anticipation
 - [Leveraging Next-Active Objects for Context-Aware Anticipation in Egocentric Videos](https://arxiv.org/pdf/2308.08303.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, WACV 2024.
 
+- [Enhancing Next Active Object-based Egocentric Action Anticipation with Guided Attention](https://arxiv.org/pdf/2305.12953.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, ICIP 2023.
+
+- [Guided Attention for Next Active Object@ EGO4D STA Challenge](https://arxiv.org/pdf/2305.16066.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, CVPRW 2023.
+
 - [Dynamic Context Removal: A General Training Strategy for Robust Models on Video Action Predictive Tasks](https://link.springer.com/article/10.1007/s11263-023-01850-6) - Xinyu Xu, Yong-Lu Li, Cewu Lu, IJCV 2023.
 
 - [Enhancing Next Active Object-based Egocentric Action Anticipation with Guided Attention](https://arxiv.org/abs/2305.12953) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, ICIP 2023. [[project page]](https://sanketsans.github.io/guided-attention-egocentric.html)
