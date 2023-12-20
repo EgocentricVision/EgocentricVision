@@ -48,7 +48,8 @@ def add_git_command(df: pd.DataFrame):
 
         elif section == "Datasets":
             git_command += "- [" + title + "]"
-            git_command += "(" + link_page + ")"
+            if not isinstance(link_page, float):
+                git_command += "(" + link_page + ")"
             short_description = short_description if short_description[-1] != "." else short_description[:-1]
             git_command += " - " + short_description + ". "
 
