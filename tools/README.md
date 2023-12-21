@@ -122,6 +122,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [EgoPCA: A New Framework for Egocentric Hand-Object Interaction Understanding](https://arxiv.org/abs/2309.02423) - Yue Xu, Yong-Lu Li, Zhemin Huang, Michael Xu Liu, Cewu Lu, Yu-Wing Tai, Chi-Keung Tang, ICCV 2023. [[project page]](https://mvig-rhos.com/ego_pca)
 
+- [HiFiHR: Enhancing 3D Hand Reconstruction from a Single Image via High-Fidelity Texture](https://arxiv.org/abs/2308.13628) - Jiayin Zhu, Zhuoran Zhao, Linlin Yang, Angela Yao, DAGM 2023. [[code]](https://github.com/viridityzhu/HiFiHR)
+
+- [CaSAR: Contact-aware Skeletal Action Recognition](https://arxiv.org/abs/2309.10001) - Junan Lin, Zhichao Sun, Enjie Cao, Taein Kwon, Mahdi Rad, Marc Pollefeys,  2023.
+
 - [Egocentric Human-Object Interaction Detection Exploiting Synthetic Data](https://arxiv.org/abs/2204.07061) - Rosario Leonardi, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2022.
 
 - [SOS! Self-supervised Learning Over Sets Of Handled Objects In Egocentric Action Recognition](https://arxiv.org/abs/2204.04796) - Victor Escorcia, Ricardo Guerrero, Xiatian Zhu, Brais Martinez, ECCV 2022.
@@ -429,9 +433,13 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone](https://arxiv.org/abs/2307.05463) - Shraman Pramanick, Yale Song, Sayan Nag, Kevin Qinghong Lin, Hardik Shah, Mike Zheng Shou, Rama Chellappa, Pengchuan Zhang, ICCV 2023. [[project page]](https://shramanpramanick.github.io/EgoVLPv2/)
 
+- [Localizing Active Objects from Egocentric Vision with Symbolic World Knowledge](https://arxiv.org/abs/2310.15066) - Te-Lin Wu, Yu Zhou, Nanyun Peng, EMNLP 2023.
+
 - [NaQ: Leveraging Narrations As Queries To Supervise Episodic Memory](https://openaccess.thecvf.com/content/CVPR2023/papers/Ramakrishnan_NaQ_Leveraging_Narrations_As_Queries_To_Supervise_Episodic_Memory_CVPR_2023_paper.pdf) - Santhosh Kumar Ramakrishnan, Ziad Al-Halah, Kristen Grauman, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/naq/)
 
 - [HierVL: Learning Hierarchical Video-Language Embeddings](https://openaccess.thecvf.com/content/CVPR2023/papers/Ashutosh_HierVL_Learning_Hierarchical_Video-Language_Embeddings_CVPR_2023_paper.pdf) - Kumar Ashutosh, Rohit Girdhar, Lorenzo Torresani, Kristen Grauman, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/hiervl/)
+
+- [Learning Video Representations from Large Language Models](https://arxiv.org/abs/2212.04501) - Yue Zhao, Ishan Misra, Philipp Krähenbühl, Rohit Girdhar, CVPR 2023. [[code]](https://github.com/facebookresearch/LaViLa) [[project page]](https://facebookresearch.github.io/LaViLa/)
 
 - [EgoTaskQA: Understanding Human Tasks in Egocentric Videos](https://proceedings.neurips.cc/paper_files/paper/2022/hash/161c94a58ca25bafcaf47893e8233deb-Abstract-Datasets_and_Benchmarks.html) - Baoxiong Jia, Ting Lei, Song-Chun Zhu, Siyuan Huang, NeurIPS 2022. [[project page]](https://sites.google.com/view/egotaskqa)
 
@@ -443,6 +451,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Unifying Few- and Zero-Shot Egocentric Action Recognition](https://arxiv.org/abs/2006.11393) - Tyler R. Scott, Michael Shvartsman, Karl Ridgeway, CVPRW 2021.
 
 ### Gaze
+- [In the Eye of Transformer: Global–Local Correlation for Egocentric Gaze Estimation and Beyond](https://link.springer.com/article/10.1007/s11263-023-01879-7) - Bolin Lai, Miao Liu, Fiona Ryan, James M. Rehg, IJCV 2023. [[project page]](https://bolinlai.github.io/GLC-EgoGazeEst/)
+
 - [1000 Pupil Segmentations in a Second Using Haar Like Features and Statistical Learning](https://openaccess.thecvf.com/content/ICCV2021W/EPIC/html/Fuhl_1000_Pupil_Segmentations_in_a_Second_Using_Haar_Like_Features_ICCVW_2021_paper.html) - Wolfgang Fuhl, Johannes Schneider, Enkelejda Kasneci, WICCV 2021.
 
 ### From Third-Person to First-Person
@@ -549,6 +559,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [EGO-TOPO: Environment Affordances from Egocentric Video](https://openaccess.thecvf.com/content_CVPR_2020/html/Nagarajan_Ego-Topo_Environment_Affordances_From_Egocentric_Video_CVPR_2020_paper.html) - Tushar Nagarajan, Yanghao Li, Christoph Feichtenhofer, Kristen Grauman, CVPR 2020.
 
 ### Video summarization
+- [Behavioural pattern discovery from collections of egocentric photo-streams](https://arxiv.org/pdf/2008.09561.pdf) - Martin Menchon, Estefania Talavera, Jose M Massa, Petia Radeva, Pervasive and Mobile Computing 2023.
+
 - [Multi-stream dynamic video Summarization](https://openaccess.thecvf.com/content/WACV2022/html/Elfeki_Multi-Stream_Dynamic_Video_Summarization_WACV_2022_paper.html) - Mohamed Elfeki, Liqiang Wang, Ali Borji, WACV 2022.
 
 - [Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language](https://arxiv.org/abs/2204.00598) - Andy Zeng, Adrian Wong, Stefan Welker, Krzysztof Choromanski, Federico Tombari, Aveek Purohit, Michael Ryoo, Vikas Sindhwani, Johnny Lee, Vincent Vanhoucke, Pete Florence,  2022.
@@ -599,6 +611,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Bringing Online Egocentric Action Recognition into the wild](https://arxiv.org/abs/2211.03004) - Gabriele Goletto, Mirco Planamente, Barbara Caputo, Giuseppe Averta, RA-L 2023. [[code]](https://github.com/EgocentricVision/EgoWild)
 
 - [EgoAdapt: A multi-stream evaluation study of adaptation to real-world egocentric user video](https://arxiv.org/abs/2307.05784) - Matthias De Lange, Hamid Eghbalzadeh, Reuben Tan, Michael Iuzzolino, Franziska Meier, Karl Ridgeway,  2023.
+
+- [Training a Large Video Model on a Single Machine in a Day](https://arxiv.org/abs/2309.16669) - Yue Zhao, Philipp Krähenbühl,  2023. [[code]](https://github.com/zhaoyue-zephyrus/AVION)
 
 - [Wearable System for Personalized and Privacy-preserving Egocentric Visual Context Detection using On-device Deep Learning](https://dl.acm.org/doi/abs/10.1145/3450614.3461684) - Mina Khan, Glenn Fernandes, Akash Vaish, Mayank Manuja, Pattie Maes, UMAP 2021.
 
@@ -660,11 +674,19 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Other EGO-Context
 - [Self-Supervised Object Detection from Egocentric Videos](https://openaccess.thecvf.com/content/ICCV2023/html/Akiva_Self-Supervised_Object_Detection_from_Egocentric_Videos_ICCV_2023_paper.html) - Peri Akiva, Jing Huang, Kevin J Liang, Rama Kovvuri, Xingyu Chen, Matt Feiszli, Kristin Dana, Tal Hassner, ICCV 2023.
 
+- [COPILOT: Human-Environment Collision Prediction and Localization from Egocentric Videos](https://openaccess.thecvf.com/content/ICCV2023/papers/Pan_COPILOT_Human-Environment_Collision_Prediction_and_Localization_from_Egocentric_Videos_ICCV_2023_paper.pdf) - Boxiao Pan, Bokui Shen, Davis Rempe, Despoina Paschalidou, Kaichun Mo, Yanchao Yang, Leonidas J. Guibas, ICCV 2023. [[project page]](https://sites.google.com/stanford.edu/copilot)
+
 - [Revisiting 3D Object Detection From an Egocentric Perspective](https://proceedings.neurips.cc/paper/2021/hash/db182d2552835bec774847e06406bfa2-Abstract.html) - Boyang Deng, Charles R. Qi, Mahyar Najibi, Thomas Funkhouser, Yin Zhou, Dragomir Anguelov, NIPS 2021.
 
 - [Learning by Watching](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_Learning_by_Watching_CVPR_2021_paper.pdf) - Jimuyang Zhang, Eshed Ohn-Bar, CVPR 2021.
 
 ### Datasets
+- [IndustReal] - The IndustReal dataset contains 84 videos, demonstrating how 27 participants perform maintenance and assembly procedures on a construction-toy assembly set. WACV 2024. [[paper]](https://arxiv.org/abs/2310.17323)
+
+- [ENIGMA-51](https://iplab.dmi.unict.it/ENIGMA-51/#paper) - ENIGMA-51 is a new egocentric dataset acquired in an industrial scenario by 19 subjects who followed instructions to complete the repair of electrical boards using industrial tools (e.g., electric screwdriver) and equipments (e.g., oscilloscope). The 51 egocentric video sequences are densely annotated with a rich set of labels that enable the systematic study of human behavior in the industrial domain. WACV 2023. [[paper]](https://arxiv.org/abs/2309.14809)
+
+- [VidChapters-7M](https://antoyang.github.io/vidchapters.html) - VidChapters-7M, a dataset of 817K user-chaptered videos including 7M chapters in total. VidChapters-7M is automatically created from videos online in a scalable manner by scraping user-annotated chapters and hence without any additional manual annotation. NeurIPS 2023. [[paper]](https://arxiv.org/abs/2309.13952)
+
 - [POV-Surgery](https://batfacewayne.github.io/POV_Surgery_io/) - POV-Surgery, a large-scale, synthetic, egocentric dataset focusing on pose estimation for hands with different surgical gloves and three orthopedic surgical instruments, namely scalpel, friem, and diskplacer. Our dataset consists of 53 sequences and 88,329 frames, featuring high-resolution RGB-D video streams with activity annotations, accurate 3D and 2D annotations for hand-object pose, and 2D hand-object segmentation masks. MICCAI 2023. [[paper]](https://arxiv.org/abs/2307.10387)
 
 - [ARGO1M](https://chiaraplizz.github.io/what-can-a-cook/) - Action Recognition Generalisation dataset (ARGO1M) from videos and narrations from Ego4D. ARGO1M is the first to test action generalisation across both scenario and location shifts, and is the largest domain generalisation dataset across images and video. ICCV 2023. [[paper]](https://arxiv.org/abs/2306.08713)
@@ -684,6 +706,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [WEAR](https://mariusbock.github.io/wear/) - The dataset comprises data from 18 participants performing a total of 18 different workout activities with untrimmed inertial (acceleration) and camera (egocentric video) data recorded at 10 different outside locations.  2023. [[paper]](https://arxiv.org/abs/2304.05088)
 
 - [EPIC Fields](https://epic-kitchens.github.io/epic-fields/) - EPIC Fields, an augmentation of EPIC-KITCHENS with 3D camera information. Like other datasets for neural rendering, EPIC Fields removes the complex and expensive step of reconstructing cameras using photogrammetry, and allows researchers to focus on modelling problems.  2023. [[paper]](https://arxiv.org/abs/2306.08731)
+
+- [EGOFALLS] - The dataset comprises 10,948 video samples from 14 subjects, focusing on falls among the elderly. Extracting multimodal descriptors from egocentric camera videos.  2023. [[paper]](https://arxiv.org/abs/2309.04579)
 
 - [Touch and Go](https://touch-and-go.github.io/) - we present a dataset, called Touch and Go, in which human data collectors walk through a variety of environments, probing objects with tactile sensors and simultaneously recording their actions on video. NeurIPS 2022. [[paper]](https://arxiv.org/pdf/2211.12498.pdf)
 
