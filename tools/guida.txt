@@ -13,7 +13,7 @@ nel readme del main branch
 se ci sono altre sezioni o subsection li devi aggiungere alla classe Egoindex del file read_cvs_generate_readme.py
 lo stesso file deve essere runnato per estrarre il file README.md ed incollarlo nella repo.
 
-last update 20/12/23 (arrivato a vedere i paper di scholar ad 2 Nov)
+last update 20/12/23 (arrivato a vedere i paper di scholar ad 5 Dic)
 
 todo:
 - nel caso di fanno un pull request devi comunque seguire la procedura (altrimenti non vengono inseriti all'interno del sheet
