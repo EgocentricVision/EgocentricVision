@@ -112,6 +112,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Detecting activities of daily living in first-person camera views](https://www.cs.cmu.edu/~deva/papers/ADL_2012.pdf) - Pirsiavash, H., & Ramanan, D., CVPR 2012.
 
 #### Hand-Object Interactions
+- [Egocentric Action Recognition by Capturing Hand-Object Contact and Object State](https://openaccess.thecvf.com/content/WACV2024/papers/Shiota_Egocentric_Action_Recognition_by_Capturing_Hand-Object_Contact_and_Object_State_WACV_2024_paper.pdf) - Tsukasa Shiota, Motohiro Takagi, Kaori Kumagai, Hitoshi Seshimo, Yushi Aono, WACV 2024.
+
 - [Fine-grained Affordance Annotation for Egocentric Hand-Object Interaction Videos](https://openaccess.thecvf.com/content/WACV2023/papers/Yu_Fine-Grained_Affordance_Annotation_for_Egocentric_Hand-Object_Interaction_Videos_WACV_2023_paper.pdf) - Zecheng Yu, Yifei Huang, Ryosuke Furuta, Takuma Yagi, Yusuke Goutsu, Yoichi Sato, WACV 2023. [[project page]](https://github.com/zch-yu/epic-affordance-annotation)
 
 - [InterTracker: Discovering and Tracking General Objects Interacting with Hands in the Wild](https://arxiv.org/abs/2308.03061) - Yanyan Shao, Qi Ye, Wenhan Luo, Kaihao Zhang, Jiming Chen, IROS 2023.
@@ -349,6 +351,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Going deeper into first-person activity recognition](http://www.cs.cmu.edu/~kkitani/pdf/MFK-CVPR2016.pdf) - Ma, M., Fan, H., & Kitani, K. M., CVPR 2016.
 
 #### Region prediction
+- [Interaction Region Visual Transformer for Egocentric Action Anticipation](https://openaccess.thecvf.com/content/WACV2024/papers/Roy_Interaction_Region_Visual_Transformer_for_Egocentric_Action_Anticipation_WACV_2024_paper.pdf) - Debaditya Roy, Ramanathan Rajendiran, Basura Fernando, WACV 2024. [[code]](https://github.com/LAHAproject/InAViT)
+
 - [Joint Hand Motion and Interaction Hotspots Prediction From Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2022/papers/Liu_Joint_Hand_Motion_and_Interaction_Hotspots_Prediction_From_Egocentric_Videos_CVPR_2022_paper.pdf) - Shaowei Liu, Subarna Tripathi, Somdeb Majumdar, Xiaolong Wang, CVPR 2022. [[code]](https://github.com/stevenlsw/hoi-forecast) [[project page]](https://stevenlsw.github.io/hoi-forecast/)
 
 - [EGO-TOPO: Environment Affordances from Egocentric Video](https://openaccess.thecvf.com/content_CVPR_2020/papers/Nagarajan_Ego-Topo_Environment_Affordances_From_Egocentric_Video_CVPR_2020_paper.pdf) - Nagarajan, Tushar and Li, Yanghao and Feichtenhofer, Christoph and Grauman, Kristen, CVPR 2020.
@@ -597,6 +601,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [EGO-TOPO: Environment Affordances from Egocentric Video](https://openaccess.thecvf.com/content_CVPR_2020/html/Nagarajan_Ego-Topo_Environment_Affordances_From_Egocentric_Video_CVPR_2020_paper.html) - Tushar Nagarajan, Yanghao Li, Christoph Feichtenhofer, Kristen Grauman, CVPR 2020.
 
 ### Video summarization
+- [SEMA: Semantic Attention for Capturing Long-Range Dependencies in Egocentric Lifelogs](https://openaccess.thecvf.com/content/WACV2024/papers/Nagar_SEMA_Semantic_Attention_for_Capturing_Long-Range_Dependencies_in_Egocentric_Lifelogs_WACV_2024_paper.pdf) - Pravin Nagar, K.N Ajay Shastry, Jayesh Chaudhari, Chetan Arora, WACV 2024. [[code]](https://github.com/Pravin74/Semantic_attention/)
+
 - [Behavioural pattern discovery from collections of egocentric photo-streams](https://arxiv.org/pdf/2008.09561.pdf) - Martin Menchon, Estefania Talavera, Jose M Massa, Petia Radeva, Pervasive and Mobile Computing 2023.
 
 - [Multi-stream dynamic video Summarization](https://openaccess.thecvf.com/content/WACV2022/html/Elfeki_Multi-Stream_Dynamic_Video_Summarization_WACV_2022_paper.html) - Mohamed Elfeki, Liqiang Wang, Ali Borji, WACV 2022.
