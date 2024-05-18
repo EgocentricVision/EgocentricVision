@@ -118,9 +118,13 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Hand-Object Interactions
 - [Egocentric Action Recognition by Capturing Hand-Object Contact and Object State](https://openaccess.thecvf.com/content/WACV2024/papers/Shiota_Egocentric_Action_Recognition_by_Capturing_Hand-Object_Contact_and_Object_State_WACV_2024_paper.pdf) - Tsukasa Shiota, Motohiro Takagi, Kaori Kumagai, Hitoshi Seshimo, Yushi Aono, WACV 2024.
 
+- [Sparse multi-view hand-object reconstruction for unseen environments](https://arxiv.org/abs/2405.01353) - Yik Lung Pang, Changjae Oh, Andrea Cavallaro, CVPRW 2024.
+
 - [Single-to-Dual-View Adaptation for Egocentric 3D Hand Pose Estimation](https://arxiv.org/abs/2403.04381) - Ruicong Liu, Takehiko Ohkawa, Mingfang Zhang, Yoichi Sato, CVPR 2024. [[code]](https://github.com/ut-vision/S2DHand)
 
 - [Benchmarks and Challenges in Pose Estimation for Egocentric Hand Interactions with Objects](https://arxiv.org/abs/2403.16428) - Zicong Fan, Takehiko Ohkawa, Linlin Yang, Nie Lin, Zhishan Zhou, Shihao Zhou, Jiajun Liang, Zhong Gao, Xuanyang Zhang, Xue Zhang, Fei Li, Liu Zheng, Feng Lu, Karim Abou Zeid, Bastian Leibe, Jeongwan On, Seungryul Baek, Aditya Prakash, Saurabh Gupta, Kun He, Yoichi Sato, Otmar Hilliges, Hyung Jin Chang, Angela Yao,  2024.
+
+- [Text-driven Affordance Learning from Egocentric Vision](https://arxiv.org/abs/2404.02523) - Tomoya Yoshida, Shuhei Kurita, Taichi Nishimura, Shinsuke Mori,  2024.
 
 - [Fine-grained Affordance Annotation for Egocentric Hand-Object Interaction Videos](https://openaccess.thecvf.com/content/WACV2023/papers/Yu_Fine-Grained_Affordance_Annotation_for_Egocentric_Hand-Object_Interaction_Videos_WACV_2023_paper.pdf) - Zecheng Yu, Yifei Huang, Ryosuke Furuta, Takuma Yagi, Yusuke Goutsu, Yoichi Sato, WACV 2023. [[project page]](https://github.com/zch-yu/epic-affordance-annotation)
 
@@ -244,6 +248,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 #### Source Free Domain Adaptation
 #### Test Time Training (Adaptation)
+- [Combating Missing Modalities in Egocentric Videos at Test Time](https://arxiv.org/abs/2404.15161) - Merey Ramazanova, Alejandro Pardo, Bernard Ghanem, Motasem Alfarra,  2024.
+
 - [Test-time adaptation for egocentric action recognition](https://link.springer.com/chapter/10.1007/978-3-031-06433-3_18) - Mirco Plananamente, Chiara Plizzari, Barbara Caputo, ICIAP 2022. [[code]](https://github.com/EgocentricVision/RNA-TTA)
 
 #### Zero-Shot Learning
@@ -356,6 +362,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning to predict gaze in egocentric video](http://ai.stanford.edu/~alireza/publication/Li-Fathi-Rehg-ICCV13.pdf) - Li, Yin, Alireza Fathi, and James M. Rehg, ICCV 2013.
 
 #### Trajectory prediction
+- [Diff-IP2D: Diffusion-Based Hand-Object Interaction Prediction on Egocentric Videos](https://arxiv.org/abs/2405.04370) - Junyi Ma, Jingyi Xu, Xieyuanli Chen, Hesheng Wang,  2024.
+
+- [EMAG: Ego-motion Aware and Generalizable 2D Hand Forecasting from Egocentric Videos](https://masashi-hatano.github.io/assets/pdf/emag.pdf) - Masashi Hatano, Ryo Hachiuma, Hideo Saito,  2024.
+
 - [Uncertainty-aware State Space Transformer for Egocentric 3D Hand Trajectory Forecasting](https://arxiv.org/abs/2307.08243) - Wentao Bao, Lele Chen, Libing Zeng, Zhong Li, Yi Xu, Junsong Yuan, Yu Kong, ICCV 2023.
 
 - [Forecasting Action through Contact Representations from First Person Video](https://ieeexplore.ieee.org/abstract/document/9340014?casa_token=PUk2a8mN4CoAAAAA:ICkziPRIBtlxgzsyJm9ZVxUIzGnEq0phTHLOP8G8TxFlTIp159calFp8jZOdUCnxeWTknFjlB0w) - Eadom Dessalene; Chinmaya Devaraj; Michael Maynord; Cornelia Fermuller; Yiannis Aloimonos, T-PAMI 2021.
@@ -500,6 +510,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [SLVP: Self-Supervised Language-Video Pre-Training for Referring Video Object Segmentation](https://openaccess.thecvf.com/content/WACV2024W/Pretrain/html/Mei_SLVP_Self-Supervised_Language-Video_Pre-Training_for_Referring_Video_Object_Segmentation_WACVW_2024_paper.html) - Jie Mei, AJ Piergiovanni, Jenq-Neng Hwang, Wei Li, WACVW 2024.
 
 - [Detours for Navigating Instructional Videos](https://arxiv.org/abs/2401.01823) - Kumar Ashutosh, Zihui Xue, Tushar Nagarajan, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/detours/)
+
+- [Learning Object States from Actions via Large Language Models](https://arxiv.org/abs/2405.01090) - Masatoshi Tateno, Takuma Yagi, Ryosuke Furuta, Yoichi Sato,  2024.
+
+- [Step Differences in Instructional Video](https://arxiv.org/abs/2404.16222) - Tushar Nagarajan, Lorenzo Torresani,  2024.
 
 - [HERO: A Multi-modal Approach on Mobile Devices for Visual-Aware Conversational Assistance in Industrial Domains](https://link.springer.com/chapter/10.1007/978-3-031-43148-7_36) - Claudia Bonanno, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2023.
 
@@ -740,6 +754,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning](http://www.roboticsproceedings.org/rss14/p02.pdf) - Tianhe Yu, Chelsea Finn, Annie Xie, Sudeep Dasari, Tianhao Zhang, Pieter Abbeel, Sergey Levine, RSS 2014.
 
 ### Asssitive Egocentric Vision
+- [TEXT2TASTE: A Versatile Egocentric Vision System for Intelligent Reading Assistance Using Large Language Model](https://arxiv.org/abs/2404.09254) - Wiktor Mucha, Florin Cuconasu, Naome A. Etori, Valia Kalokyri, Giovanni Trappolini, ICCHP 2024.
+
 - [Preserved action recognition in children with autism spectrum disorders: Evidence from an EEG and eye-tracking study](https://onlinelibrary.wiley.com/doi/10.1111/psyp.13740) - Mohammad Saber Sotoodeh, Hamidreza Taheri-Torbati, Nouchine Hadjikhani, Amandine Lassalle, Psychophysiology 2020.
 
 - [A Computational Model of Early Word Learning from the Infant's Point of View](https://arxiv.org/abs/2006.02802) - Satoshi Tsutsui, Arjun Chandrasekaran, Md Alimoor Reza, David Crandall, Chen Yu, CogSci 2020.
@@ -796,6 +812,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [EvIs-Kitchen] - The EvIs-Kitchen dataset is the first VIdeo-Sensor-Sensor (V-S-S) interaction-focused dataset for ego-HAR tasks, capturing sequences of everyday kitchen activities. This dataset uses two inertial sensors on both wrists to better capture subject-object interactions. IEEE Sensors Journal 2024. [[paper]](https://ieeexplore.ieee.org/abstract/document/10387162)
 
 - [EgoExoLearn] - EgoExoLearn, a large-scale dataset that emulates the human demonstration following process, in which individuals record egocentric videos as they execute tasks guided by demonstration videos. EgoExoLearn contains egocentric and demonstration video data spanning 120 hours captured in daily life scenarios and specialized laboratories. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.16182) [[code]](https://github.com/OpenGVLab/EgoExoLearn)
+
+- [OAKINK2](https://oakink.net/v2/) - A dataset of bimanual object manipulation tasks for complex daily activities.  OAKINK2 introduces three level of abstraction to organize the manipulation tasks: Affordance, Primitive Task, and Complex Task. OAKINK2 dataset provides multi-view image streams and precise pose annotations for the human body, hands and various interacting objects. This extensive collection supports applications such as interaction reconstruction and motion synthesis. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.19417)
 
 - [BioVL-QR] - A biochemical vision-and-language dataset, which consists of 24 egocentric experiment videos, corresponding protocols, and video-and-language alignments. This study focuses on Micro QR Codes to detect objects automatically. From our preliminary study, we found that detecting objects only using Micro QR Codes is still difficult because the researchers manipulate objects, causing blur and occlusion frequently.  2024. [[paper]](https://arxiv.org/abs/2404.03161v1)
 
