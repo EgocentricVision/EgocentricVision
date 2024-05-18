@@ -37,6 +37,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Action / Activity Recognition
 #### Action Recognition
+- [Context in Human Action Through Motion Complementarity](https://openaccess.thecvf.com/content/WACV2024/html/Dessalene_Context_in_Human_Action_Through_Motion_Complementarity_WACV_2024_paper.html) - Eadom Dessalene, Michael Maynord, Cornelia Fermüller, Yiannis Aloimonos, WACV 2024.
+
 - [Exploring Missing Modality in Multimodal Egocentric Datasets](https://arxiv.org/abs/2401.11470) - Merey Ramazanova, Alejandro Pardo, Humam Alwassel, Bernard Ghanem,  2024.
 
 - [Semantic-Disentangled Transformer With Noun-Verb Embedding for Compositional Action Recognition](https://ieeexplore.ieee.org/abstract/document/10363109) - Peng Huang,  Rui Yan,  Xiangbo Shu, Zhewei Tu,  Guangzhao Dai, Jinhui Tang, TIP 2023.
@@ -117,6 +119,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Egocentric Action Recognition by Capturing Hand-Object Contact and Object State](https://openaccess.thecvf.com/content/WACV2024/papers/Shiota_Egocentric_Action_Recognition_by_Capturing_Hand-Object_Contact_and_Object_State_WACV_2024_paper.pdf) - Tsukasa Shiota, Motohiro Takagi, Kaori Kumagai, Hitoshi Seshimo, Yushi Aono, WACV 2024.
 
 - [Single-to-Dual-View Adaptation for Egocentric 3D Hand Pose Estimation](https://arxiv.org/abs/2403.04381) - Ruicong Liu, Takehiko Ohkawa, Mingfang Zhang, Yoichi Sato, CVPR 2024. [[code]](https://github.com/ut-vision/S2DHand)
+
+- [Benchmarks and Challenges in Pose Estimation for Egocentric Hand Interactions with Objects](https://arxiv.org/abs/2403.16428) - Zicong Fan, Takehiko Ohkawa, Linlin Yang, Nie Lin, Zhishan Zhou, Shihao Zhou, Jiajun Liang, Zhong Gao, Xuanyang Zhang, Xue Zhang, Fei Li, Liu Zheng, Feng Lu, Karim Abou Zeid, Bastian Leibe, Jeongwan On, Seungryul Baek, Aditya Prakash, Saurabh Gupta, Kun He, Yoichi Sato, Otmar Hilliges, Hyung Jin Chang, Angela Yao,  2024.
 
 - [Fine-grained Affordance Annotation for Egocentric Hand-Object Interaction Videos](https://openaccess.thecvf.com/content/WACV2023/papers/Yu_Fine-Grained_Affordance_Annotation_for_Egocentric_Hand-Object_Interaction_Videos_WACV_2023_paper.pdf) - Zecheng Yu, Yifei Huang, Ryosuke Furuta, Takuma Yagi, Yusuke Goutsu, Yoichi Sato, WACV 2023. [[project page]](https://github.com/zch-yu/epic-affordance-annotation)
 
@@ -250,6 +254,12 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Action Anticipation
 #### Short-Term Action Anticipation
 - [Leveraging Next-Active Objects for Context-Aware Anticipation in Egocentric Videos](https://arxiv.org/pdf/2308.08303.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, WACV 2024.
+
+- [On the Efficacy of Text-Based Input Modalities for Action Anticipation](https://arxiv.org/abs/2401.12972) - Apoorva Beedu, Karan Samel, Irfan Essa,  2024.
+
+- [On the Efficacy of Text-Based Input Modalities for Action Anticipation](https://arxiv.org/abs/2401.12972) - Apoorva Beedu, Karan Samel, Irfan Essa,  2024.
+
+- [On the Efficacy of Text-Based Input Modalities for Action Anticipation](https://arxiv.org/abs/2401.12972) - Apoorva Beedu, Karan Samel, Irfan Essa,  2024.
 
 - [SHARE ON Towards Egocentric Compositional Action Anticipation with Adaptive Semantic Debiasing](https://dl.acm.org/doi/pdf/10.1145/3633333) - Tianyu Zhang  ,  Weiqing Min, Tao Liu, Shuqiang Jiang, Yong Rui, TOMM 2023.
 
@@ -430,6 +440,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Scene Semantic Reconstruction from Egocentric RGB-D-Thermal Videos](https://ieeexplore.ieee.org/abstract/document/8374614) - Rachel Luo, Ozan Sener, Silvio Savarese, 3DV 2017.
 
 #### Event
+- [EventEgo3D: 3D Human Motion Capture from Egocentric Event Streams](https://arxiv.org/abs/2404.08640) - Christen Millerdurai, Hiroyasu Akada, Jian Wang, Diogo Luvizon, Christian Theobalt, Vladislav Golyanik, CVPR 2024. [[project page]](https://4dqv.mpi-inf.mpg.de/EventEgo3D/)
+
 - [EventTransAct: A video transformer-based framework for Event-camera based action recognition](https://arxiv.org/abs/2308.13711) - Tristan de Blegiers, Ishan Rajendrakumar Dave, Adeel Yousaf, Mubarak Shah, IROS 2023. [[project page]](https://tristandb8.github.io/EventTransAct_webpage/)
 
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo,  2021.
@@ -440,6 +452,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [How You Move Your Head Tells What You Do: Self-supervised Video Representation Learning with Egocentric Cameras and IMU Sensors](https://arxiv.org/abs/2110.01680) - Satoshi Tsutsui, Ruta Desai, Karl Ridgeway, WICCV 2021.
 
 ### Temporal Segmentation (Action Detection)
+- [ActionMixer: Temporal action detection with Optimal Action Segment Assignment and mixers](https://www.sciencedirect.com/science/article/abs/pii/S0957417423018328) - Jianhua Yang, Ke Wang, Lijun Zhao, Zhiqiang Jiang, Ruifeng Li, Expert Systems with Applications 2024.
+
 - [Refining Action Boundaries for One-stage Detection](https://ieeexplore.ieee.org/abstract/document/9959554?casa_token=AT_Tl3i91NUAAAAA:h_YK0QbnF65WRQL_Au9y82_FPV7SPbQnc_Duw3CTZ3MtMgrvSfH7Z3Vn4eMF-4Cmpoh38kPo) - Hanyuan Wang, Majid Mirmehdi, Dima Damen, Toby Perrett, AVSS 2024.
 
 - [Quasi-Online Detection of Take and Release Actions from Egocentric Videos](https://link.springer.com/chapter/10.1007/978-3-031-43153-1_2) - Rosario Scavo, Francesco Ragusa, Giovanni Maria Farinella, Antonino Furnari, ICIAP 2023. [[code]](https://github.com/fpv-iplab/Quasi-Online-Detection-Take-Release)
@@ -483,6 +497,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Generative Adversarial Network for Future Hand Segmentation from Egocentric Video](https://arxiv.org/abs/2203.11305) - Wenqi Jia, Miao Liu, James M. Rehg, ECCV 2022. [[project page]](https://vjwq.github.io/EgoGAN/)
 
 ### Video-Language
+- [SLVP: Self-Supervised Language-Video Pre-Training for Referring Video Object Segmentation](https://openaccess.thecvf.com/content/WACV2024W/Pretrain/html/Mei_SLVP_Self-Supervised_Language-Video_Pre-Training_for_Referring_Video_Object_Segmentation_WACVW_2024_paper.html) - Jie Mei, AJ Piergiovanni, Jenq-Neng Hwang, Wei Li, WACVW 2024.
+
+- [Detours for Navigating Instructional Videos](https://arxiv.org/abs/2401.01823) - Kumar Ashutosh, Zihui Xue, Tushar Nagarajan, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/detours/)
+
 - [HERO: A Multi-modal Approach on Mobile Devices for Visual-Aware Conversational Assistance in Industrial Domains](https://link.springer.com/chapter/10.1007/978-3-031-43148-7_36) - Claudia Bonanno, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2023.
 
 - [EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone](https://arxiv.org/abs/2307.05463) - Shraman Pramanick, Yale Song, Sayan Nag, Kevin Qinghong Lin, Hardik Shah, Mike Zheng Shou, Rama Chellappa, Pengchuan Zhang, ICCV 2023. [[project page]](https://shramanpramanick.github.io/EgoVLPv2/)
@@ -532,6 +550,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Balanced Spherical Grid for Egocentric View Synthesis](https://openaccess.thecvf.com/content/CVPR2023/html/Choi_Balanced_Spherical_Grid_for_Egocentric_View_Synthesis_CVPR_2023_paper.html) - Changwoon Choi, Sang Min Kim, Young Min Kim, CVPR 2023. [[project page]](https://changwoon.info/publications/EgoNeRF)
 
 ### User Data from an Egocentric Point of View
+- [SimpleEgo: Predicting Probabilistic Body Pose from Egocentric Cameras](https://arxiv.org/abs/2401.14785) - Hanz Cuevas-Velasquez, Charlie Hewitt, Sadegh Aliakbarian, Tadas Baltrušaitis, 3DV 2024. [[project page]](https://microsoft.github.io/SimpleEgo/)
+
 - [Ego3DPose: Capturing 3D Cues from Binocular Egocentric Views](https://dl.acm.org/doi/abs/10.1145/3610548.3618147?casa_token=sfD7LG7W-icAAAAA:SLe0a5OVLpchi3l0_lyDcYx_ecufq5NwMauQsBAFuAC96k1WeMTKlycq6-agw9imu1Brqf35-K0B) - Taeho Kang, Kyungjin Lee, Jinrui Zhang, Youngki Lee, SIGGRAPH 2023.
 
 - [Domain-Guided Spatio-Temporal Self-Attention for Egocentric 3D Pose Estimation](https://dl.acm.org/doi/abs/10.1145/3580305.3599312) - Jinman Park,  Kimathi Kaai,  Saad Hossain,  Norikatsu Sumi,  Sirisha Rambhatla,  Paul Fieguth, KDD 2023. [[code]](https://github.com/jmpark0808/Ego-STAN)
@@ -769,9 +789,13 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning by Watching](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_Learning_by_Watching_CVPR_2021_paper.pdf) - Jimuyang Zhang, Eshed Ohn-Bar, CVPR 2021.
 
 ### Datasets
-- [IndustReal] - The IndustReal dataset contains 84 videos, demonstrating how 27 participants perform maintenance and assembly procedures on a construction-toy assembly set. WACV 2024. [[paper]](https://arxiv.org/abs/2310.17323)
+- [IndustReal] - The IndustReal dataset contains 84 videos, demonstrating how 27 participants perform maintenance and assembly procedures on a construction-toy assembly set. WACV 2024. [[paper]](https://arxiv.org/abs/2310.17323) [[code]](https://github.com/TimSchoonbeek/IndustReal)
 
-- [EgoExoLearn] - EgoExoLearn, a large-scale dataset that emulates the human demonstration following process, in which individuals record egocentric videos as they execute tasks guided by demonstration videos. EgoExoLearn contains egocentric and demonstration video data spanning 120 hours captured in daily life scenarios and specialized laboratories. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.16182)
+- [IKEA Ego 3D Dataset](https://sitzikbs.github.io/IKEAEgo3D.github.io/) - A novel dataset for ego-view 3D point cloud action recognition. The dataset consists of approximately 493k frames and 56 classes of intricate furniture assembly actions of four different furniture types. WACV 2024. [[paper]](https://openaccess.thecvf.com/content/WACV2024/html/Ben-Shabat_IKEA_Ego_3D_Dataset_Understanding_Furniture_Assembly_Actions_From_Ego-View_WACV_2024_paper.html)
+
+- [EvIs-Kitchen] - The EvIs-Kitchen dataset is the first VIdeo-Sensor-Sensor (V-S-S) interaction-focused dataset for ego-HAR tasks, capturing sequences of everyday kitchen activities. This dataset uses two inertial sensors on both wrists to better capture subject-object interactions. IEEE Sensors Journal 2024. [[paper]](https://ieeexplore.ieee.org/abstract/document/10387162)
+
+- [EgoExoLearn] - EgoExoLearn, a large-scale dataset that emulates the human demonstration following process, in which individuals record egocentric videos as they execute tasks guided by demonstration videos. EgoExoLearn contains egocentric and demonstration video data spanning 120 hours captured in daily life scenarios and specialized laboratories. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.16182) [[code]](https://github.com/OpenGVLab/EgoExoLearn)
 
 - [BioVL-QR] - A biochemical vision-and-language dataset, which consists of 24 egocentric experiment videos, corresponding protocols, and video-and-language alignments. This study focuses on Micro QR Codes to detect objects automatically. From our preliminary study, we found that detecting objects only using Micro QR Codes is still difficult because the researchers manipulate objects, causing blur and occlusion frequently.  2024. [[paper]](https://arxiv.org/abs/2404.03161v1)
 
@@ -781,19 +805,23 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [POV-Surgery](https://batfacewayne.github.io/POV_Surgery_io/) - POV-Surgery, a large-scale, synthetic, egocentric dataset focusing on pose estimation for hands with different surgical gloves and three orthopedic surgical instruments, namely scalpel, friem, and diskplacer. Our dataset consists of 53 sequences and 88,329 frames, featuring high-resolution RGB-D video streams with activity annotations, accurate 3D and 2D annotations for hand-object pose, and 2D hand-object segmentation masks. MICCAI 2023. [[paper]](https://arxiv.org/abs/2307.10387)
 
+- [CaptainCook4D](https://captaincook4d.github.io/captain-cook/) - CaptainCook4D, comprising 384 recordings (94.5 hours) of people performing recipes in real kitchen environments. This dataset consists of two distinct types of activity: one in which participants adhere to the provided recipe instructions and another in which they deviate and induce errors. We provide 5.3K step annotations and 10K fine-grained action annotations and benchmark the dataset for the following tasks: supervised error recognition, multistep localization, and procedure learning. ICMLW 2023. [[paper]](https://arxiv.org/abs/2312.14556)
+
 - [ARGO1M](https://chiaraplizz.github.io/what-can-a-cook/) - Action Recognition Generalisation dataset (ARGO1M) from videos and narrations from Ego4D. ARGO1M is the first to test action generalisation across both scenario and location shifts, and is the largest domain generalisation dataset across images and video. ICCV 2023. [[paper]](https://arxiv.org/abs/2306.08713)
 
-- [EgoObjects] - EgoObjects, a large-scale egocentric dataset for fine-grained object understanding. contains over 9K videos collected by 250 participants from 50+ countries using 4 wearable devices, and over 650K object annotations from 368 object categories. ICCV 2023. [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhu_EgoObjects_A_Large-Scale_Egocentric_Dataset_for_Fine-Grained_Object_Understanding_ICCV_2023_paper.html)
+- [EgoObjects] - EgoObjects, a large-scale egocentric dataset for fine-grained object understanding. contains over 9K videos collected by 250 participants from 50+ countries using 4 wearable devices, and over 650K object annotations from 368 object categories. ICCV 2023. [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Zhu_EgoObjects_A_Large-Scale_Egocentric_Dataset_for_Fine-Grained_Object_Understanding_ICCV_2023_paper.html) [[code]](https://github.com/facebookresearch/EgoObjects)
 
 - [HoloAssist](https://holoassist.github.io/) - HoloAssist: a large-scale egocentric human interaction dataset that spans 166 hours of data captured by 350 unique instructor-performer pairs, wearing mixed-reality headsets during collaborative tasks. ICCV 2023. [[paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Wang_HoloAssist_an_Egocentric_Human_Interaction_Dataset_for_Interactive_AI_Assistants_ICCV_2023_paper.html)
 
 - [AssemblyHands](https://assemblyhands.github.io/) - AssemblyHands, a large-scale benchmark dataset with accurate 3D hand pose annotations, to facilitate the study of egocentric activities with challenging handobject interactions. CVPR 2023. [[paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Ohkawa_AssemblyHands_Towards_Egocentric_Activity_Understanding_via_3D_Hand_Pose_Estimation_CVPR_2023_paper.pdf)
 
-- [EpicSoundingObject](https://github.com/WikiChao/Ego-AV-Loc) - Epic Sounding Object dataset with sounding object annotations to benchmark the localization performance in egocentric videos. CVPR 2023. [[paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Huang_Egocentric_Audio-Visual_Object_Localization_CVPR_2023_paper.pdf)
+- [EpicSoundingObject](https://github.com/WikiChao/Ego-AV-Loc) - Epic Sounding Object dataset with sounding object annotations to benchmark the localization performance in egocentric videos. CVPR 2023. [[paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Huang_Egocentric_Audio-Visual_Object_Localization_CVPR_2023_paper.pdf) [[code]](https://github.com/WikiChao/Ego-AV-Loc)
 
 - [VOST](https://www.vostdataset.org/) - Video Object Segmentation under Transformations (VOST). It consists of more than 700 high-resolution videos, captured in diverse environments, which are 20 seconds long on average and densely labeled with instance masks. CVPR 2023. [[paper]](https://openaccess.thecvf.com/content/CVPR2023/html/Tokmakov_Breaking_the_Object_in_Video_Object_Segmentation_CVPR_2023_paper.html)
 
-- [Aria Digital Twin](https://www.projectaria.com/datasets/adt/) - Aria Digital Twin (ADT) - an egocentric dataset captured using Aria glasses with extensive object, environment, and human level ground truth. This ADT release contains 200 sequences of real-world activities conducted by Aria wearers. Very challenging research problems such as 3D object detection and tracking, scene reconstruction and understanding, sim-to-real learning, human pose prediction - while also inspiring new machine perception tasks for augmented reality (AR) applications.  2023. [[paper]](https://arxiv.org/pdf/2306.06362.pdf)
+- [ARCTIC](https://arctic.is.tue.mpg.de/) - A dataset with 2.1 million video frames shows two hands skillfully manipulating objects. It includes precise 3D models of the hands and objects, as well as detailed, dynamic contact information. The dataset features two-handed actions with objects like scissors and laptops, capturing the changing hand positions and object states over time. CVPR 2023. [[paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Fan_ARCTIC_A_Dataset_for_Dexterous_Bimanual_Hand-Object_Manipulation_CVPR_2023_paper.pdf)
+
+- [Aria Digital Twin](https://www.projectaria.com/datasets/adt/) - Aria Digital Twin (ADT) - an egocentric dataset captured using Aria glasses with extensive object, environment, and human level ground truth. This ADT release contains 200 sequences of real-world activities conducted by Aria wearers. Very challenging research problems such as 3D object detection and tracking, scene reconstruction and understanding, sim-to-real learning, human pose prediction - while also inspiring new machine perception tasks for augmented reality (AR) applications.  2023. [[paper]](https://arxiv.org/pdf/2306.06362.pdf) [[code]](https://github.com/facebookresearch/projectaria_tools)
 
 - [WEAR](https://mariusbock.github.io/wear/) - The dataset comprises data from 18 participants performing a total of 18 different workout activities with untrimmed inertial (acceleration) and camera (egocentric video) data recorded at 10 different outside locations.  2023. [[paper]](https://arxiv.org/abs/2304.05088)
 
@@ -807,9 +835,9 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Ego-Exo4D](https://ego-exo4d-data.org/) - Ego-Exo4D, a vast multimodal multiview video dataset capturing skilled human activities in both egocentric and exocentric perspectives (e.g., sports, music, dance). With 800+ participants in 13 cities, it offers 1,422 hours of combined footage, featuring diverse activities in 131 natural scene contexts, ranging from 1 to 42 minutes per video.  2023. [[paper]](https://arxiv.org/abs/2311.18259)
 
-- [IT3DEgo] - IT3DEgo dataset: Addresses 3D instance tracking using egocentric sensors (AR/VR). Recorded in diverse indoor scenes with HoloLens2, it comprises 50 recordings (5+ minutes each). Evaluates tracking performance in 3D coordinates, leveraging camera pose and allocentric representation.  2023. [[paper]](https://arxiv.org/pdf/2312.04117.pdf)
+- [IT3DEgo] - IT3DEgo dataset: Addresses 3D instance tracking using egocentric sensors (AR/VR). Recorded in diverse indoor scenes with HoloLens2, it comprises 50 recordings (5+ minutes each). Evaluates tracking performance in 3D coordinates, leveraging camera pose and allocentric representation.  2023. [[paper]](https://arxiv.org/pdf/2312.04117.pdf) [[code]](https://github.com/IT3DEgo/IT3DEgo/)
 
-- [Touch and Go](https://touch-and-go.github.io/) - we present a dataset, called Touch and Go, in which human data collectors walk through a variety of environments, probing objects with tactile sensors and simultaneously recording their actions on video. NeurIPS 2022. [[paper]](https://arxiv.org/pdf/2211.12498.pdf)
+- [Touch and Go](https://touch-and-go.github.io/) - we present a dataset, called Touch and Go, in which human data collectors walk through a variety of environments, probing objects with tactile sensors and simultaneously recording their actions on video. NeurIPS 2022. [[paper]](https://arxiv.org/pdf/2211.12498.pdf) [[code]](https://github.com/fredfyyang/Tactile-Driven-Image-Stylization/)
 
 - [EPIC-Visor](https://epic-kitchens.github.io/VISOR/) - VISOR, a new dataset of pixel annotations and a benchmark suite for segmenting hands and active objects in egocentric video. NeurIPS 2022. [[paper]](https://proceedings.neurips.cc/paper_files/paper/2022/hash/590a7ebe0da1f262c80d0188f5c4c222-Abstract-Datasets_and_Benchmarks.html)
 
@@ -817,7 +845,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [EgoProceL](https://sid2697.github.io/egoprocel/) - EgoProceL dataset focuses on the key-steps required to perform a task instead of every action in the video. EgoProceL consistis of 62 hours of videos captured by 130 subjects performing 16 tasks. ECCV 2022. [[paper]](https://arxiv.org/pdf/2207.10883.pdf)
 
-- [EgoHOS](https://github.com/owenzlz/EgoHOS) - EgoHOS, a labeled dataset consisting of 11,243 egocentric images with per-pixel segmentation labels of hands and objects being interacted with during a diverse array of daily activities. Our dataset is the first to label detailed hand-object contact boundaries. ECCV 2022. [[paper]](https://arxiv.org/abs/2208.03826)
+- [EgoHOS](https://github.com/owenzlz/EgoHOS) - EgoHOS, a labeled dataset consisting of 11,243 egocentric images with per-pixel segmentation labels of hands and objects being interacted with during a diverse array of daily activities. Our dataset is the first to label detailed hand-object contact boundaries. ECCV 2022. [[paper]](https://arxiv.org/abs/2208.03826) [[code]](https://github.com/owenzlz/EgoHOS)
 
 - [UnrealEgo](https://4dqv.mpi-inf.mpg.de/UnrealEgo/) - UnrealEgo, i.e., a new large-scale naturalistic dataset for egocentric 3D human pose estimation. It is the first dataset to provide in-the-wild stereo images with the largest variety of motions among existing egocentric datasets. ECCV 2022. [[paper]](https://arxiv.org/abs/2208.01633)
 
