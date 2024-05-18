@@ -61,6 +61,9 @@ def add_git_command(df: pd.DataFrame):
             if not isinstance(link_paper, float):
                 git_command += " [[paper]](" + link_paper + ")"
 
+            if not isinstance(link_code, float):
+                git_command += " [[code]](" + link_code + ")"
+
 
         elif category == "Challenges":
             git_command += "- [" + title + "]"
