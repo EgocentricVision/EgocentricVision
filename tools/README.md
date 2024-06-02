@@ -403,6 +403,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Multi-Modalities
 #### Audio-Visual
+- [TIM: A Time Interval Machine for Audio-Visual Action Recognition](https://arxiv.org/abs/2404.05559) - Jacob Chalk, Jaesung Huh, Evangelos Kazakos, Andrew Zisserman, Dima Damen, CVPR 2024. [[project page]](https://jacobchalk.github.io/TIM-Project/)
+
 - [Centre Stage: Centricity-based Audio-Visual Temporal Action Detection](https://arxiv.org/abs/2311.16446) - Hanyuan Wang, Majid Mirmehdi, Dima Damen, Toby Perrett, WBMVC 2023. [[code]](https://github.com/hanielwang/Audio-Visual-TAD)
 
 - [Multimodal Distillation for Egocentric Action Recognition](https://arxiv.org/abs/2307.07483) - Gorjan Radevski, Dusan Grujicic, Marie-Francine Moens, Matthew Blaschko, Tinne Tuytelaars, ICCV 2023. [[code]](https://github.com/gorjanradevski/multimodal-distillation)
@@ -454,7 +456,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [EventTransAct: A video transformer-based framework for Event-camera based action recognition](https://arxiv.org/abs/2308.13711) - Tristan de Blegiers, Ishan Rajendrakumar Dave, Adeel Yousaf, Mubarak Shah, IROS 2023. [[project page]](https://tristandb8.github.io/EventTransAct_webpage/)
 
-- [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo,  2021.
+- [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo, CVPR 2022.
 
 #### IMU
 - [Continual Egocentric Activity Recognition with Foreseeable-Generalized Visual-IMU Representations](https://ieeexplore.ieee.org/abstract/document/10462907/authors#authors) - Chiyuan He, Shaoxu Cheng, Zihuan Qiu, Linfeng Xu, Fanman Meng, Qingbo Wu, Hongliang Li, IEEE Sensors Journal 2024.
@@ -514,6 +516,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning Object States from Actions via Large Language Models](https://arxiv.org/abs/2405.01090) - Masatoshi Tateno, Takuma Yagi, Ryosuke Furuta, Yoichi Sato,  2024.
 
 - [Step Differences in Instructional Video](https://arxiv.org/abs/2404.16222) - Tushar Nagarajan, Lorenzo Torresani,  2024.
+
+- [EgoNCE++: Do Egocentric Video-Language Models Really Understand Hand-Object Interactions?](https://arxiv.org/abs/2405.17719) - Boshen Xu, Ziheng Wang, Yang Du, Sipeng Zheng, Zhinan Song, Qin Jin,  2024. [[code]](https://github.com/xuboshen/EgoNCEpp)
 
 - [HERO: A Multi-modal Approach on Mobile Devices for Visual-Aware Conversational Assistance in Industrial Domains](https://link.springer.com/chapter/10.1007/978-3-031-43148-7_36) - Claudia Bonanno, Francesco Ragusa, Antonino Furnari, Giovanni Maria Farinella, ICIAP 2023.
 
@@ -631,6 +635,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Privacy-Preserving Human Activity Recognition from Extreme Low Resolution](https://arxiv.org/pdf/1604.03196) - Ryoo, M. S., Rothrock, B., Fleming, C., & Yang, H. J., AAAI 2017.
 
 ### Tracking
+- [Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind](https://arxiv.org/abs/2404.05072) - Chiara Plizzari, Shubham Goel, Toby Perrett, Jacob Chalk, Angjoo Kanazawa, Dima Damen,  2024. [[project page]](https://dimadamen.github.io/OSNOM/)
+
 - [Tracking Multiple Deformable Objects in Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2023/papers/Huang_Tracking_Multiple_Deformable_Objects_in_Egocentric_Videos_CVPR_2023_paper.pdf) - Mingzhen Huang, Xiaoxing Li, Jun Hu, Honghong Peng, Siwei Lyu, CVPR 2023. [[project page]](https://mingzhenhuang.com/projects/detracker.html)
 
 ### Social Interactions
@@ -656,6 +662,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Egocentric Video Task Translation](https://openaccess.thecvf.com/content/CVPR2023/papers/Xue_Egocentric_Video_Task_Translation_CVPR_2023_paper.pdf) - Zihui Xue, Yale Song, Kristen Grauman, Lorenzo Torresani, CVPR 2023. [[project page]](https://vision.cs.utexas.edu/projects/egot2/)
 
 ### Activity-context
+- [EgoChoir: Capturing 3D Human-Object Interaction Regions from Egocentric Views](https://arxiv.org/abs/2405.13659) - Yuhang Yang, Wei Zhai, Chengfeng Wang, Chengjun Yu, Yang Cao, Zheng-Jun Zha,  2024.
+
 - [Multi-label affordance mapping from egocentric vision](https://arxiv.org/abs/2309.02120) - Lorenzo Mur-Labadia, Jose J. Guerrero, Ruben Martinez-Cantin, ICCV 2023.
 
 - [Shaping embodied agent behavior with activity-context priors from egocentric video](https://proceedings.neurips.cc/paper/2021/file/f8b7aa3a0d349d9562b424160ad18612-Paper.pdf) - Tushar Nagarajan, Kristen Grauman, NIPS 2021.
@@ -663,6 +671,9 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning Visual Affordance Grounding from Demonstration Videos](https://arxiv.org/abs/2108.05675) - Hongchen Luo, Wei Zhai, Jing Zhang, Yang Cao, Dacheng Tao,  2021.
 
 - [EGO-TOPO: Environment Affordances from Egocentric Video](https://openaccess.thecvf.com/content_CVPR_2020/html/Nagarajan_Ego-Topo_Environment_Affordances_From_Egocentric_Video_CVPR_2020_paper.html) - Tushar Nagarajan, Yanghao Li, Christoph Feichtenhofer, Kristen Grauman, CVPR 2020.
+
+### Diffusion models
+- [HOIDiffusion: Generating Realistic 3D Hand-Object Interaction Data](https://arxiv.org/abs/2403.12011) - Mengqi Zhang, Yang Fu, Zheng Ding, Sifei Liu, Zhuowen Tu, Xiaolong Wang,  2024. [[project page]](https://mq-zhang1.github.io/HOIDiffusion/)
 
 ### Video summarization
 - [SEMA: Semantic Attention for Capturing Long-Range Dependencies in Egocentric Lifelogs](https://openaccess.thecvf.com/content/WACV2024/papers/Nagar_SEMA_Semantic_Attention_for_Capturing_Long-Range_Dependencies_in_Egocentric_Lifelogs_WACV_2024_paper.pdf) - Pravin Nagar, K.N Ajay Shastry, Jayesh Chaudhari, Chetan Arora, WACV 2024. [[code]](https://github.com/Pravin74/Semantic_attention/)
@@ -738,6 +749,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Human to Robot
 - [Integrating Egocentric and Robotic Vision for Object Identification Using Siamese Networks and Superquadric Estimations in Partial Occlusion Scenarios](https://www.mdpi.com/2313-7673/9/2/100) - Elisabeth Menendez, Santiago Martínez, Fernando Díaz-de-María, Carlos Balaguer, Intelligent Human-Robot Interaction 2024.
+
+- [Rank2Reward: Learning Shaped Reward Functions from Passive Video](https://arxiv.org/pdf/2404.14735) - Daniel Yang, Davin Tjia, Jacob Berg, Dima Damen, Pulkit Agrawal, Abhishek Gupta, ICRA 2024. [[project page]](https://rank2reward.github.io/)
 
 - [Real-time 3D Semantic Scene Perception for Egocentric Robots with Binocular Vision](https://arxiv.org/pdf/2402.11872.pdf) - K. Nguyen, T. Dang, M. Huber,  2024. [[code]](https://github.com/mkhangg/semantic_scene_perception)
 
@@ -816,6 +829,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [OAKINK2](https://oakink.net/v2/) - A dataset of bimanual object manipulation tasks for complex daily activities.  OAKINK2 introduces three level of abstraction to organize the manipulation tasks: Affordance, Primitive Task, and Complex Task. OAKINK2 dataset provides multi-view image streams and precise pose annotations for the human body, hands and various interacting objects. This extensive collection supports applications such as interaction reconstruction and motion synthesis. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.19417)
 
 - [BioVL-QR] - A biochemical vision-and-language dataset, which consists of 24 egocentric experiment videos, corresponding protocols, and video-and-language alignments. This study focuses on Micro QR Codes to detect objects automatically. From our preliminary study, we found that detecting objects only using Micro QR Codes is still difficult because the researchers manipulate objects, causing blur and occlusion frequently.  2024. [[paper]](https://arxiv.org/abs/2404.03161v1)
+
+- [HOI-Ref](https://sid2697.github.io/hoi-ref/) - It consists of 3.9M question-answer pairs for training and evaluating VLMs. HOI-QA includes questions relating to locating hands, objects, and critically their interactions (e.g. referring to the object being manipulated by the hand).  2024. [[paper]](https://arxiv.org/abs/2404.09933)
 
 - [ENIGMA-51](https://iplab.dmi.unict.it/ENIGMA-51/#paper) - ENIGMA-51 is a new egocentric dataset acquired in an industrial scenario by 19 subjects who followed instructions to complete the repair of electrical boards using industrial tools (e.g., electric screwdriver) and equipments (e.g., oscilloscope). The 51 egocentric video sequences are densely annotated with a rich set of labels that enable the systematic study of human behavior in the industrial domain. WACV 2023. [[paper]](https://arxiv.org/abs/2309.14809)
 
