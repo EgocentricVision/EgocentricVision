@@ -121,6 +121,7 @@ class Egoindex:
     papers["Social Interactions"] = []
     papers["Multiple Egocentric Tasks"] = []
     papers["Activity-context"] = []
+    papers["Diffusion models"] = []
     papers["Video summarization"] = []
     papers["Applications"] = []
     papers["Human to Robot"] = []
