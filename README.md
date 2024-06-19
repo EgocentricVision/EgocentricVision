@@ -635,6 +635,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Privacy-Preserving Human Activity Recognition from Extreme Low Resolution](https://arxiv.org/pdf/1604.03196) - Ryoo, M. S., Rothrock, B., Fleming, C., & Yang, H. J., AAAI 2017.
 
 ### Tracking
+- [Instance Tracking in 3D Scenes from Egocentric Videos](https://arxiv.org/abs/2312.04117) - Yunhan Zhao, Haoyu Ma, Shu Kong, Charless Fowlkes, CVPR 2024.[[project page]](https://github.com/IT3DEgo/IT3DEgo/)
+
 - [Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind](https://arxiv.org/abs/2404.05072) - Chiara Plizzari, Shubham Goel, Toby Perrett, Jacob Chalk, Angjoo Kanazawa, Dima Damen,  2024. [[project page]](https://dimadamen.github.io/OSNOM/)
 
 - [Tracking Multiple Deformable Objects in Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2023/papers/Huang_Tracking_Multiple_Deformable_Objects_in_Egocentric_Videos_CVPR_2023_paper.pdf) - Mingzhen Huang, Xiaoxing Li, Jun Hu, Honghong Peng, Siwei Lyu, CVPR 2023. [[project page]](https://mingzhenhuang.com/projects/detracker.html)
