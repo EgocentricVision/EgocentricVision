@@ -989,7 +989,7 @@ videos, corresponding protocols, and annotations of alignment between events in 
 
 - [Ego4D](https://ego4d-data.org)- Episodic Memory, Hand-Object Interactions, AV Diarization, Social, Forecasting.
 
-- [Epic Kithchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
+- [Epic Kitchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
 
 - [MECCANO](https://iplab.dmi.unict.it/MECCANO/challenge.html)- Multimodal Action Recognition (RGB-Depth-Gaze).
 
