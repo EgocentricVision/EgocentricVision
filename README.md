@@ -816,6 +816,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning by Watching](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_Learning_by_Watching_CVPR_2021_paper.pdf) - Jimuyang Zhang, Eshed Ohn-Bar, CVPR 2021.
 
 ### Datasets
+- [HOT3D](https://www.projectaria.com/datasets/hot3d/) - HOT3D is benchmark dataset for egocentric vision-based understanding of 3D hand-object interactions. The dataset offers over 833 minutes (more than 3.7M images) of multi-view RGB/monochrome image streams showing 19 subjects interacting with 33 diverse rigid objects, multi-modal signals such as eye gaze or scene point clouds, as well as comprehensive ground truth annotations including 3D poses of objects, hands, and cameras, and 3D models of hands and objects. [[paper]](https://arxiv.org/pdf/2406.09598) [[code]](https://github.com/facebookresearch/hot3d)
+
 - [IndustReal] - The IndustReal dataset contains 84 videos, demonstrating how 27 participants perform maintenance and assembly procedures on a construction-toy assembly set. WACV 2024. [[paper]](https://arxiv.org/abs/2310.17323) [[code]](https://github.com/TimSchoonbeek/IndustReal)
 
 - [IKEA Ego 3D Dataset](https://sitzikbs.github.io/IKEAEgo3D.github.io/) - A novel dataset for ego-view 3D point cloud action recognition. The dataset consists of approximately 493k frames and 56 classes of intricate furniture assembly actions of four different furniture types. WACV 2024. [[paper]](https://openaccess.thecvf.com/content/WACV2024/html/Ben-Shabat_IKEA_Ego_3D_Dataset_Understanding_Furniture_Assembly_Actions_From_Ego-View_WACV_2024_paper.html)
