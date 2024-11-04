@@ -1090,7 +1090,7 @@ videos, corresponding protocols, and annotations of alignment between events in 
 
 - [Realwear](https://www.realwear.com/)
 
-- [TCL Smart Glasses Thunderbird]
+- [TCL Smart Glasses Thunderbird](https://www.tcl.com/eu/en/glasses/tcl-nxtwear-g)
 
 - [OrCam](https://www.orcam.com/it/)
 
@@ -1100,7 +1100,7 @@ videos, corresponding protocols, and annotations of alignment between events in 
 
 - [dynaEdge](https://it.dynabook.com/generic/dynaedge/)
 
-- [Apple Glass]
+- [Apple Vision Pro](https://www.apple.com/apple-vision-pro/)
 
 - [Alpha Glass]
 
