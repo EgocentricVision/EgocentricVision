@@ -1,0 +1,7 @@
+egocentric
+first-person
+EGO
+Epic-Kitchen
+ego4d
+Wearable
+Lifelogging
