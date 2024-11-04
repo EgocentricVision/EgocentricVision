@@ -122,6 +122,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [Single-to-Dual-View Adaptation for Egocentric 3D Hand Pose Estimation](https://arxiv.org/abs/2403.04381) - Ruicong Liu, Takehiko Ohkawa, Mingfang Zhang, Yoichi Sato, CVPR 2024. [[code]](https://github.com/ut-vision/S2DHand)
 
+- [HOISDF: Constraining 3D Hand-Object Pose Estimation with Global Signed Distance Fields](https://arxiv.org/abs/2402.17062v1) - Haozhe Qi, Chen Zhao, Mathieu Salzmann, Alexander Mathis, CVPR 2024. [[code]](https://github.com/amathislab/HOISDF)
+
+- [Single-to-Dual-View Adaptation for Egocentric 3D Hand Pose Estimation](https://openaccess.thecvf.com//content/CVPR2024/html/Liu_Single-to-Dual-View_Adaptation_for_Egocentric_3D_Hand_Pose_Estimation_CVPR_2024_paper) - Ruicong Liu, Takehiko Ohkawa, Mingfang Zhang, Yoichi Sato, CVPR 2024. [[code]](https://github.com/ut-vision/S2DHand)
+
 - [Benchmarks and Challenges in Pose Estimation for Egocentric Hand Interactions with Objects](https://arxiv.org/abs/2403.16428) - Zicong Fan, Takehiko Ohkawa, Linlin Yang, Nie Lin, Zhishan Zhou, Shihao Zhou, Jiajun Liang, Zhong Gao, Xuanyang Zhang, Xue Zhang, Fei Li, Liu Zheng, Feng Lu, Karim Abou Zeid, Bastian Leibe, Jeongwan On, Seungryul Baek, Aditya Prakash, Saurabh Gupta, Kun He, Yoichi Sato, Otmar Hilliges, Hyung Jin Chang, Angela Yao,  2024.
 
 - [Text-driven Affordance Learning from Egocentric Vision](https://arxiv.org/abs/2404.02523) - Tomoya Yoshida, Shuhei Kurita, Taichi Nishimura, Shinsuke Mori,  2024.
@@ -260,6 +264,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Action Anticipation
 #### Short-Term Action Anticipation
 - [Leveraging Next-Active Objects for Context-Aware Anticipation in Egocentric Videos](https://arxiv.org/pdf/2308.08303.pdf) - Sanket Thakur, Cigdem Beyan, Pietro Morerio, Vittorio Murino, Alessio Del Bue, WACV 2024.
+
+- [Summarize the Past to Predict the Future: Natural Language Descriptions of Context Boost Multimodal Object Interaction Anticipation](https://openaccess.thecvf.com//content/CVPR2024/html/Pasca_Summarize_the_Past_to_Predict_the_Future_Natural_Language_Descriptions_CVPR_2024_paper) - Razvan-George Pasca, Alexey Gavryushin, Muhammad Hamza, Yen-Ling Kuo, Kaichun Mo, Luc Van Gool, Otmar Hilliges, Xi Wang, CVPR 2024.
+
+- [Can't Make an Omelette Without Breaking Some Eggs: Plausible Action Anticipation Using Large Video-Language Models](https://openaccess.thecvf.com//content/CVPR2024/html/Mittal_Cant_Make_an_Omelette_Without_Breaking_Some_Eggs_Plausible_Action_CVPR_2024_paper) - Himangi Mittal, Nakul Agarwal, Shao-Yuan Lo, Kwonjoon Lee, CVPR 2024.
 
 - [On the Efficacy of Text-Based Input Modalities for Action Anticipation](https://arxiv.org/abs/2401.12972) - Apoorva Beedu, Karan Samel, Irfan Essa,  2024.
 
@@ -401,6 +409,14 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Audio-Visual
 - [TIM: A Time Interval Machine for Audio-Visual Action Recognition](https://arxiv.org/abs/2404.05559) - Jacob Chalk, Jaesung Huh, Evangelos Kazakos, Andrew Zisserman, Dima Damen, CVPR 2024. [[project page]](https://jacobchalk.github.io/TIM-Project/)
 
+- [SoundingActions: Learning How Actions Sound from Narrated Egocentric Videos](https://arxiv.org/abs/2404.05206) - Changan Chen, Kumar Ashutosh, Rohit Girdhar, David Harwath, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/soundingactions/)
+
+- [The Audio-Visual Conversational Graph: From an Egocentric-Exocentric Perspective](https://openaccess.thecvf.com//content/CVPR2024/html/Jia_The_Audio-Visual_Conversational_Graph_From_an_Egocentric-Exocentric_Perspective_CVPR_2024_paper) - Wenqi Jia, Miao Liu, Hao Jiang, Ishwarya Ananthabhotla, James M. Rehg, Vamsi Krishna Ithapu, Ruohan Gao, CVPR 2024. [[project page]](https://vjwq.github.io/AV-CONV/)
+
+- [Learning Spatial Features from Audio-Visual Correspondence in Egocentric Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Majumder_Learning_Spatial_Features_from_Audio-Visual_Correspondence_in_Egocentric_Videos_CVPR_2024_paper) - Sagnik Majumder, Ziad Al-Halah, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/ego_av_corr/)
+
+- [SoundingActions: Learning How Actions Sound from Narrated Egocentric Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Chen_SoundingActions_Learning_How_Actions_Sound_from_Narrated_Egocentric_Videos_CVPR_2024_paper) - Changan Chen, Kumar Ashutosh, Rohit Girdhar, David Harwath, Kristen Grauman, CVPR 2024.
+
 - [Centre Stage: Centricity-based Audio-Visual Temporal Action Detection](https://arxiv.org/abs/2311.16446) - Hanyuan Wang, Majid Mirmehdi, Dima Damen, Toby Perrett, WBMVC 2023. [[code]](https://github.com/hanielwang/Audio-Visual-TAD)
 
 - [Multimodal Distillation for Egocentric Action Recognition](https://arxiv.org/abs/2307.07483) - Gorjan Radevski, Dusan Grujicic, Marie-Francine Moens, Matthew Blaschko, Tinne Tuytelaars, ICCV 2023. [[code]](https://github.com/gorjanradevski/multimodal-distillation)
@@ -450,6 +466,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 #### Event
 - [EventEgo3D: 3D Human Motion Capture from Egocentric Event Streams](https://arxiv.org/abs/2404.08640) - Christen Millerdurai, Hiroyasu Akada, Jian Wang, Diogo Luvizon, Christian Theobalt, Vladislav Golyanik, CVPR 2024. [[project page]](https://4dqv.mpi-inf.mpg.de/EventEgo3D/)
 
+- [EventEgo3D: 3D Human Motion Capture from Egocentric Event Streams](https://openaccess.thecvf.com//content/CVPR2024/html/Millerdurai_EventEgo3D_3D_Human_Motion_Capture_from_Egocentric_Event_Streams_CVPR_2024_paper) - Christen Millerdurai, Hiroyasu Akada, Jian Wang, Diogo Luvizon, Christian Theobalt, Vladislav Golyanik, CVPR 2024. [[project page]](https://4dqv.mpi-inf.mpg.de/EventEgo3D/)
+
+- [EventEgo3D: 3D Human Motion Capture from Egocentric Event Streams](https://openaccess.thecvf.com//content/CVPR2024/html/Millerdurai_EventEgo3D_3D_Human_Motion_Capture_from_Egocentric_Event_Streams_CVPR_2024_paper) - Christen Millerdurai, Hiroyasu Akada, Jian Wang, Diogo Luvizon, Christian Theobalt, Vladislav Golyanik, CVPR 2024. [[project page]](https://4dqv.mpi-inf.mpg.de/EventEgo3D/)
+
 - [EventTransAct: A video transformer-based framework for Event-camera based action recognition](https://arxiv.org/abs/2308.13711) - Tristan de Blegiers, Ishan Rajendrakumar Dave, Adeel Yousaf, Mubarak Shah, IROS 2023. [[project page]](https://tristandb8.github.io/EventTransAct_webpage/)
 
 - [E(GO)^2MOTION: Motion Augmented Event Stream for Egocentric Action Recognition](https://arxiv.org/abs/2112.03596) - Chiara Plizzari, Mirco Planamente, Gabriele Goletto, Marco Cannici, Emanuele Gusso, Matteo Matteucci, Barbara Caputo, CVPR 2022.
@@ -461,6 +481,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Temporal Segmentation (Action Detection)
 - [ActionMixer: Temporal action detection with Optimal Action Segment Assignment and mixers](https://www.sciencedirect.com/science/article/abs/pii/S0957417423018328) - Jianhua Yang, Ke Wang, Lijun Zhao, Zhiqiang Jiang, Ruifeng Li, Expert Systems with Applications 2024.
+
+- [FACT: Frame-Action Cross-Attention Temporal](https://openaccess.thecvf.com//content/CVPR2024/html/Lu_FACT_Frame-Action_Cross-Attention_Temporal_Modeling_for_Efficient_Action_Segmentation_CVPR_2024_paper) - Zijia Lu, Ehsan Elhamifar, CVPR 2024. [[code]](https://github.com/ZijiaLewisLu/CVPR2024-FACT)
+
+- [https://openaccess.thecvf.com//content/CVPR2024/html/Shen_Progress-Aware_Online_Action_Segmentation_for_Egocentric_Procedural_Task_Videos_CVPR_2024_paper](https://openaccess.thecvf.com//content/CVPR2024/html/Shen_Progress-Aware_Online_Action_Segmentation_for_Egocentric_Procedural_Task_Videos_CVPR_2024_paper) - Yuhan Shen, Ehsan Elhamifar, CVPR 2024. [[code]](https://github.com/Yuhan-Shen/ProTAS)
 
 - [Refining Action Boundaries for One-stage Detection](https://ieeexplore.ieee.org/abstract/document/9959554?casa_token=AT_Tl3i91NUAAAAA:h_YK0QbnF65WRQL_Au9y82_FPV7SPbQnc_Duw3CTZ3MtMgrvSfH7Z3Vn4eMF-4Cmpoh38kPo) - Hanyuan Wang, Majid Mirmehdi, Dima Damen, Toby Perrett, AVSS 2024.
 
@@ -485,7 +509,7 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Temporal segmentation and activity classification from first-person sensing](https://ieeexplore.ieee.org/document/5204354) - Spriggs, Ekaterina H., Fernando De La Torre, and Martial Hebert, Computer Vision and Pattern Recognition Workshops, WCVPR 2009.
 
 ### Retrieval
-- [Retrieval-Augmented Egocentric Video Captioning](https://arxiv.org/abs/2401.00789v2) - Jilan Xu, Yifei Huang, Junlin Hou, Guo Chen, Yuejie Zhang, Rui Feng, Weidi Xie,  2024.
+- [Retrieval-Augmented Egocentric Video Captioning](https://arxiv.org/abs/2401.00789v2) - Jilan Xu, Yifei Huang, Junlin Hou, Guo Chen, Yuejie Zhang, Rui Feng, Weidi Xie, CVPR 2024.
 
 - [Where is my Wallet? Modeling Object Proposal Sets for Egocentric Visual Query Localization](https://openaccess.thecvf.com/content/CVPR2023/papers/Xu_Where_Is_My_Wallet_Modeling_Object_Proposal_Sets_for_Egocentric_CVPR_2023_paper.pdf) - Mengmeng Xu, Yanghao Li, Cheng-Yang Fu, Bernard Ghanem, Tao Xiang, Juan-Manuel Pérez-Rúa, CVPR 2023. [[code]](https: //github.com/facebookresearch/vq2d_cvpr)
 
@@ -500,6 +524,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Fine-Grained Action Retrieval Through Multiple Parts-of-Speech Embeddings](https://openaccess.thecvf.com/content_ICCV_2019/papers/Wray_Fine-Grained_Action_Retrieval_Through_Multiple_Parts-of-Speech_Embeddings_ICCV_2019_paper.pdf) - Michael Wray, Diane Larlus, Gabriela Csurka, Dima Damen, ICCV 2019.
 
 ### Segmentation
+- [Learning to Segment Referred Objects from Narrated Egocentric Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Shen_Learning_to_Segment_Referred_Objects_from_Narrated_Egocentric_Videos_CVPR_2024_paper) - Yuhan Shen, Huiyu Wang, Xitong Yang, Matt Feiszli, Ehsan Elhamifar, Lorenzo Torresani, Effrosyni Mavroudi;, CVPR 2024.
+
 - [Are Synthetic Data Useful for Egocentric Hand-Object Interaction Detection? An Investigation and the HOI-Synth Domain Adaptation Benchmark](https://arxiv.org/pdf/2312.02672.pdf) - Rosario Leonardi, Antonino Furnari, Francesco Ragusa, Giovanni Maria Farinella,  2023. [[project page]](https://iplab.dmi.unict.it/HOI-Synth/)
 
 - [Generative Adversarial Network for Future Hand Segmentation from Egocentric Video](https://arxiv.org/abs/2203.11305) - Wenqi Jia, Miao Liu, James M. Rehg, ECCV 2022. [[project page]](https://vjwq.github.io/EgoGAN/)
@@ -507,7 +533,13 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 ### Video-Language
 - [SLVP: Self-Supervised Language-Video Pre-Training for Referring Video Object Segmentation](https://openaccess.thecvf.com/content/WACV2024W/Pretrain/html/Mei_SLVP_Self-Supervised_Language-Video_Pre-Training_for_Referring_Video_Object_Segmentation_WACVW_2024_paper.html) - Jie Mei, AJ Piergiovanni, Jenq-Neng Hwang, Wei Li, WACVW 2024.
 
+- [A SOUND APPROACH: Using Large Language Models to generate audio descriptions for egocentric text-audio retrieval](https://arxiv.org/abs/2402.19106) - Andreea-Maria Oncescu, João F. Henriques, Andrew Zisserman, Samuel Albanie, A. Sophia Koepke, ICASSP 2024.
+
 - [Detours for Navigating Instructional Videos](https://arxiv.org/abs/2401.01823) - Kumar Ashutosh, Zihui Xue, Tushar Nagarajan, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/detours/)
+
+- [Grounded Question-Answering in Long Egocentric Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Di_Grounded_Question-Answering_in_Long_Egocentric_Videos_CVPR_2024_paper) - Shangzhe Di, Weidi Xie;, CVPR 2024. [[code]](https://github.com/Becomebright/GroundVQA)
+
+- [Video ReCap: Recursive Captioning of Hour-Long Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Islam_Video_ReCap_Recursive_Captioning_of_Hour-Long_Videos_CVPR_2024_paper) - Md Mohaiminul Islam, Ngan Ho, Xitong Yang, Tushar Nagarajan, Lorenzo Torresani, Gedas Bertasius, CVPR 2024. [[project page]](https://sites.google.com/view/vidrecap)
 
 - [Learning Object States from Actions via Large Language Models](https://arxiv.org/abs/2405.01090) - Masatoshi Tateno, Takuma Yagi, Ryosuke Furuta, Yoichi Sato,  2024.
 
@@ -548,6 +580,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [1000 Pupil Segmentations in a Second Using Haar Like Features and Statistical Learning](https://openaccess.thecvf.com/content/ICCV2021W/EPIC/html/Fuhl_1000_Pupil_Segmentations_in_a_Second_Using_Haar_Like_Features_ICCVW_2021_paper.html) - Wolfgang Fuhl, Johannes Schneider, Enkelejda Kasneci, WICCV 2021.
 
 ### From Third-Person to First-Person
+- [The Audio-Visual Conversational Graph: From an Egocentric-Exocentric Perspective](https://openaccess.thecvf.com//content/CVPR2024/html/Jia_The_Audio-Visual_Conversational_Graph_From_an_Egocentric-Exocentric_Perspective_CVPR_2024_paper) - Wenqi Jia, Miao Liu, Hao Jiang, Ishwarya Ananthabhotla, James M. Rehg, Vamsi Krishna Ithapu, Ruohan Gao, CVPR 2024. [[project page]](https://vjwq.github.io/AV-CONV/)
+
 - [Put Myself in Your Shoes: Lifting the Egocentric Perspective from Exocentric Videos](https://arxiv.org/abs/2403.06351) - Mi Luo, Zihui Xue, Alex Dimakis, Kristen Grauman,  2024.
 
 - [Learning Fine-grained View-Invariant Representations from Unpaired Ego-Exo Videos via Temporal Alignment](https://arxiv.org/abs/2306.05526) - Zihui Xue, Kristen Grauman, UnderReview 2023. [[project page]](https://vision.cs.utexas.edu/projects/AlignEgoExo/)
@@ -564,6 +598,14 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Balanced Spherical Grid for Egocentric View Synthesis](https://openaccess.thecvf.com/content/CVPR2023/html/Choi_Balanced_Spherical_Grid_for_Egocentric_View_Synthesis_CVPR_2023_paper.html) - Changwoon Choi, Sang Min Kim, Young Min Kim, CVPR 2023. [[project page]](https://changwoon.info/publications/EgoNeRF)
 
 ### User Data from an Egocentric Point of View
+- [Egocentric Whole-Body Motion Capture with FisheyeViT and Diffusion-Based Motion Refinement](https://arxiv.org/abs/2311.16495) - Jian Wang, Zhe Cao, Diogo Luvizon, Lingjie Liu, Kripasindhu Sarkar, Danhang Tang, Thabo Beeler, Christian Theobalt, CVPR 2024. [[project page]](https://people.mpi-inf.mpg.de/~jianwang/projects/egowholemocap/)
+
+- [Attention-Propagation Network for Egocentric Heatmap to 3D Pose Lifting](https://arxiv.org/abs/2402.18330) - Taeho Kang, Youngki Lee, CVPR 2024. [[code]](https://github.com/tho-kn/EgoTAP)
+
+- [EventEgo3D: 3D Human Motion Capture from Egocentric Event Streams](https://openaccess.thecvf.com//content/CVPR2024/html/Millerdurai_EventEgo3D_3D_Human_Motion_Capture_from_Egocentric_Event_Streams_CVPR_2024_paper) - Christen Millerdurai, Hiroyasu Akada, Jian Wang, Diogo Luvizon, Christian Theobalt, Vladislav Golyanik, CVPR 2024. [[project page]](https://4dqv.mpi-inf.mpg.de/EventEgo3D/)
+
+- [Attention-Propagation Network for Egocentric Heatmap to 3D Pose Lifting](https://openaccess.thecvf.com//content/CVPR2024/html/Kang_Attention-Propagation_Network_for_Egocentric_Heatmap_to_3D_Pose_Lifting_CVPR_2024_paper) - Taeho Kang, Youngki Lee, CVPR 2024. [[code]](https://github.com/tho-kn/EgoTAP)
+
 - [SimpleEgo: Predicting Probabilistic Body Pose from Egocentric Cameras](https://arxiv.org/abs/2401.14785) - Hanz Cuevas-Velasquez, Charlie Hewitt, Sadegh Aliakbarian, Tadas Baltrušaitis, 3DV 2024. [[project page]](https://microsoft.github.io/SimpleEgo/)
 
 - [Ego3DPose: Capturing 3D Cues from Binocular Egocentric Views](https://dl.acm.org/doi/abs/10.1145/3610548.3618147?casa_token=sfD7LG7W-icAAAAA:SLe0a5OVLpchi3l0_lyDcYx_ecufq5NwMauQsBAFuAC96k1WeMTKlycq6-agw9imu1Brqf35-K0B) - Taeho Kang, Kyungjin Lee, Jinrui Zhang, Youngki Lee, SIGGRAPH 2023.
@@ -573,8 +615,6 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Scene-aware Egocentric 3D Human Pose Estimation](https://openaccess.thecvf.com/content/CVPR2023/papers/Wang_Scene-Aware_Egocentric_3D_Human_Pose_Estimation_CVPR_2023_paper.pdf) - Jian Wang, Diogo Luvizon, Weipeng Xu, Lingjie Liu, Kripasindhu Sarkar, Christian Theobalt, CVPR 2023. [[project page]](https://github.com/yt4766269/SceneEgo)
 
 - [Hierarchical Temporal Transformer for 3D Hand Pose Estimation and Action Recognition From Egocentric RGB Videos](https://openaccess.thecvf.com/content/CVPR2023/papers/Wen_Hierarchical_Temporal_Transformer_for_3D_Hand_Pose_Estimation_and_Action_CVPR_2023_paper.pdf) - Yilin Wen, Hao Pan, Lei Yang, Jia Pan, Taku Komura, Wenping Wang, CVPR 2023. [[code]](https://github.com/fylwen/HTT)
-
-- [Egocentric Whole-Body Motion Capture with FisheyeViT and Diffusion-Based Motion Refinement](https://arxiv.org/abs/2311.16495) - Jian Wang, Zhe Cao, Diogo Luvizon, Lingjie Liu, Kripasindhu Sarkar, Danhang Tang, Thabo Beeler, Christian Theobalt,  2023. [[project page]](https://people.mpi-inf.mpg.de/~jianwang/projects/egowholemocap/)
 
 - [3D Human Pose Perception from Egocentric Stereo Videos](https://arxiv.org/abs/2401.00889) - Hiroyasu Akada, Jian Wang, Vladislav Golyanik, Christian Theobalt,  2023. [[project page]](https://4dqv.mpi-inf.mpg.de/UnrealEgo2/)
 
@@ -638,6 +678,10 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Tracking Multiple Deformable Objects in Egocentric Videos](https://openaccess.thecvf.com/content/CVPR2023/papers/Huang_Tracking_Multiple_Deformable_Objects_in_Egocentric_Videos_CVPR_2023_paper.pdf) - Mingzhen Huang, Xiaoxing Li, Jun Hu, Honghong Peng, Siwei Lyu, CVPR 2023. [[project page]](https://mingzhenhuang.com/projects/detracker.html)
 
 ### Social Interactions
+- [LoCoNet: Long-Short Context Network for Active Speaker Detection](https://openaccess.thecvf.com//content/CVPR2024/html/Wang_LoCoNet_Long-Short_Context_Network_for_Active_Speaker_Detection_CVPR_2024_paper) - Xizi Wang, Feng Cheng, Gedas Bertasius, CVPR 2024. [[code]](https://github.com/SJTUwxz/LoCoNet_ASD)
+
+- [Learning Spatial Features from Audio-Visual Correspondence in Egocentric Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Majumder_Learning_Spatial_Features_from_Audio-Visual_Correspondence_in_Egocentric_Videos_CVPR_2024_paper) - Sagnik Majumder, Ziad Al-Halah, Kristen Grauman, CVPR 2024. [[project page]](https://vision.cs.utexas.edu/projects/ego_av_corr/)
+
 - [Egocentric Deep Multi-Channel Audio-Visual Active Speaker Localization](https://openaccess.thecvf.com/content/CVPR2022/papers/Jiang_Egocentric_Deep_Multi-Channel_Audio-Visual_Active_Speaker_Localization_CVPR_2022_paper.pdf) - Hao Jiang, Calvin Murdock, Vamsi Krishna Ithapu, CVPR 2022.
 
 - [Egocentric Auditory Attention Localization in Conversations](https://openaccess.thecvf.com/content/CVPR2023/papers/Ryan_Egocentric_Auditory_Attention_Localization_in_Conversations_CVPR_2023_paper.pdf) - Fiona Ryan, Hao Jiang, Abhinav Shukla, James M. Rehg, Vamsi Krishna Ithapu, CVPR 2022. [[project page]](https://fkryan.github.io/saal)
@@ -652,6 +696,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 ### Multiple Egocentric Tasks
 - [A Backpack Full of Skills: Egocentric Video Understanding with Diverse Task Perspectives](https://arxiv.org/abs/2403.03037v1) - A Backpack Full of Skills: Egocentric Video Understanding with Diverse Task Perspectives, CVPR 2024. [[project page]](https://sapeirone.github.io/EgoPack/)
+
+- [EgoThink: Evaluating First-Person Perspective Thinking Capability of Vision-Language Models](https://openaccess.thecvf.com//content/CVPR2024/html/Cheng_EgoThink_Evaluating_First-Person_Perspective_Thinking_Capability_of_Vision-Language_Models_CVPR_2024_paper) - Sijie Cheng, Zhicheng Guo, Jingwen Wu, Kechen Fang, Peng Li, Huaping Liu, Yang Liu, CVPR 2024. [[code]](https://github.com/AdaCheng/EgoThink) [[project page]](https://adacheng.github.io/EgoThink/)
 
 - [Multi-Task Learning of Object States and State-Modifying Actions from Web Videos](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10420504) - Tomáš Souček, Jean-Baptiste Alayrac, Antoine Miech, Ivan Laptev, Josef Sivic, TPAMI 2023. [[code]](https://github.com/soCzech/MultiTaskObjectStates?tab=readme-ov-file)
 
@@ -729,6 +775,12 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [PREGO: online mistake detection in PRocedural EGOcentric videos](https://arxiv.org/abs/2404.01933) - Alessandro Flaborea, Guido Maria D'Amely di Melendugno, Leonardo Plini, Luca Scofano, Edoardo De Matteis, Antonino Furnari, Giovanni Maria Farinella, Fabio Galasso, CVPR 2024. [[code]](https://github.com/aleflabo/PREGO)
 
+- [Mocap Everyone Everywhere: Lightweight Motion Capture With Smartwatches and a Head-Mounted Camera](https://openaccess.thecvf.com/content/CVPR2024/html/Lee_Mocap_Everyone_Everywhere_Lightweight_Motion_Capture_With_Smartwatches_and_a_CVPR_2024_paper) - Jiye Lee, Hanbyul Joo, CVPR 2024. [[code]](https://github.com/jiyewise/MocapEvery)
+
+- [VideoLLM-online: Online Video Large Language Model for Streaming Video](https://openaccess.thecvf.com//content/CVPR2024/html/Chen_VideoLLM-online_Online_Video_Large_Language_Model_for_Streaming_Video_CVPR_2024_paper) - Joya Chen, Zhaoyang Lv, Shiwei Wu, Kevin Qinghong Lin, Chenan Song, Difei Gao, Jia-Wei Liu, Ziteng Gao, Dongxing Mao, Mike Zheng Shou, CVPR 2024. [[video]](https://showlab.github.io/videollm-online/)
+
+- [Error Detection in Egocentric Procedural Task Videos](https://openaccess.thecvf.com//content/CVPR2024/html/Lee_Error_Detection_in_Egocentric_Procedural_Task_Videos_CVPR_2024_paper) - Shih-Po Lee, Zijia Lu, Zekun Zhang, Minh Hoai, Ehsan Elhamifar, CVPR 2024. [[code]](https://github.com/robert80203/EgoPER_official)
+
 - [Are you Struggling? Dataset and Baselines for Struggle Determination in Assembly Videos](https://arxiv.org/abs/2402.11057) - Shijia Feng, Michael Wray, Brian Sullivan, Casimir Ludwig, Iain Gilchrist, Walterio Mayol-Cuevas,  2024.
 
 - [Bringing Online Egocentric Action Recognition into the wild](https://arxiv.org/abs/2211.03004) - Gabriele Goletto, Mirco Planamente, Barbara Caputo, Giuseppe Averta, RA-L 2023. [[code]](https://github.com/EgocentricVision/EgoWild)
@@ -805,7 +857,9 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [ViViT](https://openaccess.thecvf.com/content/ICCV2021/html/Arnab_ViViT_A_Video_Vision_Transformer_ICCV_2021_paper.html) - Anurag Arnab, Mostafa Dehghani, Georg Heigold, Chen Sun, Mario Lučić, Cordelia Schmid, ICCV 2021.
 
 ### Other EGO-Context
-- [EgoGen: An Egocentric Synthetic Data Generator](https://arxiv.org/abs/2401.08739) - Gen Li, Kaifeng Zhao, Siwei Zhang, Xiaozhong Lyu, Mihai Dusmanu, Yan Zhang, Marc Pollefeys, Siyu Tang,  2024. [[project page]](https://ego-gen.github.io/)
+- [EgoGen: An Egocentric Synthetic Data Generator](https://arxiv.org/abs/2401.08739) - Gen Li, Kaifeng Zhao, Siwei Zhang, Xiaozhong Lyu, Mihai Dusmanu, Yan Zhang, Marc Pollefeys, Siyu Tang, CVPR 2024. [[project page]](https://ego-gen.github.io/)
+
+- [Active Object Detection with Knowledge Aggregation and Distillation from Large Models](https://openaccess.thecvf.com//content/CVPR2024/html/Yang_Active_Object_Detection_with_Knowledge_Aggregation_and_Distillation_from_Large_CVPR_2024_paper) - Dejie Yang, Yang Liu, CVPR 2024. [[code]](https://github.com/idejie/KAD)
 
 - [Self-Supervised Object Detection from Egocentric Videos](https://openaccess.thecvf.com/content/ICCV2023/html/Akiva_Self-Supervised_Object_Detection_from_Egocentric_Videos_ICCV_2023_paper.html) - Peri Akiva, Jing Huang, Kevin J Liang, Rama Kovvuri, Xingyu Chen, Matt Feiszli, Kristin Dana, Tal Hassner, ICCV 2023.
 
@@ -822,13 +876,25 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 - [EvIs-Kitchen] - The EvIs-Kitchen dataset is the first VIdeo-Sensor-Sensor (V-S-S) interaction-focused dataset for ego-HAR tasks, capturing sequences of everyday kitchen activities. This dataset uses two inertial sensors on both wrists to better capture subject-object interactions. IEEE Sensors Journal 2024. [[paper]](https://ieeexplore.ieee.org/abstract/document/10387162)
 
+- [Ego-Exo4D](https://ego-exo4d-data.org/) - Ego-Exo4D, a vast multimodal multiview video dataset capturing skilled human activities in both egocentric and exocentric perspectives (e.g., sports, music, dance). With 800+ participants in 13 cities, it offers 1,422 hours of combined footage, featuring diverse activities in 131 natural scene contexts, ranging from 1 to 42 minutes per video. CVPR 2024. [[paper]](https://arxiv.org/abs/2311.18259)
+
 - [EgoExoLearn] - EgoExoLearn, a large-scale dataset that emulates the human demonstration following process, in which individuals record egocentric videos as they execute tasks guided by demonstration videos. EgoExoLearn contains egocentric and demonstration video data spanning 120 hours captured in daily life scenarios and specialized laboratories. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.16182) [[code]](https://github.com/OpenGVLab/EgoExoLearn)
 
 - [OAKINK2](https://oakink.net/v2/) - A dataset of bimanual object manipulation tasks for complex daily activities.  OAKINK2 introduces three level of abstraction to organize the manipulation tasks: Affordance, Primitive Task, and Complex Task. OAKINK2 dataset provides multi-view image streams and precise pose annotations for the human body, hands and various interacting objects. This extensive collection supports applications such as interaction reconstruction and motion synthesis. CVPR 2024. [[paper]](https://arxiv.org/abs/2403.19417)
 
+- [UnrealEgo2-UnrealEgo-RW](https://4dqv.mpi-inf.mpg.de/UnrealEgo2/) - UnrealEgo2 Dataset: An expanded dataset capturing over 15,200 motions of realistic 3D human models with a glasses-based device, offering 1.25 million stereo views and comprehensive joint annotations. UnrealEgo-RW Dataset: A real-world dataset utilizing a compact mobile device with fisheye cameras, designed for versatile egocentric image capture in various environments. CVPR 2024. [[paper]](https://openaccess.thecvf.com//content/CVPR2024/html/Akada_3D_Human_Pose_Perception_from_Egocentric_Stereo_Videos_CVPR_2024_paper) [[code]](https://unrealego.mpi-inf.mpg.de/)
+
+- [TF2023] - A novel dataset featuring synchronized first-person and third-person views, including masks of camera wearers linked to their respective views. It consists of 208,794 training and 87,449 testing image pairs, with no actor overlap between sets. Each scene averages 4.29 actors, focusing on complex interactions like puzzle games, enhancing its value for cross-view matching in egocentric vision. CVPR 2024. [[paper]](https://openaccess.thecvf.com//content/CVPR2024/html/Zhao_Fusing_Personal_and_Environmental_Cues_for_Identification_and_Segmentation_of_CVPR_2024_paper) [[code]](https://github.com/ziweizhao1993/PEN)
+
+- [TACO](https://taco2024.github.io/) - A large-scale dataset of real-world bimanual tool-object interactions, featuring 131 tool-action-object triplets across 2.5K motion sequences and 5.2M frames with egocentric and 3rd-person views. TACO enables benchmarks in action recognition, hand-object motion forecasting, and grasp synthesis, advancing generalization research in human-object interactions. CVPR 2024. [[paper]](https://openaccess.thecvf.com//content/CVPR2024/html/Liu_TACO_Benchmarking_Generalizable_Bimanual_Tool-ACtion-Object_Understanding_CVPR_2024_paper)
+
 - [BioVL-QR] - A biochemical vision-and-language dataset, which consists of 24 egocentric experiment videos, corresponding protocols, and video-and-language alignments. This study focuses on Micro QR Codes to detect objects automatically. From our preliminary study, we found that detecting objects only using Micro QR Codes is still difficult because the researchers manipulate objects, causing blur and occlusion frequently.  2024. [[paper]](https://arxiv.org/abs/2404.03161v1)
 
 - [HOI-Ref](https://sid2697.github.io/hoi-ref/) - It consists of 3.9M question-answer pairs for training and evaluating VLMs. HOI-QA includes questions relating to locating hands, objects, and critically their interactions (e.g. referring to the object being manipulated by the hand).  2024. [[paper]](https://arxiv.org/abs/2404.09933)
+
+- [HOT3D](https://www.projectaria.com/datasets/hot3d/) - HOT3D is benchmark dataset for egocentric vision-based understanding of 3D hand-object interactions. The dataset offers over 833 minutes (more than 3.7M images) of multi-view RGB/monochrome image streams showing 19 subjects interacting with 33 diverse rigid objects, multi-modal signals such as eye gaze or scene point clouds, as well as comprehensive ground truth annotations including 3D poses of objects, hands, and cameras, and 3D models of hands and objects.  2024. [[paper]](https://arxiv.org/abs/2406.09598) [[code]](https://github.com/TimSchoonbeek/IndustReal)
+
+- [ADL4D] - ADL4D dataset offers a novel perspective on human-object interactions, providing video sequences of everyday activities involving multiple people and objects interacting simultaneously.  2024. [[paper]](https://arxiv.org/abs/2402.17758)
 
 - [ENIGMA-51](https://iplab.dmi.unict.it/ENIGMA-51/#paper) - ENIGMA-51 is a new egocentric dataset acquired in an industrial scenario by 19 subjects who followed instructions to complete the repair of electrical boards using industrial tools (e.g., electric screwdriver) and equipments (e.g., oscilloscope). The 51 egocentric video sequences are densely annotated with a rich set of labels that enable the systematic study of human behavior in the industrial domain. WACV 2023. [[paper]](https://arxiv.org/abs/2309.14809)
 
@@ -863,8 +929,6 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Exo2EgoDVC] - EgoYC2, a novel egocentric dataset, adapts procedural captions from YouCook2 to cooking videos re-recorded with head-mounted cameras. Unique in its weakly-paired approach, it aligns caption content with exocentric videos, distinguishing itself from other datasets focused on action labels.  2023. [[paper]](https://arxiv.org/abs/2311.16444)
 
 - [EgoWholeBody](https://people.mpi-inf.mpg.de/~jianwang/projects/egowholemocap/) - EgoWholeBody, a large synthetic dataset, comprising 840,000 high-quality egocentric images captured across a diverse range of whole-body motion sequences. Quantitative and qualitative evaluations demonstrate the effectiveness of our method in producing high-quality whole-body motion estimates from a single egocentric camera.  2023. [[paper]](https://arxiv.org/abs/2311.16495)
-
-- [Ego-Exo4D](https://ego-exo4d-data.org/) - Ego-Exo4D, a vast multimodal multiview video dataset capturing skilled human activities in both egocentric and exocentric perspectives (e.g., sports, music, dance). With 800+ participants in 13 cities, it offers 1,422 hours of combined footage, featuring diverse activities in 131 natural scene contexts, ranging from 1 to 42 minutes per video.  2023. [[paper]](https://arxiv.org/abs/2311.18259)
 
 - [IT3DEgo] - IT3DEgo dataset: Addresses 3D instance tracking using egocentric sensors (AR/VR). Recorded in diverse indoor scenes with HoloLens2, it comprises 50 recordings (5+ minutes each). Evaluates tracking performance in 3D coordinates, leveraging camera pose and allocentric representation.  2023. [[paper]](https://arxiv.org/pdf/2312.04117.pdf) [[code]](https://github.com/IT3DEgo/IT3DEgo/)
 
@@ -989,7 +1053,7 @@ videos, corresponding protocols, and annotations of alignment between events in 
 
 - [Ego4D](https://ego4d-data.org)- Episodic Memory, Hand-Object Interactions, AV Diarization, Social, Forecasting.
 
-- [Epic Kithchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
+- [Epic Kitchen Challenge](https://epic-kitchens.github.io/)- Action Recognition, Action Detection, Action Anticipation, Unsupervised Domain Adaptation for Action Recognition, Multi-Instance Retrieval.
 
 - [MECCANO](https://iplab.dmi.unict.it/MECCANO/challenge.html)- Multimodal Action Recognition (RGB-Depth-Gaze).
 
