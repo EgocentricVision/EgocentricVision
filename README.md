@@ -116,6 +116,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Detecting activities of daily living in first-person camera views](https://www.cs.cmu.edu/~deva/papers/ADL_2012.pdf) - Pirsiavash, H., & Ramanan, D., CVPR 2012.
 
 #### Hand-Object Interactions
+- [EgoPAT3Dv2: Predicting 3D Action Target from 2D Egocentric Vision for Human-Robot Interaction](https://arxiv.org/abs/2403.05046) - Irving Fang, Yuzhong Chen, Yifan Wang, Jianghan Zhang, Qiushi Zhang, Jiali Xu, Xibo He, Weibo Gao, Hao Su, Yiming Li, Chen Feng, ICRA 2024.
+
 - [Egocentric Action Recognition by Capturing Hand-Object Contact and Object State](https://openaccess.thecvf.com/content/WACV2024/papers/Shiota_Egocentric_Action_Recognition_by_Capturing_Hand-Object_Contact_and_Object_State_WACV_2024_paper.pdf) - Tsukasa Shiota, Motohiro Takagi, Kaori Kumagai, Hitoshi Seshimo, Yushi Aono, WACV 2024.
 
 - [Sparse multi-view hand-object reconstruction for unseen environments](https://arxiv.org/abs/2405.01353) - Yik Lung Pang, Changjae Oh, Andrea Cavallaro, CVPRW 2024.
@@ -870,6 +872,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Learning by Watching](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_Learning_by_Watching_CVPR_2021_paper.pdf) - Jimuyang Zhang, Eshed Ohn-Bar, CVPR 2021.
 
 ### Datasets
+- [EgoPAT3Dv2](https://ai4ce.github.io/EgoPAT3Dv2/) - The EgoPAT3Dv2 dataset includes 12 distinct scenes and more than 5,400 clips. It features data in various modalities, including RGB, depth, IMU, and point clouds. The dataset captures rearrangement tasks performed by different individuals in diverse scenes, recorded using Microsoft Azure Kinect devices mounted overhead. [[paper]](https://arxiv.org/abs/2403.05046) [[project page]](https://ai4ce.github.io/EgoPAT3Dv2/)
+
 - [IndustReal] - The IndustReal dataset contains 84 videos, demonstrating how 27 participants perform maintenance and assembly procedures on a construction-toy assembly set. WACV 2024. [[paper]](https://arxiv.org/abs/2310.17323) [[code]](https://github.com/TimSchoonbeek/IndustReal)
 
 - [IKEA Ego 3D Dataset](https://sitzikbs.github.io/IKEAEgo3D.github.io/) - A novel dataset for ego-view 3D point cloud action recognition. The dataset consists of approximately 493k frames and 56 classes of intricate furniture assembly actions of four different furniture types. WACV 2024. [[paper]](https://openaccess.thecvf.com/content/WACV2024/html/Ben-Shabat_IKEA_Ego_3D_Dataset_Understanding_Furniture_Assembly_Actions_From_Ego-View_WACV_2024_paper.html)
