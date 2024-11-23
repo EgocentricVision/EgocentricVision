@@ -2,7 +2,7 @@
 better view here -> https://egocentricvision.github.io/EgocentricVision/
 
 # 📜 List of Papers Recently Published at CVPR and ECCV 2024 🎉
-Here’s a curated selection of the latest and greatest papers from CVPR24 and ECCV24, focusing on the exciting field of Egocentric Vision. 🌟 
+Here’s a curated selection of the latest and greatest papers from CVPR and ECCV, focusing on the exciting field of Egocentric Vision. 🌟 
 
 We’ve done our best to include the most relevant and interesting works, but apologies in advance if we missed any papers! 🙏 If we did, let us know—we’d love to update the list.
 
@@ -157,4 +157,4 @@ If you’re curious about papers from past years -->  https://egocentricvision.g
 - [ADL4D] - ADL4D dataset offers a novel perspective on human-object interactions, providing video sequences of everyday activities involving multiple people and objects interacting simultaneously.  2024. [[paper]](https://arxiv.org/abs/2402.17758)
 
 
-This is a work in progress... 
+This work is still in progress... 
