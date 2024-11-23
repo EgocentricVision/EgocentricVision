@@ -3,7 +3,52 @@ import math
 from collections import OrderedDict
 
 import pandas as pd
+import shutil
+import difflib
 
+def load_file_content(file_path):
+    """Legge il contenuto di un file e lo restituisce come lista di righe."""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return f.readlines()
+
+def find_differences(content1, content2):
+    """Confronta due liste di righe e restituisce le differenze anche se le righe non sono allineate."""
+    differences = []
+    
+    # Confronta le righe utilizzando difflib, che restituisce le modifiche con codici di istruzione
+    diff = difflib.ndiff(content1, content2)
+    
+    # Itera sulle differenze
+    for i, line in enumerate(diff):
+        code = line[0]  # Il codice di istruzione, ad esempio '+', '-' o ' ' 
+        content = line[2:]  # Il contenuto della riga senza il codice
+        
+        # Salva solo le righe aggiunte o rimosse
+        if code == '-':
+            continue
+            # differences.append((i + 1, f"File1: {content}", "File2: <nessuna riga>"))
+        elif code == '+':
+            # differences.append((i + 1, "File1: <nessuna riga>", f"File2: {content}"))
+            differences.append({content})
+        elif code == '?':
+            continue  # Ignora righe che servono solo per marcare spazi o modifiche minori
+    
+    return differences
+
+def save_differences(differences, output_file):
+    """Salva le differenze trovate in un file di output specificato."""
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for line in differences:
+            if len(''.join(line)) < 5:
+                pass
+                print(''.join(line))
+            else:
+                f.write(f"{''.join(line)}\n")
+            # if line1 is not None:
+            #     f.write(f"  File1: {line1}")
+            # if line2 is not None:
+            #     f.write(f"  File2: {line2}")
+            # f.write("\n")
 
 def add_git_command(df: pd.DataFrame):
     df_tmp = df.__deepcopy__()
@@ -85,10 +130,8 @@ def add_git_command(df: pd.DataFrame):
 
     return df_tmp
 
-
 def strip_dataframe(df):
     return df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
-
 
 class Egoindex:
     # category
@@ -295,6 +338,21 @@ print(egoindex.body)
 
 readme = egoindex.init_readme + egoindex.body + egoindex.final
 
+# Store the OLD README.md -> README_OLD.md
+shutil.copyfile('./README.md', './README_OLD.md')
+
+# Update the current README.md file
 with open("./README.md", 'w') as file:
     # Write the content to the file
     file.write(readme)
+
+# Compute the difference 
+content1 = load_file_content('./README_OLD.md')
+content2 = load_file_content('./README.md')
+
+# Trova le differenze
+differences = find_differences(content1, content2)
+
+# Salva le differenze nel file di output
+save_differences(differences, './PAPERS_ADDED.md')
+print(f"Differenze salvate in './PAPERS_ADDED.md'")
