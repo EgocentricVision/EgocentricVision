@@ -52,6 +52,7 @@ def save_differences(differences, output_file):
 
 def add_git_command(df: pd.DataFrame):
     df_tmp = df.__deepcopy__()
+    df_tmp["Git Command"] = ""  # pre-crea la colonna come stringa
     for index, values in enumerate(df_tmp.values):
         git_command = ""
         title = values[2]
@@ -71,6 +72,11 @@ def add_git_command(df: pd.DataFrame):
 
         note = values[14]
 
+        try:
+            year_is_nan = math.isnan(float(year))
+        except (TypeError, ValueError):
+            year_is_nan = True
+
         if (category == "Papers" or category == "Surveys") and section != "Datasets":
             git_command += "- [" + title + "]"
             git_command += "(" + link_paper + ")"
@@ -78,8 +84,8 @@ def add_git_command(df: pd.DataFrame):
             git_command += " - " + authors_list + ", "
             if not isinstance(conference, float):
                 git_command += conference.strip()
-            if not math.isnan(year):
-                git_command += " " + str(int(year)) + "."
+            if not year_is_nan:
+                git_command += " " + str(int(float(year))) + "."
 
             if not isinstance(link_code, float):
                 git_command += " [[code]](" + link_code + ")"
@@ -100,8 +106,8 @@ def add_git_command(df: pd.DataFrame):
 
             if not isinstance(conference, float):
                 git_command += conference.strip()
-            if not math.isnan(year):
-                git_command += " " + str(int(year)) + "."
+            if not year_is_nan:
+                git_command += " " + str(int(float(year))) + "."
 
             if not isinstance(link_paper, float):
                 git_command += " [[paper]](" + link_paper + ")"
@@ -131,7 +137,7 @@ def add_git_command(df: pd.DataFrame):
     return df_tmp
 
 def strip_dataframe(df):
-    return df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+    return df.map(lambda x: x.strip() if isinstance(x, str) else x)
 
 class Egoindex:
     # category
