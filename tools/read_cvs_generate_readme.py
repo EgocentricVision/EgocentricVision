@@ -1,3 +1,4 @@
+import json
 import logging
 import math
 from collections import OrderedDict
@@ -362,3 +363,51 @@ differences = find_differences(content1, content2)
 # Salva le differenze nel file di output
 save_differences(differences, './PAPERS_ADDED.md')
 print(f"Differenze salvate in './PAPERS_ADDED.md'")
+
+
+def safe_year(value):
+    try:
+        if pd.isna(value):
+            return ''
+        return str(int(float(value)))
+    except (TypeError, ValueError):
+        return ''
+
+
+def build_recent_json(df, path='./recent.json', n=8):
+    """Writes the N most recently submitted entries (by 'Informazioni cronologiche')
+    as a small JSON file the homepage fetches to show a "Recently added" highlight.
+    Rows with a missing/unparseable timestamp are skipped -- there's no reliable way
+    to rank them, and most of the historic rows predate this column being filled in."""
+    df_recent = df.copy()
+    df_recent['_ts'] = pd.to_datetime(
+        df_recent['Informazioni cronologiche'], format='mixed', dayfirst=True, errors='coerce'
+    )
+    df_recent = df_recent.dropna(subset=['_ts']).sort_values('_ts', ascending=False).head(n)
+
+    items = []
+    for _, row in df_recent.iterrows():
+        title = row.get('Title')
+        if not isinstance(title, str) or not title.strip():
+            continue
+        authors = row.get('Author list')
+        authors = authors.strip() if isinstance(authors, str) else ''
+        conference = row.get('Conference')
+        conference = conference.strip() if isinstance(conference, str) else ''
+        link_paper = row.get('Link paper')
+        link_page = row.get('Link page')
+        link = link_paper if isinstance(link_paper, str) and link_paper.strip() else link_page
+        items.append({
+            'title': title.strip(),
+            'authors': authors,
+            'conference': conference,
+            'year': safe_year(row.get('Year')),
+            'link': link.strip() if isinstance(link, str) else '',
+        })
+
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)
+
+
+build_recent_json(df)
+print("Recently-added highlights written to ./recent.json")

@@ -366,6 +366,82 @@
         form.contribute-form { grid-template-columns: 1fr; }
         .field--half { grid-column: auto; }
     }
+
+    /* --- lazy way: LLM-assisted fill-in, collapsed by default --- */
+    details.lazy-way {
+        margin-top: 1.5rem;
+        background: var(--c-ink);
+        color: var(--c-paper);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    details.lazy-way summary {
+        cursor: pointer;
+        padding: 1.1rem 1.5rem;
+        font-family: var(--f-body);
+        font-weight: 700;
+        font-size: 1rem;
+        list-style: none;
+    }
+    details.lazy-way summary::-webkit-details-marker { display: none; }
+    details.lazy-way summary::marker { content: ''; }
+    details.lazy-way[open] summary {
+        border-bottom: 1px solid var(--c-border);
+    }
+    .lazy-steps {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+    }
+    .lazy-step {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+    }
+    .lazy-step__num {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        flex: 0 0 auto;
+    }
+    .lazy-step strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.95rem;
+    }
+    .lazy-step p {
+        margin: 0 0 0.6rem;
+        color: var(--c-paper-muted);
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    .lazy-step > div { flex: 1; min-width: 0; }
+    .lazy-copy-status {
+        margin-left: 0.6rem;
+        font-family: var(--f-mono);
+        font-size: 0.78rem;
+        color: var(--c-yellow);
+    }
+    .lazy-llm-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .lazy-llm-links a {
+        display: inline-block;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid var(--c-border);
+        color: var(--c-paper) !important;
+        font-size: 0.82rem;
+        text-decoration: none !important;
+        transition: border-color 0.2s, color 0.2s;
+    }
+    .lazy-llm-links a:hover {
+        border-color: var(--c-yellow);
+        color: var(--c-yellow) !important;
+    }
+    #lazy-paste { margin-bottom: 0.6rem; }
 </style>
 </head>
 <body>
@@ -487,6 +563,51 @@
             reviews and merges it, which then triggers the GitHub Action that regenerates the
             public page.
         </p>
+    </details>
+
+    <details class="lazy-way">
+        <summary>⚡ Lazy way — let an LLM fill this in for you</summary>
+        <div class="lazy-steps">
+            <div class="lazy-step">
+                <span class="lazy-step__num">1️⃣</span>
+                <div>
+                    <strong>🔗 Paste the paper's link</strong>
+                    <p>From arXiv, the conference page, wherever you found it.</p>
+                    <input type="url" id="lazy-link" placeholder="https://arxiv.org/abs/...">
+                </div>
+            </div>
+            <div class="lazy-step">
+                <span class="lazy-step__num">2️⃣</span>
+                <div>
+                    <strong>📋 Copy the ready-made prompt</strong>
+                    <p>It bakes in the link above and our exact format rules — works on desktop or mobile.</p>
+                    <button type="button" class="btn btn--ghost" id="lazy-copy-prompt">📋 Copy prompt</button>
+                    <span class="lazy-copy-status" id="lazy-copy-status"></span>
+                </div>
+            </div>
+            <div class="lazy-step">
+                <span class="lazy-step__num">3️⃣</span>
+                <div>
+                    <strong>🤖 Go to your favorite LLM</strong>
+                    <p>Paste it in. Feel free to also add the abstract, the PDF text, or anything else that helps.</p>
+                    <div class="lazy-llm-links">
+                        <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT ↗</a>
+                        <a href="https://claude.ai" target="_blank" rel="noopener">Claude ↗</a>
+                        <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini ↗</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lazy-step">
+                <span class="lazy-step__num">4️⃣</span>
+                <div>
+                    <strong>✨ Paste its answer back here</strong>
+                    <p>It's already in our format — this fills in the form above for you to review.</p>
+                    <textarea id="lazy-paste" rows="3" placeholder="Paste the row(s) your LLM gave you..."></textarea>
+                    <button type="button" class="btn btn--primary" id="lazy-fill-form">✨ Fill the form</button>
+                    <p class="status" id="lazy-status"></p>
+                </div>
+            </div>
+        </div>
     </details>
 </main>
 
@@ -784,6 +905,29 @@
         return v;
     }
 
+    function parseCsvLine(line) {
+        const fields = [];
+        let field = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const c = line[i];
+            if (inQuotes) {
+                if (c === '"') {
+                    if (line[i + 1] === '"') { field += '"'; i++; }
+                    else { inQuotes = false; }
+                } else {
+                    field += c;
+                }
+            } else {
+                if (c === '"') inQuotes = true;
+                else if (c === ',') { fields.push(field); field = ''; }
+                else field += c;
+            }
+        }
+        fields.push(field);
+        return fields;
+    }
+
     function buildRows() {
         const type = currentType;
         const title = els.title.value.trim();
@@ -1052,6 +1196,167 @@
             setBusy(false);
         }
     });
+
+    // --- lazy way: build a copy-paste prompt, then parse the LLM's CSV answer back into the form ---
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text);
+        }
+        return new Promise((resolve, reject) => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy') ? resolve() : reject(new Error('Copy failed'));
+            } catch (e) {
+                reject(e);
+            }
+            ta.remove();
+        });
+    }
+
+    function buildLazyPrompt(link) {
+        const linkLine = link || '[paste the paper link above, or just paste its abstract / PDF text below instead]';
+        return [
+            'You are helping add a research paper to the "Egocentric Vision" community-curated paper index (https://egocentricvision.github.io/EgocentricVision/).',
+            '',
+            'Read the paper below and output ONLY one or more CSV rows -- no explanation, no markdown, no code fences -- using EXACTLY this column order (this header is for reference only, do not output it):',
+            '',
+            'Informazioni cronologiche,Indirizzo email,Title,Author list,Conference,Year,Category,Section,Sub-section,Short description (1-2 lines),Link paper,Link page,Link code,Link video,Note,Git Command,',
+            '',
+            'Rules:',
+            '- Leave "Informazioni cronologiche", "Indirizzo email", "Note", "Git Command" and the trailing column empty.',
+            '- Leave "Short description" empty unless Category is Challenges, Devices, or the paper is a dataset (Section = "Datasets").',
+            '- Category must be exactly one of: Papers, Surveys, Challenges, Devices.',
+            '- If it is a dataset paper: Category = Papers, Section = "Datasets" exactly, Sub-section empty.',
+            '- If Category = Papers and it is not a dataset, Section must be exactly one of: Action / Activity Recognition, Action Anticipation, Multi-Modalities, Temporal Segmentation (Action Detection), Retrieval, Segmentation, Video-Language, Few-Shot Action Recognition, Gaze, From Third-Person to First-Person, NeRF, User Data from an Egocentric Point of View, Localization, Privacy protection, Tracking, Social Interactions, Multiple Egocentric Tasks, Activity-context, Diffusion models, Video summarization, Applications, Human to Robot, Asssitive Egocentric Vision, Popular Architectures, Other EGO-Context, Not Yet Explored Task.',
+            '- If Section = "Action / Activity Recognition", Sub-section must be one or more of: Action Recognition, Hand-Object Interactions, Usupervised Domain Adaptation, Domain Generalization, Source Free Domain Adaptation, Test Time Training (Adaptation), Zero-Shot Learning.',
+            '- If Section = "Action Anticipation", Sub-section must be one of: Short-Term Action Anticipation, Long-Term Action Anticipation, Future Gaze Prediction, Trajectory prediction, Region prediction.',
+            '- If Section = "Multi-Modalities", Sub-section must be one of: Audio-Visual, Depth, Thermal, Event, IMU.',
+            '- If Section = "Popular Architectures", Sub-section must be one of: 2D, 3D, RNN, Transformer.',
+            '- For every other Section, leave Sub-section empty.',
+            '- If more than one Sub-section applies, output one full row per Sub-section (repeat every other field).',
+            '- Category = Surveys: leave Section and Sub-section empty.',
+            '- Category = Challenges or Devices: leave Section and Sub-section empty; "Link page" is the main link.',
+            '- Wrap any field containing a comma in double quotes, doubling any internal double quotes (standard CSV escaping).',
+            '- Author list: full names separated by ", ".',
+            '- Year: 4-digit number only.',
+            '- Link paper / Link page / Link code / Link video: the best URL you can find for each; leave empty if unknown, never invent one.',
+            '',
+            'Paper link: ' + linkLine,
+            '',
+            '(Feel free to also paste the abstract, PDF text, or anything else useful below this line.)'
+        ].join('\n');
+    }
+
+    function setLazyStatus(text, kind) {
+        const el = document.getElementById('lazy-status');
+        el.dataset.kind = kind;
+        el.textContent = text;
+    }
+
+    const lazyCopyBtn = document.getElementById('lazy-copy-prompt');
+    if (lazyCopyBtn) {
+        lazyCopyBtn.addEventListener('click', () => {
+            const link = document.getElementById('lazy-link').value.trim();
+            const prompt = buildLazyPrompt(link);
+            const statusEl = document.getElementById('lazy-copy-status');
+            copyToClipboard(prompt).then(() => {
+                statusEl.textContent = '✅ Copied!';
+                setTimeout(() => { statusEl.textContent = ''; }, 3000);
+            }).catch(() => {
+                statusEl.textContent = '⚠️ Could not copy automatically — select and copy the text manually.';
+            });
+        });
+    }
+
+    const lazyFillBtn = document.getElementById('lazy-fill-form');
+    if (lazyFillBtn) {
+        lazyFillBtn.addEventListener('click', () => {
+            const raw = document.getElementById('lazy-paste').value;
+            const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+            if (!lines.length) {
+                setLazyStatus('Paste your LLM\'s answer first.', 'error');
+                return;
+            }
+
+            const EXPECTED_COLUMNS = 17;
+            const rows = [];
+            for (const line of lines) {
+                const cols = parseCsvLine(line);
+                if (cols.length !== EXPECTED_COLUMNS) {
+                    setLazyStatus(`Couldn't read one of the lines (expected ${EXPECTED_COLUMNS} columns, got ${cols.length}). Make sure your LLM only output the CSV row(s), nothing else.`, 'error');
+                    return;
+                }
+                rows.push({
+                    title: cols[2].trim(),
+                    authors: cols[3].trim(),
+                    conference: cols[4].trim(),
+                    year: cols[5].trim(),
+                    category: cols[6].trim(),
+                    section: cols[7].trim(),
+                    subsection: cols[8].trim(),
+                    shortdesc: cols[9].trim(),
+                    linkPaper: cols[10].trim(),
+                    linkPage: cols[11].trim(),
+                    linkCode: cols[12].trim(),
+                    linkVideo: cols[13].trim(),
+                    note: cols[14].trim()
+                });
+            }
+
+            const first = rows[0];
+            let type;
+            if (first.category === 'Papers' && first.section === 'Datasets') type = 'dataset';
+            else if (first.category === 'Papers') type = 'paper';
+            else if (first.category === 'Surveys') type = 'survey';
+            else if (first.category === 'Challenges') type = 'challenge';
+            else if (first.category === 'Devices') type = 'device';
+            else {
+                setLazyStatus(`Unrecognized Category "${first.category}" -- expected Papers, Surveys, Challenges or Devices.`, 'error');
+                return;
+            }
+
+            selectType(type);
+            els.title.value = first.title;
+            els.authors.value = first.authors;
+            els.conference.value = first.conference;
+            els.year.value = first.year;
+            els.note.value = first.note;
+
+            let warning = '';
+            if (type === 'paper') {
+                if (Object.prototype.hasOwnProperty.call(SECTIONS, first.section)) {
+                    els.section.value = first.section;
+                } else {
+                    warning = ` Section "${first.section}" wasn't recognized -- double-check it.`;
+                }
+                populateSubsections();
+                const wantedSubs = new Set(rows.map(r => r.subsection).filter(Boolean));
+                els.subsectionList.querySelectorAll('input').forEach(inp => {
+                    inp.checked = wantedSubs.has(inp.value);
+                });
+            }
+            if (type === 'dataset' || type === 'challenge') {
+                els.shortdesc.value = first.shortdesc;
+            }
+            els.linkPaper.value = first.linkPaper;
+            els.linkPage.value = first.linkPage;
+            els.linkCode.value = first.linkCode;
+            els.linkVideo.value = first.linkVideo;
+
+            evaluateReveal();
+            updateProgress();
+
+            setLazyStatus('✨ Form filled in below -- review it before submitting.' + warning, warning ? 'error' : 'success');
+            const titleField = document.getElementById('field-title');
+            if (titleField) titleField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
 </script>
 </body>
 </html>

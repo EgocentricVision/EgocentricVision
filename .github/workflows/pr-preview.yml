@@ -1,0 +1,110 @@
+name: PR preview
+
+# Uses pull_request_target (not pull_request) so it gets a comment-capable token
+# even for PRs from forks -- which is the normal case for add-paper.html
+# submissions. To stay safe with untrusted PR content, it never checks out or
+# executes the PR's own code: it checks out this repo's trusted tools/ scripts
+# at their gh-pages version, and only pulls the PR's egodata.csv as plain data
+# to run those trusted scripts against.
+
+on:
+  pull_request_target:
+    branches:
+      - gh-pages
+    paths:
+      - tools/egodata.csv
+
+permissions:
+  pull-requests: write
+  contents: read
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages (trusted scripts)
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install pandas
+
+      - name: Fetch the PR's egodata.csv (data only, not executed)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/${{ github.event.pull_request.head.repo.full_name }}/contents/tools/egodata.csv?ref=${{ github.event.pull_request.head.sha }}" \
+            --jq '.content' | base64 -d > tools/egodata.csv
+
+      - name: Lint the PR's data
+        id: lint
+        run: |
+          cd tools
+          python lint_egodata.py | tee /tmp/lint_output.txt
+
+      - name: Generate README preview
+        run: |
+          cd tools
+          python read_cvs_generate_readme.py
+
+      - name: Build preview comment
+        run: |
+          {
+            echo "<!-- pr-preview-comment -->"
+            echo "### 📄 Preview"
+            echo ""
+            echo "This is what merging this PR would add to the paper index:"
+            echo ""
+            echo '```'
+            if [ -s tools/PAPERS_ADDED.md ]; then
+              cat tools/PAPERS_ADDED.md
+            else
+              echo "(no visible additions -- check that the new row(s) are classifiable, see below)"
+            fi
+            echo '```'
+            echo ""
+            if grep -q "::warning" /tmp/lint_output.txt; then
+              echo "⚠️ **Some row(s) may not show up on the site as-is** -- see the Checks tab for details."
+            else
+              echo "✅ All rows in \`egodata.csv\` look classifiable."
+            fi
+          } > /tmp/comment.md
+
+      - name: Post or update sticky comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('/tmp/comment.md', 'utf8');
+            const marker = '<!-- pr-preview-comment -->';
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
