@@ -7,7 +7,7 @@
         (function () {
             try {
                 var saved = localStorage.getItem('egovision_theme');
-                if (saved === 'dark' || saved === 'light') {
+                if (saved === 'dark' || saved === 'light' || saved === 'brutalist' || saved === 'minimal') {
                     document.documentElement.setAttribute('data-theme', saved);
                 }
             } catch (e) { /* localStorage unavailable -- fall back to system preference */ }
@@ -44,6 +44,10 @@
             --text-muted: #555;
             --heading: #16324f;
             --border: #e4e4e4;
+            --accent: #1367a9;
+            --accent-text: #fff;
+            --radius: 10px;
+            --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         :root[data-theme="dark"] {
@@ -54,10 +58,42 @@
             --text-muted: #a7abb8;
             --heading: #dfe6f2;
             --border: #33353d;
+            --accent: #1367a9;
+            --accent-text: #fff;
+        }
+
+        /* Brutalist: pure black/white, one loud accent, sharp square edges, no soft shadows. */
+        :root[data-theme="brutalist"] {
+            --bg: #0a0a0a;
+            --bg-rgb: 10, 10, 10;
+            --surface: #000;
+            --text: #f5f5f5;
+            --text-muted: #9a9a9a;
+            --heading: #ffffff;
+            --border: #f5f5f5;
+            --accent: #ffe600;
+            --accent-text: #0a0a0a;
+            --radius: 0px;
+            --card-shadow: none;
+        }
+
+        /* Minimal: near-monochrome, hairline borders, quiet -- no accent color, no shadows. */
+        :root[data-theme="minimal"] {
+            --bg: #fafaf9;
+            --bg-rgb: 250, 250, 249;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #9b9b93;
+            --heading: #1a1a1a;
+            --border: #ececea;
+            --accent: #1a1a1a;
+            --accent-text: #ffffff;
+            --radius: 2px;
+            --card-shadow: none;
         }
 
         @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) {
+            :root:not([data-theme="light"]):not([data-theme="brutalist"]):not([data-theme="minimal"]) {
                 --bg: #14151a;
                 --bg-rgb: 20, 21, 26;
                 --surface: #1d1e24;
@@ -65,7 +101,29 @@
                 --text-muted: #a7abb8;
                 --heading: #dfe6f2;
                 --border: #33353d;
+                --accent: #1367a9;
+                --accent-text: #fff;
             }
+        }
+
+        /* Brutalist/minimal give a few key surfaces a different shape too, not just
+           different colors, so the theme actually reads as a different design language. */
+        :root[data-theme="brutalist"] .intro,
+        :root[data-theme="brutalist"] .person,
+        :root[data-theme="brutalist"] .toc-wrap,
+        :root[data-theme="brutalist"] .search-bar__row,
+        :root[data-theme="brutalist"] .recent-added {
+            border-width: 2px;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        :root[data-theme="minimal"] .intro,
+        :root[data-theme="minimal"] .person,
+        :root[data-theme="minimal"] .toc-wrap,
+        :root[data-theme="minimal"] .search-bar__row,
+        :root[data-theme="minimal"] .recent-added {
+            box-shadow: none;
         }
 
         body {
@@ -136,7 +194,7 @@
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #1367a9;
+            color: var(--accent);
             margin-bottom: 10px;
         }
 
@@ -187,7 +245,7 @@
         }
 
         .intro a {
-            color: #1367a9;
+            color: var(--accent);
             font-weight: bold;
             text-decoration: none;
         }
@@ -208,8 +266,8 @@
             margin: 4px 0 14px;
             padding: 10px 22px;
             border-radius: 999px;
-            background-color: #1367a9;
-            color: #fff !important;
+            background-color: var(--accent);
+            color: var(--accent-text) !important;
             font-weight: 700;
             text-decoration: none !important;
             transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -223,7 +281,7 @@
         }
 
         a {
-            color: #1367a9; /* Colore normale del link */
+            color: var(--accent); /* Colore normale del link */
             text-decoration: none; /* Rimuovi sottolineato predefinito */
             transition: color 0.3s; /* Aggiungi una transizione per un effetto più fluido */
         }
@@ -291,7 +349,7 @@
         }
 
         .section-divider i {
-            color: #1367a9;
+            color: var(--accent);
             font-size: 0.75em;
             margin-left: 8px;
         }
@@ -302,6 +360,94 @@
             border: none;
             border-top: 1px solid var(--border);
         }
+
+        /* --- inline index tree: fills the space right after "Navigate", reveals as
+           you scroll to it, then scrolls away as the sidebar TOC takes over below.
+           Same content as .toc-wrap, just rendered a second time with a tree look
+           (thin curved connectors) and a scroll-triggered fade-in instead of the
+           sidebar's always-fixed positioning. --- */
+        .index-tree {
+            display: none; /* only relevant where the sidebar exists to hand off to -- see below */
+            max-width: 900px;
+            margin: 6px auto 0;
+            padding: 4px 20px 8px;
+        }
+
+        @media (min-width: 1400px) {
+            .index-tree {
+                display: block;
+            }
+        }
+
+        .index-tree ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 1.3em;
+            margin-left: 0.55em;
+            border-left: 1px solid var(--border);
+        }
+
+        .index-tree > ul {
+            border-left: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        .index-tree li {
+            position: relative;
+            padding: 3px 0 3px 1.05em;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .index-tree.is-revealed li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Curved elbow connector into the rail above -- "line bombate", not a sharp
+           right angle. Delicate and theme-adaptive since it's just var(--border). */
+        .index-tree li::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            width: 1.05em;
+            height: 1.4em;
+            border-left: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            border-bottom-left-radius: 12px;
+        }
+
+        .index-tree > ul > li::before {
+            display: none; /* top-level entries have no parent rail to connect into */
+        }
+
+        .index-tree li > a {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.9em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.15s, color 0.15s;
+        }
+
+        .index-tree li > a:hover {
+            background: color-mix(in srgb, var(--accent) 8%, transparent);
+            color: var(--accent);
+        }
+
+        /* Depth-based reveal stagger: each extra "ul" ancestor is one tree level
+           deeper (category -> section -> sub-section), and each selector below is
+           more specific than the last purely by having one more combinator, so the
+           deepest matching rule always wins without needing source-order tricks. */
+        .index-tree > ul li { transition-delay: 0s; }
+        .index-tree > ul ul li { transition-delay: 0.12s; }
+        .index-tree > ul ul ul li { transition-delay: 0.24s; }
+        .index-tree > ul ul ul ul li { transition-delay: 0.36s; }
 
         /* --- table of contents (short index built from headings) --- */
         .toc-wrap {
@@ -340,8 +486,8 @@
         }
 
         .toc-wrap li > a:hover {
-            background: rgba(19, 103, 169, 0.08);
-            color: #1367a9;
+            background: color-mix(in srgb, var(--accent) 8%, transparent);
+            color: var(--accent);
             text-decoration: none;
         }
 
@@ -389,7 +535,7 @@
             .toc-wrap.has-active li > a.is-current-section {
                 opacity: 1;
                 font-weight: 700;
-                color: #1367a9;
+                color: var(--accent);
             }
         }
 
@@ -418,7 +564,7 @@
         }
 
         .search-bar__row i {
-            color: #1367a9;
+            color: var(--accent);
         }
 
         .search-bar__row input {
@@ -452,16 +598,16 @@
             border-radius: 999px;
             border: 1px solid var(--border);
             background: var(--surface);
-            color: #1367a9;
+            color: var(--accent);
             cursor: pointer;
             transition: background-color 0.15s, color 0.15s, border-color 0.15s;
         }
 
         .year-chip:hover,
         .year-chip.is-active {
-            background: #1367a9;
-            color: #fff;
-            border-color: #1367a9;
+            background: var(--accent);
+            color: var(--accent-text);
+            border-color: var(--accent);
         }
 
         /* --- full paper list: the row hover-magnify effect --- */
@@ -506,7 +652,7 @@
         }
 
         .paper-index li.paper-row:hover {
-            background-color: rgba(19, 103, 169, 0.06);
+            background-color: color-mix(in srgb, var(--accent) 6%, transparent);
             border-left-color: #ff5a2f;
             font-size: 1.08em;
             transform: translateX(3px);
@@ -518,7 +664,7 @@
         }
 
         .paper-index li.paper-row:hover a:first-child {
-            color: #1367a9;
+            color: var(--accent);
         }
 
         .paper-index li.paper-row a:not(:first-child) {
@@ -530,15 +676,15 @@
             padding: 2px 8px;
             margin-left: 6px;
             border-radius: 999px;
-            background: #eef4f9;
-            color: #1367a9 !important;
+            background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+            color: var(--accent) !important;
             text-decoration: none;
             vertical-align: middle;
         }
 
         .paper-index li.paper-row a:not(:first-child):hover {
-            background: #1367a9;
-            color: #fff !important;
+            background: var(--accent);
+            color: var(--accent-text) !important;
         }
 
         /* --- floating back-to-top button --- */
@@ -550,8 +696,8 @@
             height: 46px;
             border-radius: 50%;
             border: none;
-            background: #1367a9;
-            color: #fff;
+            background: var(--accent);
+            color: var(--accent-text);
             font-size: 1.2rem;
             line-height: 1;
             cursor: pointer;
@@ -610,7 +756,7 @@
         }
 
         .recent-added__list a:hover {
-            color: #1367a9;
+            color: var(--accent);
             text-decoration: underline;
         }
 
@@ -623,7 +769,7 @@
 </head>
 <body>
     <div class="header">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cycle theme" title="Cycle theme">☀️</button>
         <a href="https://plana93.github.io/"><img class="logo" src="resources/photo/egocentric_vision_cool_picture-removebg.png" alt="Vandal Logo"></a>
         <h1 class="title"><i class="fas fa-eye"></i> Egocentric Vision <i class="fas fa-eye"></i></h1>
         <h2 class="subtitle">A curated, community-updated index of egocentric vision research</h2>
@@ -667,7 +813,7 @@
 }
 
 .person-info a {
-    color: #1367a9;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -734,6 +880,9 @@
         });
     });
 </script>
+
+    <h3 class="section-divider" id="index-heading"><span class="kicker">Navigate</span>Egocentric Vision Index <i class="fa fa-book"></i></h3>
+    <div class="index-tree" id="index-tree"></div>
 
     <div class="search-bar" id="search-bar">
         <div class="search-bar__row">
@@ -867,6 +1016,20 @@
                 });
             }
 
+            // Scrolls only the sidebar's own internal list (never the page) so the
+            // highlighted entry stays in view as you move through a very long index.
+            function keepLinkVisibleInSidebar(link) {
+                if (!tocWrap || !link) return;
+                var containerRect = tocWrap.getBoundingClientRect();
+                var linkRect = link.getBoundingClientRect();
+                var margin = 16;
+                if (linkRect.top < containerRect.top + margin) {
+                    tocWrap.scrollTop -= (containerRect.top + margin - linkRect.top);
+                } else if (linkRect.bottom > containerRect.bottom - margin) {
+                    tocWrap.scrollTop += (linkRect.bottom - (containerRect.bottom - margin));
+                }
+            }
+
             function updateActiveSection() {
                 if (!tocWrap || !headingEls.length) return;
                 var threshold = 110;
@@ -884,6 +1047,7 @@
                 if (current && tocLinks[current.id]) {
                     tocLinks[current.id].classList.add('is-current-section');
                     tocWrap.classList.add('has-active');
+                    keepLinkVisibleInSidebar(tocLinks[current.id]);
                 } else {
                     tocWrap.classList.remove('has-active');
                 }
@@ -927,7 +1091,6 @@
     <div>
         <script>
             $(document).ready(function() {
-                $("body").append('<h3 class="section-divider"><span class="kicker">Navigate</span>Egocentric Vision Index <i class="fa fa-book"></i></h3>');
                 readIndex_Allpapper(12);
             });
         </script>
@@ -1071,6 +1234,22 @@
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
                         $("body").append('<nav class="toc-wrap" id="toc-wrap">' + $html + '</nav>');
+                        var $indexTree = document.getElementById('index-tree');
+                        if ($indexTree) {
+                            $indexTree.innerHTML = $html;
+                            if ('IntersectionObserver' in window) {
+                                new IntersectionObserver(function (entries, obs) {
+                                    entries.forEach(function (entry) {
+                                        if (entry.isIntersecting) {
+                                            $indexTree.classList.add('is-revealed');
+                                            obs.unobserve(entry.target);
+                                        }
+                                    });
+                                }, { threshold: 0.1 }).observe($indexTree);
+                            } else {
+                                $indexTree.classList.add('is-revealed'); // no IntersectionObserver support -- fail open
+                            }
+                        }
                         $(document).trigger('toc:ready');
                         return $html;
 
@@ -1248,8 +1427,11 @@
 
 <script>
     $(document).ready(function () {
-        // --- dark mode toggle ---------------------------------------------------
+        // --- theme cycling: light -> dark -> brutalist -> minimal -> light -----------
         var THEME_KEY = 'egovision_theme';
+        var THEMES = ['light', 'dark', 'brutalist', 'minimal'];
+        var THEME_ICONS = { light: '☀️', dark: '🌙', brutalist: '⚡', minimal: '◻️' };
+        var THEME_LABELS = { light: 'Light', dark: 'Dark', brutalist: 'Brutalist', minimal: 'Minimal' };
         var root = document.documentElement;
         var themeBtn = document.getElementById('theme-toggle');
 
@@ -1260,13 +1442,17 @@
         }
 
         function updateThemeIcon() {
-            if (themeBtn) themeBtn.textContent = effectiveTheme() === 'dark' ? '☀️' : '🌙';
+            if (!themeBtn) return;
+            var current = effectiveTheme();
+            themeBtn.textContent = THEME_ICONS[current] || '☀️';
+            themeBtn.title = 'Theme: ' + (THEME_LABELS[current] || current) + ' (click to cycle)';
         }
 
         updateThemeIcon();
         if (themeBtn) {
             themeBtn.addEventListener('click', function () {
-                var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+                var currentIndex = THEMES.indexOf(effectiveTheme());
+                var next = THEMES[(currentIndex + 1) % THEMES.length];
                 root.setAttribute('data-theme', next);
                 try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
                 updateThemeIcon();
