@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
      <!-- Aggiungi il CSS di Owl Carousel -->
@@ -35,7 +35,7 @@
             background-color: #1367a9;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 36px 20px;
         }
 
         .logo {
@@ -45,13 +45,31 @@
         }
 
         .title {
-            font-size: 32px;
-            margin: 10px 0;
+            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: -0.01em;
+            margin: 16px 0 6px;
         }
 
         .subtitle {
-            font-size: 18px;
-            margin: 5px 0;
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.82);
+            margin: 0;
+        }
+
+        .kicker {
+            display: block;
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #1367a9;
+            margin-bottom: 10px;
         }
 
         .container {
@@ -67,6 +85,11 @@
             flex: 0 0 200px;
             text-align: center;
             margin: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .person:hover {
+            transform: translateY(-3px);
         }
 
         .person img {
@@ -106,17 +129,6 @@
         .intro .contact {
             color: #136700;
             font-style: italic;
-        }
-
-        .intro .kicker {
-            display: block;
-            font-family: 'JetBrains Mono', 'Menlo', monospace;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #1367a9;
-            margin-bottom: 10px;
         }
 
         .intro .cta-pill {
@@ -188,16 +200,157 @@
         .owl-nav [class*=owl-next] {
             margin-left: 5px;
         }
-        <div class="owl-nav">
-            <div class="owl-prev"><i class="fas fa-chevron-left"></i></div>
-            <div class="owl-next"><i class="fas fa-chevron-right"></i></div>
-        </div>
 
         ul.menu {
             list-style-type: none; /* Rimuovi i bullet predefiniti */
             padding: 0;
         }
 
+        /* --- section dividers injected before the index / full paper list --- */
+        .section-divider {
+            max-width: 900px;
+            margin: 48px auto 16px;
+            padding: 0 20px;
+            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            color: #16324f;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .section-divider i {
+            color: #1367a9;
+            font-size: 0.75em;
+            margin-left: 8px;
+        }
+
+        hr.divider {
+            max-width: 900px;
+            margin: 40px auto 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* --- table of contents (short index built from headings) --- */
+        .toc-wrap {
+            max-width: 900px;
+            margin: 12px auto 0;
+            padding: 20px 26px;
+            background: #fff;
+            border: 1px solid #e4e4e4;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .toc-wrap ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 1.15em;
+        }
+
+        .toc-wrap > ul {
+            padding-left: 0;
+        }
+
+        .toc-wrap li {
+            margin: 2px 0;
+        }
+
+        .toc-wrap li > a {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: #334;
+            font-size: 0.92em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.15s, color 0.15s;
+        }
+
+        .toc-wrap li > a:hover {
+            background: rgba(19, 103, 169, 0.08);
+            color: #1367a9;
+            text-decoration: none;
+        }
+
+        /* --- full paper list: the row hover-magnify effect --- */
+        .paper-index {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .paper-index ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 1.2em;
+        }
+
+        .paper-index > ul {
+            padding-left: 0;
+        }
+
+        .paper-index li.paper-heading {
+            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.02em;
+            color: #16324f;
+            margin: 22px 0 6px;
+        }
+
+        .paper-index li.paper-heading a {
+            color: inherit;
+            cursor: default;
+        }
+
+        .paper-index li.paper-row {
+            border-left: 3px solid transparent;
+            border-radius: 0 8px 8px 0;
+            padding: 7px 10px;
+            margin: 1px 0;
+            line-height: 1.5;
+            transform-origin: left center;
+            transition: transform 0.16s ease, background-color 0.16s ease,
+                        border-color 0.16s ease, font-size 0.16s ease;
+        }
+
+        .paper-index li.paper-row:hover {
+            background-color: rgba(19, 103, 169, 0.06);
+            border-left-color: #ff5a2f;
+            font-size: 1.08em;
+            transform: translateX(3px);
+        }
+
+        .paper-index li.paper-row a:first-child {
+            color: #16324f;
+            text-decoration: none;
+        }
+
+        .paper-index li.paper-row:hover a:first-child {
+            color: #1367a9;
+        }
+
+        .paper-index li.paper-row a:not(:first-child) {
+            display: inline-block;
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 2px 8px;
+            margin-left: 6px;
+            border-radius: 999px;
+            background: #eef4f9;
+            color: #1367a9 !important;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        .paper-index li.paper-row a:not(:first-child):hover {
+            background: #1367a9;
+            color: #fff !important;
+        }
 
     </style>
 </head>
@@ -205,7 +358,7 @@
     <div class="header">
         <a href="https://plana93.github.io/"><img class="logo" src="resources/photo/egocentric_vision_cool_picture-removebg.png" alt="Vandal Logo"></a>
         <h1 class="title"><i class="fas fa-eye"></i> Egocentric Vision <i class="fas fa-eye"></i></h1>
-        <h2 class="subtitle"></h2>
+        <h2 class="subtitle">A curated, community-updated index of egocentric vision research</h2>
     </div>
 
     <style>
@@ -311,7 +464,7 @@
     <div>
         <script>
             $(document).ready(function() {
-                $("body").append("<h3><ul style=\"color: #1367a7\">  Egocentric Vision Index <i class=\"fa fa-book\" style=\"font-size:18px;\"></i></ul></h3>");
+                $("body").append('<h3 class="section-divider"><span class="kicker">Navigate</span>Egocentric Vision Index <i class="fa fa-book"></i></h3>');
                 readIndex_Allpapper(12);
             });
         </script>
@@ -443,7 +596,7 @@
 
 
 
-                                $html += $start + '<li><a onclick=document.getElementById("'+ $prova +'").scrollIntoView()>' + lines[i] + '</a></li>' + $end;
+                                $html += $start + '<li class="toc-item"><a onclick=document.getElementById("'+ $prova +'").scrollIntoView()>' + lines[i] + '</a></li>' + $end;
                                 $start = "";
                                 $end = "";
                             } else {
@@ -454,7 +607,7 @@
                         var find = '#';
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
-                        $("body").append($html);
+                        $("body").append('<nav class="toc-wrap">' + $html + '</nav>');
                         return $html;
 
 
@@ -553,7 +706,7 @@
                                     $paper_string = $paper_string.replace(re, '');
 
 
-                                    $html += $start_old + '<li>';
+                                    $html += $start_old + '<li class="paper-row">';
                                     $html += '<a href='+$href_pdf + ' >' + $paper_string + '</a>';
 
                                     $string_parser = "[code]";
@@ -595,7 +748,7 @@
                                     $prova_new =  $prova_new.replace(re, '');
 
                                     //$html += $start + '<li><a href=javascript:void(0) style="font-weight: bold">' + lines[i] + '</a></li>' + $end;
-                                    $html += $start + '<li><a id=' + $prova_new + ' href=javascript:void(0) style="font-weight: bold">' + lines[i] + '</a></li>' + $end
+                                    $html += $start + '<li class="paper-heading"><a id=' + $prova_new + ' href=javascript:void(0)>' + lines[i] + '</a></li>' + $end
                                     ;
                                     $start_old = $start;
                                     $end_old = $end;
@@ -611,8 +764,8 @@
                         var find = '#';
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
-                        $("body").append('<hr><h4><ul style="color: #1367a9">' + "All Egocentric Vision Projects " + '<i class=\"fa fa-database\" style=\"font-size:18px;\"></i></ul></h4></hr>' );
-                        $("body").append($html);
+                        $("body").append('<hr class="divider"><h4 class="section-divider"><span class="kicker">Full list</span>All Egocentric Vision Projects <i class="fa fa-database"></i></h4>');
+                        $("body").append('<div class="paper-index">' + $html + '</div>');
                         return $html;
 
 
