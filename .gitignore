@@ -1,0 +1,5 @@
+plans
+
+# Google service account keys -- never commit these, wherever they end up
+credentials.json
+sage-artifact-*.json

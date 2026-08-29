@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aggiungi un paper — Egocentric Vision</title>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f1f1f1;
+        color: #222;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #1367a9;
+        color: #fff;
+        padding: 24px 20px;
+    }
+    header h1 {
+        margin: 0 0 6px 0;
+        font-size: 1.5em;
+    }
+    header a {
+        color: #fff;
+    }
+    main {
+        max-width: 760px;
+        margin: 30px auto;
+        background: #fff;
+        padding: 24px 30px 30px;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    p.lead {
+        line-height: 1.5;
+    }
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 160px;
+        font-family: 'Menlo', 'Consolas', monospace;
+        font-size: 0.85em;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    button {
+        background-color: #1367a9;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 4px;
+        font-size: 0.95em;
+        cursor: pointer;
+    }
+    button:hover:not(:disabled) {
+        background-color: #0d517f;
+    }
+    button:disabled {
+        background-color: #9bb9cc;
+        cursor: not-allowed;
+    }
+    button.secondary {
+        background-color: transparent;
+        color: #1367a9;
+        border: 1px solid #1367a9;
+    }
+    button.secondary:hover {
+        background-color: #eef4f9;
+    }
+    #status {
+        margin-top: 18px;
+        padding: 12px 14px;
+        border-radius: 4px;
+        font-size: 0.92em;
+        line-height: 1.4;
+        display: none;
+    }
+    #status.info {
+        display: block;
+        background: #eef4f9;
+        color: #0d517f;
+    }
+    #status.success {
+        display: block;
+        background: #e6f4ea;
+        color: #1e7a34;
+    }
+    #status.error {
+        display: block;
+        background: #fbe7e7;
+        color: #a3282c;
+        white-space: pre-wrap;
+    }
+    #status a {
+        color: inherit;
+        font-weight: bold;
+    }
+    details {
+        margin-top: 26px;
+        font-size: 0.9em;
+        color: #444;
+    }
+    details summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #1367a9;
+    }
+    code {
+        background: #f1f1f1;
+        padding: 1px 5px;
+        border-radius: 3px;
+    }
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>Aggiungi un paper</h1>
+    <div><a href="./index.html">&larr; Torna alla pagina Egocentric Vision</a></div>
+</header>
+<main>
+    <p class="lead">
+        Incolla qui sotto una o più righe CSV già pronte (stesso schema di
+        <code>tools/egodata.csv</code>, ad esempio esportate da Elynd). Al click su
+        "Apri Pull Request" viene creato un branch, aggiunte le righe a
+        <code>tools/egodata.csv</code> e aperta una Pull Request verso <code>gh-pages</code>
+        per la revisione.
+    </p>
+
+    <textarea id="csv-rows" placeholder="Incolla qui una o più righe CSV..."></textarea>
+
+    <div class="actions">
+        <button id="submit-btn" onclick="openPullRequest()">Apri Pull Request</button>
+        <button class="secondary" onclick="resetToken()">Cambia token GitHub</button>
+    </div>
+
+    <div id="status"></div>
+
+    <details>
+        <summary>Come funziona / note</summary>
+        <p>
+            Al primo utilizzo viene richiesto un GitHub Personal Access Token
+            <strong>fine-grained</strong>, con accesso limitato a questo solo repository e
+            permessi <code>Contents: Read and write</code> +
+            <code>Pull requests: Read and write</code>. Il token viene salvato solo nel
+            <code>localStorage</code> di questo browser e usato per chiamare direttamente
+            <code>api.github.com</code>: non viene mai inviato altrove.
+        </p>
+        <p>
+            Non condividere il link di questa pagina con la capacità di scrittura attiva
+            (token già salvato) se non vuoi che chi la apre possa scrivere nel repository.
+        </p>
+        <p>
+            Il merge della Pull Request (passo manuale di revisione) fa scattare la GitHub
+            Action che rigenera automaticamente la pagina pubblica.
+        </p>
+    </details>
+</main>
+
+<script>
+    const REPO_OWNER = "EgocentricVision";
+    const REPO_NAME = "EgocentricVision";
+    const BASE_BRANCH = "gh-pages";
+    const CSV_PATH = "tools/egodata.csv";
+    const TOKEN_KEY = "egovision_add_paper_pat";
+
+    function b64EncodeUnicode(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = '';
+        bytes.forEach(b => { binary += String.fromCharCode(b); });
+        return btoa(binary);
+    }
+
+    function b64DecodeUnicode(b64) {
+        const binary = atob(b64.replace(/\n/g, ''));
+        const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+        return new TextDecoder('utf-8').decode(bytes);
+    }
+
+    function parseCsvLine(line) {
+        const fields = [];
+        let field = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const c = line[i];
+            if (inQuotes) {
+                if (c === '"') {
+                    if (line[i + 1] === '"') { field += '"'; i++; }
+                    else { inQuotes = false; }
+                } else {
+                    field += c;
+                }
+            } else {
+                if (c === '"') inQuotes = true;
+                else if (c === ',') { fields.push(field); field = ''; }
+                else field += c;
+            }
+        }
+        fields.push(field);
+        return fields;
+    }
+
+    function getToken() {
+        let token = localStorage.getItem(TOKEN_KEY);
+        if (!token) {
+            token = window.prompt(
+                "Incolla il tuo GitHub Personal Access Token (fine-grained, scopato a questo repo, " +
+                "permessi Contents + Pull requests: Read and write).\n" +
+                "Viene salvato solo in questo browser (localStorage) e usato per chiamare api.github.com direttamente."
+            );
+            if (token) {
+                token = token.trim();
+                if (token) localStorage.setItem(TOKEN_KEY, token);
+            }
+        }
+        return token || null;
+    }
+
+    function resetToken() {
+        localStorage.removeItem(TOKEN_KEY);
+        setStatus('Token rimosso da questo browser. Verrà richiesto di nuovo al prossimo invio.', 'info');
+    }
+
+    function setStatus(html, kind) {
+        const el = document.getElementById('status');
+        el.className = kind;
+        el.innerHTML = html;
+    }
+
+    function setBusy(busy) {
+        document.getElementById('submit-btn').disabled = busy;
+    }
+
+    async function githubRequest(path, token, method, body) {
+        const res = await fetch(`https://api.github.com${path}`, {
+            method: method || 'GET',
+            headers: Object.assign(
+                {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'X-GitHub-Api-Version': '2022-11-28'
+                },
+                body ? { 'Content-Type': 'application/json' } : {}
+            ),
+            body: body ? JSON.stringify(body) : undefined
+        });
+        if (!res.ok) {
+            let detail = '';
+            try {
+                const errJson = await res.json();
+                detail = errJson.message || '';
+            } catch (e) { /* ignore */ }
+            if (res.status === 401 || res.status === 403) {
+                throw new Error(
+                    `Token non valido o senza i permessi necessari (HTTP ${res.status}). ${detail}\n` +
+                    `Verifica che il token abbia accesso a questo repo con permessi Contents e Pull requests in scrittura.`
+                );
+            }
+            throw new Error(`Richiesta a ${path} fallita (HTTP ${res.status}). ${detail}`);
+        }
+        return res.status === 204 ? null : res.json();
+    }
+
+    async function openPullRequest() {
+        const textarea = document.getElementById('csv-rows');
+        const rawLines = textarea.value.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+
+        if (rawLines.length === 0) {
+            setStatus('Incolla almeno una riga CSV prima di continuare.', 'error');
+            return;
+        }
+
+        const token = getToken();
+        if (!token) {
+            setStatus('Serve un token GitHub per aprire la Pull Request.', 'error');
+            return;
+        }
+
+        setBusy(true);
+        try {
+            setStatus(`Recupero ${CSV_PATH} attuale da ${BASE_BRANCH}...`, 'info');
+            const currentFile = await githubRequest(
+                `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}?ref=${BASE_BRANCH}`, token
+            );
+            const currentContent = b64DecodeUnicode(currentFile.content);
+            const sha = currentFile.sha;
+
+            const headerLine = currentContent.split(/\r?\n/)[0];
+            const expectedColumns = parseCsvLine(headerLine).length;
+
+            const newLines = rawLines.filter(l => l !== headerLine);
+            if (newLines.length === 0) {
+                setStatus('Nessuna riga da aggiungere (solo l\'header è stato incollato?).', 'error');
+                return;
+            }
+
+            for (const line of newLines) {
+                const cols = parseCsvLine(line);
+                if (cols.length !== expectedColumns) {
+                    setStatus(
+                        `Riga con numero di colonne errato (${cols.length} invece di ${expectedColumns} attese):\n` +
+                        `${line.slice(0, 200)}`,
+                        'error'
+                    );
+                    return;
+                }
+            }
+
+            let newContent = currentContent;
+            if (!newContent.endsWith('\n')) newContent += '\n';
+            newContent += newLines.join('\n') + '\n';
+
+            const branchName = `add-paper-${Date.now()}`;
+            setStatus(`Creo il branch ${branchName}...`, 'info');
+            const baseRef = await githubRequest(
+                `/repos/${REPO_OWNER}/${REPO_NAME}/git/ref/heads/${BASE_BRANCH}`, token
+            );
+            await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/git/refs`, token, 'POST', {
+                ref: `refs/heads/${branchName}`,
+                sha: baseRef.object.sha
+            });
+
+            setStatus(`Aggiorno ${CSV_PATH} sul branch ${branchName}...`, 'info');
+            await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`, token, 'PUT', {
+                message: `Aggiungi ${newLines.length} riga/e a egodata.csv`,
+                content: b64EncodeUnicode(newContent),
+                sha: sha,
+                branch: branchName
+            });
+
+            setStatus('Apro la Pull Request...', 'info');
+            const titles = newLines.map(l => parseCsvLine(l)[2]).filter(Boolean);
+            const prTitle = titles.length === 1
+                ? `Aggiungi paper: ${titles[0]}`
+                : `Aggiungi ${newLines.length} righe a egodata.csv`;
+            const prBody = titles.length
+                ? 'Righe aggiunte:\n' + titles.map(t => `- ${t}`).join('\n')
+                : 'Nuove righe aggiunte a tools/egodata.csv.';
+
+            const pr = await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/pulls`, token, 'POST', {
+                title: prTitle,
+                body: prBody,
+                head: branchName,
+                base: BASE_BRANCH
+            });
+
+            setStatus(`Pull Request aperta: <a href="${pr.html_url}" target="_blank" rel="noopener">${pr.html_url}</a>`, 'success');
+            textarea.value = '';
+        } catch (err) {
+            console.error(err);
+            setStatus(`Errore: ${err.message}`, 'error');
+        } finally {
+            setBusy(false);
+        }
+    }
+</script>
+</body>
+</html>

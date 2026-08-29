@@ -1,0 +1,52 @@
+name: Regenerate README from CSV
+
+on:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - tools/egodata.csv
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regenerate-readme
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install pandas
+
+      - name: Generate README from CSV
+        run: |
+          cd tools
+          python read_cvs_generate_readme.py
+
+      - name: Sync generated README to papers/
+        run: cp tools/README.md papers/README.md
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tools/README.md tools/README_OLD.md tools/PAPERS_ADDED.md papers/README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: regenerate README from egodata.csv [skip ci]"
+          git push
