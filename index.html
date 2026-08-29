@@ -7,6 +7,9 @@
     <title>Egocentric Vision</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
      <!-- Aggiungi il CSS di Owl Carousel -->
@@ -103,6 +106,38 @@
         .intro .contact {
             color: #136700;
             font-style: italic;
+        }
+
+        .intro .kicker {
+            display: block;
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #1367a9;
+            margin-bottom: 10px;
+        }
+
+        .intro .cta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 4px 0 14px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background-color: #1367a9;
+            color: #fff !important;
+            font-weight: 700;
+            text-decoration: none !important;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .intro .cta-pill:hover {
+            background-color: #ff5a2f;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(255, 90, 47, 0.3);
+            text-decoration: none !important;
         }
 
         a {
@@ -221,7 +256,7 @@
     </style>
     <div class="container">
         <div class="person">
-            <img src="resources/photo/mp.jpg" alt="Mirco Planamente">
+            <img src="resources/photo/mp.png" alt="Mirco Planamente">
             <p><a href="https://scholar.google.com/citations?user=GIJ3h4AAAAAJ&hl=en" target="_blank">Mirco Planamente</a></p>
             <p>ARGO Vision</p>
         </div>
@@ -229,8 +264,10 @@
 
 
     <div class="intro">
+        <span class="kicker">Community-curated</span>
         <p>Discover a carefully curated selection of research papers, datasets, challenges, and real-world applications in the fascinating realm of Egocentric Vision. Stay up-to-date with the latest advancements and become a part of this dynamic repository by contributing your insights!</p>
-        <p>This is a work-in-progress repository, and we welcome your contributions to keep it up-to-date. Visit the <a href="https://github.com/EgocentricVision/EgocentricVision" target="_blank">GitHub repository</a> to get involved, or <a href="./add-paper.html">add a paper</a> directly.</p>
+        <p>This is a work-in-progress repository, and we welcome your contributions to keep it up-to-date. Visit the <a href="https://github.com/EgocentricVision/EgocentricVision" target="_blank">GitHub repository</a> to get involved.</p>
+        <a class="cta-pill" href="./add-paper.html">Add a paper &#8599;</a>
         <p class="contact">Contact: mirco.pl.93@gmail.com</p>
     </div>
 

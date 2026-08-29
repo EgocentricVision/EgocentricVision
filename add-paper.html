@@ -113,7 +113,7 @@
         align-items: center;
         gap: 0.75rem;
         flex-wrap: wrap;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
         border-bottom: 1px solid var(--c-border);
     }
@@ -123,13 +123,89 @@
         color: var(--c-paper-dim);
     }
 
+    /* --- progress bar: fills as required + optional fields get completed --- */
+    .progress-wrap { margin-bottom: 1.75rem; }
+    .progress-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--f-mono);
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--c-paper-dim);
+        margin-bottom: 0.5rem;
+    }
+    #progress-pct { color: var(--c-paper-muted); }
+    .progress-track {
+        position: relative;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        overflow: hidden;
+    }
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--c-orange), var(--c-yellow));
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .progress-track.is-complete {
+        box-shadow: 0 0 0 3px rgba(255,230,0,0.16);
+    }
+    .progress-track.is-complete .progress-fill {
+        box-shadow: 0 0 16px rgba(255,230,0,0.6);
+    }
+
+    /* --- type selector: rounded pill buttons so the top-level choice is obvious --- */
+    .type-toggle {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .type-btn {
+        font-family: var(--f-body);
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        border: 2px solid var(--c-border);
+        background: rgba(255,255,255,0.03);
+        color: var(--c-paper-muted);
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .type-btn:hover {
+        border-color: var(--c-paper-muted);
+        color: var(--c-paper);
+        transform: translateY(-1px);
+    }
+    .type-btn.is-active {
+        background: var(--c-yellow);
+        border-color: var(--c-yellow);
+        color: #111;
+        box-shadow: 0 6px 18px rgba(255,230,0,0.3), inset 0 -3px 0 rgba(0,0,0,0.12);
+        transform: translateY(-1px) scale(1.04);
+    }
+
     form.contribute-form {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.1rem 1.25rem;
     }
+
+    /* --- progressive reveal: fields fade + slide in as earlier ones are completed --- */
+    .field, .reveal-block {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .field[hidden], .reveal-block[hidden] { display: none; }
+    .field.is-revealed, .reveal-block.is-revealed { opacity: 1; transform: translateY(0); }
+
     .field { display: flex; flex-direction: column; gap: 0.4rem; }
-    .field[hidden] { display: none; }
     .field--full { grid-column: 1 / -1; }
 
     label {
@@ -180,10 +256,6 @@
         outline-offset: 6px;
         border-radius: 8px;
     }
-    #field-subsection.field--invalid .checkbox-list input {
-        border-color: initial;
-        box-shadow: none;
-    }
 
     .checkbox-list {
         display: flex;
@@ -217,12 +289,10 @@
     }
 
     .form-actions {
-        grid-column: 1 / -1;
         display: flex;
         align-items: center;
         gap: 1rem;
         flex-wrap: wrap;
-        margin-top: 0.5rem;
     }
 
     .btn {
@@ -263,8 +333,7 @@
     .btn--ghost:hover { color: var(--c-paper); border-color: var(--c-paper-muted); }
 
     .status {
-        grid-column: 1 / -1;
-        margin: 0;
+        margin: 0.85rem 0 0;
         font-family: var(--f-mono);
         font-size: 0.78rem;
         line-height: 1.6;
@@ -307,7 +376,7 @@
     <div class="hero">
         <span class="kicker">Contribute</span>
         <h1>Add a paper</h1>
-        <p>Fill in the fields below. Submitting opens a Pull Request on GitHub automatically — nothing is published until it's reviewed and merged.</p>
+        <p>Pick a type, then fill in the fields as they appear. Submitting opens a Pull Request on GitHub automatically — nothing is published until it's reviewed and merged.</p>
     </div>
 
     <section class="contribute">
@@ -320,33 +389,40 @@
             <span class="token-status" id="token-status"></span>
         </div>
 
+        <div class="progress-wrap">
+            <div class="progress-label"><span>Progress</span><span id="progress-pct">0%</span></div>
+            <div class="progress-track" id="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
         <form id="paper-form" class="contribute-form" novalidate>
-            <div class="field field--full" id="field-type">
-                <label for="f-type">Type <span class="req">*</span></label>
-                <select id="f-type">
-                    <option value="paper">Paper</option>
-                    <option value="survey">Survey</option>
-                    <option value="dataset">Dataset</option>
-                    <option value="challenge">Challenge</option>
-                    <option value="device">Device</option>
-                </select>
+            <div class="field field--full is-revealed" id="field-type">
+                <label>Type <span class="req">*</span></label>
+                <div class="type-toggle" role="group" aria-label="Entry type">
+                    <button type="button" class="type-btn" data-type="paper">Paper</button>
+                    <button type="button" class="type-btn" data-type="survey">Survey</button>
+                    <button type="button" class="type-btn" data-type="dataset">Dataset</button>
+                    <button type="button" class="type-btn" data-type="challenge">Challenge</button>
+                    <button type="button" class="type-btn" data-type="device">Device</button>
+                </div>
             </div>
 
-            <div class="field field--full" id="field-title">
+            <div class="field field--full" id="field-title" hidden>
                 <label for="f-title">Title <span class="req">*</span></label>
                 <input id="f-title" type="text" maxlength="300" placeholder="Egocentric zone-aware action recognition across environments" autocomplete="off">
             </div>
 
-            <div class="field field--full" id="field-authors">
+            <div class="field field--full" id="field-authors" hidden>
                 <label for="f-authors">Authors <span class="req">*</span></label>
                 <input id="f-authors" type="text" placeholder="Simone Alberto Peirone, Gabriele Goletto, Mirco Planamente" autocomplete="off">
             </div>
 
-            <div class="field field--half" id="field-conference">
+            <div class="field field--half" id="field-conference" hidden>
                 <label for="f-conference">Conference / venue</label>
                 <input id="f-conference" type="text" placeholder="Pattern Recognition Letters" autocomplete="off">
             </div>
-            <div class="field field--half" id="field-year">
+            <div class="field field--half" id="field-year" hidden>
                 <label for="f-year">Year</label>
                 <input id="f-year" type="number" min="1990" max="2100" placeholder="2025">
             </div>
@@ -366,51 +442,50 @@
                 <textarea id="f-shortdesc" rows="2" placeholder="One or two lines describing it."></textarea>
             </div>
 
-            <div class="field field--half" id="field-link-paper">
+            <div class="field field--half" id="field-link-paper" hidden>
                 <label for="f-link-paper">Link to paper <span class="req">*</span></label>
                 <input id="f-link-paper" type="url" placeholder="https://..." autocomplete="off">
             </div>
-            <div class="field field--half" id="field-link-page">
+            <div class="field field--half" id="field-link-page" hidden>
                 <label for="f-link-page">Project / dataset page</label>
                 <input id="f-link-page" type="url" placeholder="https://..." autocomplete="off">
             </div>
-            <div class="field field--half" id="field-link-code">
+            <div class="field field--half" id="field-link-code" hidden>
                 <label for="f-link-code">Code</label>
                 <input id="f-link-code" type="url" placeholder="https://github.com/..." autocomplete="off">
             </div>
-            <div class="field field--half" id="field-link-video">
+            <div class="field field--half" id="field-link-video" hidden>
                 <label for="f-link-video">Video</label>
                 <input id="f-link-video" type="url" placeholder="https://..." autocomplete="off">
             </div>
 
-            <div class="field field--full" id="field-note">
+            <div class="field field--full" id="field-note" hidden>
                 <label for="f-note">Note</label>
                 <input id="f-note" type="text" autocomplete="off">
             </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn btn--primary" id="submit-btn">Open Pull Request &#8599;</button>
+            <div class="reveal-block field--full" id="field-actions" hidden>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary" id="submit-btn">Open Pull Request &#8599;</button>
+                </div>
+                <p class="status" id="status" role="status" aria-live="polite"></p>
             </div>
-            <p class="status" id="status" role="status" aria-live="polite"></p>
         </form>
     </section>
 
     <details class="notes">
-        <summary>How it works / security notes</summary>
+        <summary>How it works</summary>
         <p>
-            At first use you'll be asked for a GitHub Personal Access Token, <strong>fine-grained</strong>,
-            scoped to only this repository, with <code>Contents: Read and write</code> and
-            <code>Pull requests: Read and write</code> permissions. It's stored only in this
-            browser's <code>localStorage</code> and used to call <code>api.github.com</code>
-            directly — it's never sent anywhere else.
+            The first time you submit, you'll be asked for a classic GitHub Personal Access Token
+            with just the <code>public_repo</code> scope. Any GitHub account can create one —
+            you don't need to be a collaborator here. It's saved only in this browser's
+            <code>localStorage</code> and used to call <code>api.github.com</code> directly.
         </p>
         <p>
-            Don't share this page's link while your token is saved, unless you want whoever opens
-            it to be able to write to the repository.
-        </p>
-        <p>
-            Merging the Pull Request (a manual review step) triggers the GitHub Action that
-            regenerates the public page.
+            Submitting forks this repository under your account (if you haven't already) and
+            opens a Pull Request from there. Nothing is published automatically — a maintainer
+            reviews and merges it, which then triggers the GitHub Action that regenerates the
+            public page.
         </p>
     </details>
 </main>
@@ -454,7 +529,6 @@
     };
 
     const els = {
-        type: document.getElementById('f-type'),
         title: document.getElementById('f-title'),
         authors: document.getElementById('f-authors'),
         conference: document.getElementById('f-conference'),
@@ -468,6 +542,152 @@
         linkVideo: document.getElementById('f-link-video'),
         note: document.getElementById('f-note'),
     };
+
+    // --- progressive reveal state -------------------------------------------------
+    let currentType = null;
+    let revealStage = 0; // 0=only type buttons, 1=title/authors, 2=details, 3=links, 4=note+submit
+
+    const GROUP1_FIELDS = ['field-title', 'field-authors'];
+    const GROUP3_FIELDS = ['field-link-paper', 'field-link-page', 'field-link-code', 'field-link-video'];
+    const GROUP4_FIELDS = ['field-note', 'field-actions'];
+    const ALL_PROGRESSIVE_FIELDS = [
+        'field-conference', 'field-year', 'field-section', 'field-subsection', 'field-shortdesc',
+        ...GROUP1_FIELDS, ...GROUP3_FIELDS, ...GROUP4_FIELDS
+    ];
+
+    function group2Fields(type) {
+        const f = ['field-conference', 'field-year'];
+        if (type === 'paper') {
+            f.push('field-section');
+            if (SECTIONS[els.section.value]) f.push('field-subsection');
+        }
+        if (type === 'dataset' || type === 'challenge') f.push('field-shortdesc');
+        return f;
+    }
+
+    function revealFields(ids) {
+        ids.forEach((id, i) => {
+            const el = document.getElementById(id);
+            if (!el || !el.hidden) return;
+            el.hidden = false;
+            el.style.transitionDelay = (i * 70) + 'ms';
+            requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-revealed')));
+        });
+    }
+
+    function resetReveal() {
+        revealStage = 0;
+        ALL_PROGRESSIVE_FIELDS.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.hidden = true;
+            el.classList.remove('is-revealed', 'field--invalid');
+            el.style.transitionDelay = '';
+        });
+    }
+
+    function isGroup2Satisfied() {
+        if (currentType === 'paper') {
+            const subs = SECTIONS[els.section.value];
+            if (!subs) return true;
+            return els.subsectionList.querySelectorAll('input:checked').length > 0;
+        }
+        if (currentType === 'dataset' || currentType === 'challenge') {
+            return !!els.shortdesc.value.trim();
+        }
+        return true;
+    }
+
+    function isGroup3Satisfied() {
+        if (currentType === 'paper' || currentType === 'survey') return !!els.linkPaper.value.trim();
+        return !!els.linkPage.value.trim();
+    }
+
+    function evaluateReveal() {
+        if (!currentType) return;
+        if (revealStage < 1) { revealStage = 1; revealFields(GROUP1_FIELDS); }
+
+        const g1Done = els.title.value.trim() && els.authors.value.trim();
+        if (revealStage < 2 && g1Done) { revealStage = 2; revealFields(group2Fields(currentType)); }
+
+        const g2Done = revealStage >= 2 && isGroup2Satisfied();
+        if (revealStage < 3 && g2Done) { revealStage = 3; revealFields(GROUP3_FIELDS); }
+
+        const g3Done = revealStage >= 3 && isGroup3Satisfied();
+        if (revealStage < 4 && g3Done) { revealStage = 4; revealFields(GROUP4_FIELDS); }
+    }
+
+    // --- progress bar ---------------------------------------------------------------
+    function fieldPoints(el, weight) {
+        return (el && el.value && el.value.trim()) ? weight : 0;
+    }
+
+    function updateProgress() {
+        if (!currentType) { setProgress(0); return; }
+        let total = 0, got = 0;
+
+        total += 2; got += fieldPoints(els.title, 2);
+        total += 2; got += fieldPoints(els.authors, 2);
+
+        if (currentType === 'paper' || currentType === 'survey') {
+            total += 2; got += fieldPoints(els.linkPaper, 2);
+        } else {
+            total += 1; got += fieldPoints(els.linkPaper, 1);
+        }
+        if (currentType === 'dataset' || currentType === 'challenge' || currentType === 'device') {
+            total += 2; got += fieldPoints(els.linkPage, 2);
+        } else {
+            total += 1; got += fieldPoints(els.linkPage, 1);
+        }
+        if (currentType === 'dataset' || currentType === 'challenge') {
+            total += 2; got += fieldPoints(els.shortdesc, 2);
+        }
+        if (currentType === 'paper') {
+            total += 2;
+            const subs = SECTIONS[els.section.value];
+            if (!subs) got += 2;
+            else got += (els.subsectionList.querySelectorAll('input:checked').length > 0 ? 2 : 0);
+        }
+
+        total += 1; got += fieldPoints(els.conference, 1);
+        total += 1; got += fieldPoints(els.year, 1);
+        total += 1; got += fieldPoints(els.note, 1);
+        total += 1; got += fieldPoints(els.linkCode, 1);
+        total += 1; got += fieldPoints(els.linkVideo, 1);
+
+        setProgress(total > 0 ? Math.round((got / total) * 100) : 0);
+    }
+
+    function setProgress(pct) {
+        document.getElementById('progress-fill').style.width = pct + '%';
+        document.getElementById('progress-pct').textContent = pct + '%';
+        const track = document.getElementById('progress-track');
+        track.setAttribute('aria-valuenow', String(pct));
+        track.classList.toggle('is-complete', pct >= 100);
+    }
+
+    // --- type selection ---------------------------------------------------------------
+    function updateAsterisks() {
+        const linkPaperReq = document.querySelector('#field-link-paper .req');
+        const linkPageLabel = document.querySelector('#field-link-page label');
+        linkPaperReq.style.display = (currentType === 'paper' || currentType === 'survey') ? 'inline' : 'none';
+        linkPageLabel.innerHTML = (currentType === 'dataset' || currentType === 'challenge' || currentType === 'device')
+            ? 'Project / dataset page <span class="req">*</span>'
+            : 'Project / dataset page';
+    }
+
+    function selectType(type) {
+        currentType = type;
+        document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('is-active', b.dataset.type === type));
+        resetReveal();
+        updateAsterisks();
+        evaluateReveal();
+        updateProgress();
+    }
+
+    document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectType(btn.dataset.type));
+    });
 
     function populateSections() {
         els.section.innerHTML = '';
@@ -483,8 +703,11 @@
         const subs = SECTIONS[els.section.value];
         els.subsectionList.innerHTML = '';
         const field = document.getElementById('field-subsection');
-        if (!subs) { field.hidden = true; return; }
-        field.hidden = false;
+        if (!subs) {
+            field.hidden = true;
+            field.classList.remove('is-revealed');
+            return;
+        }
         subs.forEach(name => {
             const label = document.createElement('label');
             const input = document.createElement('input');
@@ -494,32 +717,20 @@
             label.appendChild(document.createTextNode(name));
             els.subsectionList.appendChild(label);
         });
+        if (revealStage >= 2 && field.hidden) {
+            field.hidden = false;
+            requestAnimationFrame(() => requestAnimationFrame(() => field.classList.add('is-revealed')));
+        }
     }
 
-    function applyTypeVisibility() {
-        const type = els.type.value;
-        const showSection = type === 'paper';
-        const showShortdesc = type === 'dataset' || type === 'challenge';
-
-        document.getElementById('field-section').hidden = !showSection;
-        document.getElementById('field-subsection').hidden = !showSection || !SECTIONS[els.section.value];
-        document.getElementById('field-shortdesc').hidden = !showShortdesc;
-
-        const linkPaperReq = document.getElementById('field-link-paper').querySelector('.req');
-        const linkPageLabel = document.getElementById('field-link-page').querySelector('label');
-        // Link to paper is required for paper/survey; link page is required for dataset/challenge/device.
-        linkPaperReq.style.display = (type === 'paper' || type === 'survey') ? 'inline' : 'none';
-        linkPageLabel.innerHTML = (type === 'dataset' || type === 'challenge' || type === 'device')
-            ? 'Project / dataset page <span class="req">*</span>'
-            : 'Project / dataset page';
-    }
-
-    els.type.addEventListener('change', applyTypeVisibility);
     els.section.addEventListener('change', populateSubsections);
-
     populateSections();
     populateSubsections();
-    applyTypeVisibility();
+    updateAsterisks();
+
+    function onFormActivity() { evaluateReveal(); updateProgress(); }
+    document.getElementById('paper-form').addEventListener('input', onFormActivity);
+    document.getElementById('paper-form').addEventListener('change', onFormActivity);
 
     function clearInvalid() {
         document.querySelectorAll('.field--invalid').forEach(f => f.classList.remove('field--invalid'));
@@ -527,27 +738,34 @@
 
     function markInvalid(fieldId) {
         const el = document.getElementById(fieldId);
-        if (el) el.classList.add('field--invalid');
+        if (!el) return;
+        el.classList.add('field--invalid');
+        // Safety net: a field flagged as missing must be visible, even if the
+        // progressive reveal hasn't reached it yet for some reason.
+        if (el.hidden) {
+            el.hidden = false;
+            requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-revealed')));
+        }
     }
 
     function validate() {
         clearInvalid();
-        const type = els.type.value;
         const missing = [];
+        if (!currentType) { missing.push('Type'); return missing; }
 
         if (!els.title.value.trim()) { missing.push('Title'); markInvalid('field-title'); }
         if (!els.authors.value.trim()) { missing.push('Authors'); markInvalid('field-authors'); }
 
-        if (type === 'paper' || type === 'survey') {
+        if (currentType === 'paper' || currentType === 'survey') {
             if (!els.linkPaper.value.trim()) { missing.push('Link to paper'); markInvalid('field-link-paper'); }
         }
-        if (type === 'dataset' || type === 'challenge' || type === 'device') {
+        if (currentType === 'dataset' || currentType === 'challenge' || currentType === 'device') {
             if (!els.linkPage.value.trim()) { missing.push('Project / dataset page'); markInvalid('field-link-page'); }
         }
-        if (type === 'dataset' || type === 'challenge') {
+        if (currentType === 'dataset' || currentType === 'challenge') {
             if (!els.shortdesc.value.trim()) { missing.push('Short description'); markInvalid('field-shortdesc'); }
         }
-        if (type === 'paper') {
+        if (currentType === 'paper') {
             const subs = SECTIONS[els.section.value];
             if (subs) {
                 const anyChecked = Array.from(els.subsectionList.querySelectorAll('input:checked')).length > 0;
@@ -567,7 +785,7 @@
     }
 
     function buildRows() {
-        const type = els.type.value;
+        const type = currentType;
         const title = els.title.value.trim();
         const authors = els.authors.value.trim();
         const conference = els.conference.value.trim();
@@ -621,8 +839,9 @@
         let token = localStorage.getItem(TOKEN_KEY);
         if (!token) {
             token = window.prompt(
-                "Paste your GitHub Personal Access Token (fine-grained, scoped to this repo, " +
-                "Contents + Pull requests: Read and write).\n" +
+                "Paste a classic GitHub Personal Access Token with just the 'public_repo' scope.\n" +
+                "Create one at github.com → Settings → Developer settings → Personal access tokens → Tokens (classic).\n" +
+                "Any GitHub account can create one — you don't need write access to this repo, submitting forks it to your account.\n" +
                 "It's stored only in this browser (localStorage) and used to call api.github.com directly."
             );
             if (token) {
@@ -631,6 +850,63 @@
             }
         }
         return token || null;
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function getAuthenticatedUser(token) {
+        const user = await githubRequest('/user', token);
+        return user.login;
+    }
+
+    // Non-collaborators can't push directly to this repo, so we fork it under their
+    // account (like GitHub's own "Edit this file" button does for non-collaborators)
+    // and open the Pull Request from there. The repo owner skips straight to working
+    // on the repo directly.
+    async function ensureWorkingRepo(token, username) {
+        if (username.toLowerCase() === REPO_OWNER.toLowerCase()) {
+            return { owner: REPO_OWNER, repo: REPO_NAME };
+        }
+
+        let repoInfo = null;
+        try {
+            repoInfo = await githubRequest(`/repos/${username}/${REPO_NAME}`, token);
+        } catch (e) {
+            repoInfo = null;
+        }
+
+        if (repoInfo && (!repoInfo.fork || !repoInfo.parent ||
+            repoInfo.parent.full_name.toLowerCase() !== `${REPO_OWNER}/${REPO_NAME}`.toLowerCase())) {
+            throw new Error(`You already have a repository named "${REPO_NAME}" that isn't a fork of this project. Rename or delete it, then try again.`);
+        }
+
+        if (!repoInfo) {
+            await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/forks`, token, 'POST', {});
+        }
+
+        // Forking is asynchronous on GitHub's side -- wait for the branch to show up.
+        let ready = false;
+        for (let i = 0; i < 10 && !ready; i++) {
+            try {
+                await githubRequest(`/repos/${username}/${REPO_NAME}/git/ref/heads/${BASE_BRANCH}`, token);
+                ready = true;
+            } catch (e) {
+                await sleep(1500);
+            }
+        }
+        if (!ready) {
+            throw new Error(`Your fork of ${REPO_NAME} isn't ready yet. Wait a few seconds and submit again.`);
+        }
+
+        try {
+            await githubRequest(`/repos/${username}/${REPO_NAME}/merge-upstream`, token, 'POST', { branch: BASE_BRANCH });
+        } catch (e) {
+            throw new Error(`Could not sync your fork with the latest changes: ${e.message}`);
+        }
+
+        return { owner: username, repo: REPO_NAME };
     }
 
     function resetToken() {
@@ -710,9 +986,17 @@
 
         setBusy(true);
         try {
-            setStatus(`Fetching current ${CSV_PATH} from ${BASE_BRANCH}...`, 'info');
+            setStatus('Checking your GitHub account...', 'info');
+            const username = await getAuthenticatedUser(token);
+
+            setStatus(username.toLowerCase() === REPO_OWNER.toLowerCase()
+                ? 'Fetching the current file...'
+                : `Preparing your fork of ${REPO_NAME} (first time only)...`, 'info');
+            const work = await ensureWorkingRepo(token, username);
+
+            setStatus(`Fetching current ${CSV_PATH}...`, 'info');
             const currentFile = await githubRequest(
-                `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}?ref=${BASE_BRANCH}`, token
+                `/repos/${work.owner}/${work.repo}/contents/${CSV_PATH}?ref=${BASE_BRANCH}`, token
             );
             const currentContent = b64DecodeUnicode(currentFile.content);
             const sha = currentFile.sha;
@@ -731,15 +1015,15 @@
             const branchName = `add-paper-${Date.now()}`;
             setStatus(`Creating branch ${branchName}...`, 'info');
             const baseRef = await githubRequest(
-                `/repos/${REPO_OWNER}/${REPO_NAME}/git/ref/heads/${BASE_BRANCH}`, token
+                `/repos/${work.owner}/${work.repo}/git/ref/heads/${BASE_BRANCH}`, token
             );
-            await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/git/refs`, token, 'POST', {
+            await githubRequest(`/repos/${work.owner}/${work.repo}/git/refs`, token, 'POST', {
                 ref: `refs/heads/${branchName}`,
                 sha: baseRef.object.sha
             });
 
             setStatus(`Updating ${CSV_PATH} on ${branchName}...`, 'info');
-            await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`, token, 'PUT', {
+            await githubRequest(`/repos/${work.owner}/${work.repo}/contents/${CSV_PATH}`, token, 'PUT', {
                 message: `Add "${title}" to egodata.csv`,
                 content: b64EncodeUnicode(newContent),
                 sha: sha,
@@ -748,18 +1032,19 @@
 
             setStatus('Opening the Pull Request...', 'info');
             const prBody = `Adds **${title}**` + (newRows.length > 1 ? ` as ${newRows.length} rows (multiple sub-sections).` : '.');
+            const prHead = work.owner.toLowerCase() === REPO_OWNER.toLowerCase() ? branchName : `${work.owner}:${branchName}`;
             const pr = await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/pulls`, token, 'POST', {
                 title: `Add paper: ${title}`,
                 body: prBody,
-                head: branchName,
+                head: prHead,
                 base: BASE_BRANCH
             });
 
             setStatus(`Pull Request opened: <a href="${pr.html_url}" target="_blank" rel="noopener">${pr.html_url}</a>`, 'success');
+            clearInvalid();
             document.getElementById('paper-form').reset();
-            populateSections();
             populateSubsections();
-            applyTypeVisibility();
+            updateProgress();
         } catch (err) {
             console.error(err);
             setStatus(`Error: ${err.message}`, 'error');
