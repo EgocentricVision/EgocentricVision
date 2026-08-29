@@ -463,14 +463,11 @@
                 max-height: calc(100vh - 150px);
                 overflow-y: auto;
                 z-index: 30;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease, width 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .index-morph.is-visible {
-                opacity: 1;
-                pointer-events: auto;
+                /* No transition on width/position here on purpose: they're driven
+                   directly from scroll position every frame, and a CSS transition
+                   fighting those per-frame updates is exactly what causes visible
+                   stutter -- the scroll itself is already what makes it smooth. */
+                transition: box-shadow 0.3s ease;
             }
 
             .index-morph.is-docked {
@@ -1061,7 +1058,7 @@
                 }
             }
 
-            // Sizes the spacer so the whole reveal+shrink sequence takes about 1.4
+            // Sizes the spacer so the whole reveal+shrink sequence takes about 0.9
             // viewport-heights of scrolling, then hands off to .is-docked with zero
             // leftover empty scroll space -- see updateMorph for how these agree.
             function computeSpacerHeight() {
@@ -1069,7 +1066,7 @@
                     if (spacerEl) spacerEl.style.height = '';
                     return;
                 }
-                var desiredScrollDistance = window.innerHeight * 1.4;
+                var desiredScrollDistance = window.innerHeight * 0.9;
                 var stickyTop = 100;
                 var approxHeight = morphEl ? morphEl.offsetHeight : 400;
                 spacerEl.style.height = (desiredScrollDistance + stickyTop + approxHeight) + 'px';
@@ -1078,7 +1075,7 @@
             function updateMorph() {
                 if (!morphEl || !spacerEl || window.innerWidth < 1400) {
                     if (morphEl) {
-                        morphEl.classList.remove('is-visible', 'is-docked');
+                        morphEl.classList.remove('is-docked');
                         morphEl.removeAttribute('data-revealed-depth');
                         morphEl.style.width = '';
                         morphEl.style.removeProperty('--compress');
@@ -1097,19 +1094,23 @@
                     return;
                 }
 
-                if (rect.top > viewportH * 0.6) {
-                    morphEl.classList.remove('is-visible', 'is-docked');
-                    morphEl.removeAttribute('data-revealed-depth');
+                // Nowhere near the viewport yet -- nothing to compute. No separate
+                // "not visible yet" flag needed: the reveal tiers below default to
+                // hidden on their own, so there's no blank placeholder box sitting
+                // in the scroll path before you actually reach it.
+                if (rect.top > viewportH || rect.bottom < 0) {
                     return;
                 }
-
-                morphEl.classList.add('is-visible');
 
                 var scrollable = Math.max(1, rect.height - stickyTop - morphEl.offsetHeight);
                 var progress = clamp(-rect.top / scrollable, 0, 1);
 
-                var revealDepth = clamp(Math.ceil(progress * maxDepth * 1.3), 1, maxDepth);
-                morphEl.setAttribute('data-revealed-depth', String(revealDepth));
+                if (progress <= 0) {
+                    morphEl.removeAttribute('data-revealed-depth');
+                } else {
+                    var revealDepth = clamp(Math.ceil(progress * maxDepth * 1.3), 1, maxDepth);
+                    morphEl.setAttribute('data-revealed-depth', String(revealDepth));
+                }
 
                 var startWidth = Math.min(520, window.innerWidth * 0.92);
                 var endWidth = 230;
