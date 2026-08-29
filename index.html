@@ -348,7 +348,12 @@
         /* On wide screens the TOC becomes a real sticky sidebar instead of an inline
            card, so you always know where you are while scrolling the long list. It's
            fixed-positioned in the margin, so it never affects the centered content's
-           layout -- only enabled once there's comfortable room beside it. */
+           layout. It stays invisible (but already in place) until you actually scroll
+           down to the index/list section -- no point showing navigation for content
+           you haven't reached yet -- and once visible, the entry for the section
+           you're currently reading stays fully lit while the rest dim down, so you
+           always know exactly where you are without the whole list competing for
+           attention. */
         @media (min-width: 1400px) {
             .toc-wrap {
                 position: fixed;
@@ -361,6 +366,30 @@
                 margin: 0;
                 z-index: 30;
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateX(14px);
+                transition: opacity 0.35s ease, transform 0.35s ease;
+            }
+
+            .toc-wrap.is-active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateX(0);
+            }
+
+            .toc-wrap li > a {
+                transition: opacity 0.2s ease, color 0.2s ease;
+            }
+
+            .toc-wrap.has-active li > a {
+                opacity: 0.46;
+            }
+
+            .toc-wrap.has-active li > a.is-current-section {
+                opacity: 1;
+                font-weight: 700;
+                color: #1367a9;
             }
         }
 
@@ -816,6 +845,85 @@
         });
     </script>
 
+    <script>
+        // TOC sidebar (>=1400px only, see .toc-wrap CSS): stays invisible until the
+        // reader scrolls down to the index/list section, then fades in; the entry for
+        // whichever section is currently on screen stays fully lit while the rest dim.
+        $(document).ready(function () {
+            var tocWrap = null;
+            var headingEls = [];
+            var tocLinks = {};
+            var ticking = false;
+
+            function refreshLookups() {
+                tocWrap = document.getElementById('toc-wrap');
+                if (!tocWrap) return;
+                headingEls = Array.prototype.slice.call(
+                    document.querySelectorAll('.paper-index li.paper-heading a[id]')
+                );
+                tocLinks = {};
+                Array.prototype.forEach.call(tocWrap.querySelectorAll('a[data-target]'), function (a) {
+                    tocLinks[a.dataset.target] = a;
+                });
+            }
+
+            function updateActiveSection() {
+                if (!tocWrap || !headingEls.length) return;
+                var threshold = 110;
+                var current = null;
+                for (var i = 0; i < headingEls.length; i++) {
+                    if (headingEls[i].getBoundingClientRect().top <= threshold) {
+                        current = headingEls[i];
+                    } else {
+                        break;
+                    }
+                }
+                for (var id in tocLinks) {
+                    tocLinks[id].classList.remove('is-current-section');
+                }
+                if (current && tocLinks[current.id]) {
+                    tocLinks[current.id].classList.add('is-current-section');
+                    tocWrap.classList.add('has-active');
+                } else {
+                    tocWrap.classList.remove('has-active');
+                }
+            }
+
+            function setupVisibilityObserver() {
+                var marker = document.getElementById('search-bar');
+                if (!tocWrap || !marker) return;
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            tocWrap.classList.toggle('is-active', entry.isIntersecting);
+                        });
+                    }, { threshold: 0 }).observe(marker);
+                } else {
+                    tocWrap.classList.add('is-active'); // no IntersectionObserver support -- fail open
+                }
+            }
+
+            $(document).on('toc:ready', function () {
+                refreshLookups();
+                setupVisibilityObserver();
+                updateActiveSection();
+            });
+            $(document).on('paperlist:ready', function () {
+                refreshLookups();
+                updateActiveSection();
+            });
+
+            window.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(function () {
+                    updateActiveSection();
+                    ticking = false;
+                });
+            }, { passive: true });
+        });
+    </script>
+
     <div>
         <script>
             $(document).ready(function() {
@@ -951,7 +1059,7 @@
 
 
 
-                                $html += $start + '<li class="toc-item"><a onclick=document.getElementById("'+ $prova +'").scrollIntoView()>' + lines[i] + '</a></li>' + $end;
+                                $html += $start + '<li class="toc-item"><a data-target="' + $prova + '" onclick=document.getElementById("'+ $prova +'").scrollIntoView()>' + lines[i] + '</a></li>' + $end;
                                 $start = "";
                                 $end = "";
                             } else {
@@ -962,7 +1070,8 @@
                         var find = '#';
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
-                        $("body").append('<nav class="toc-wrap">' + $html + '</nav>');
+                        $("body").append('<nav class="toc-wrap" id="toc-wrap">' + $html + '</nav>');
+                        $(document).trigger('toc:ready');
                         return $html;
 
 
