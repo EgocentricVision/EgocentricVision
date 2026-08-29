@@ -237,6 +237,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Context-based vision system for place and object recognition](https://www.cs.ubc.ca/~murphyk/Papers/iccv03.pdf) - Torralba, A., Murphy, K. P., Freeman, W. T., & Rubin, M. A., ICCV 2003.
 
 #### Usupervised Domain Adaptation
+- [Egocentric zone-aware action recognition across environments](https://www.sciencedirect.com/science/article/pii/S0167865524003635) - Simone Alberto Peirone, Gabriele Goletto, Mirco Planamente, Andrea Bottino, Barbara Caputo, Giuseppe Averta, Pattern Recognition Letters 2025. [[code]](https://github.com/sapeirone/EgoZAR) [[project page]](https://gabrielegoletto.github.io/EgoZAR/)
+
 - [Relative Norm Alignment for Tackling Domain Shift in Deep Multi-modal Classification](https://link.springer.com/article/10.1007/s11263-024-01998-9) - Mirco Planamente, Chiara Plizzari, Simone Alberto Peirone, Barbara Caputo, Andrea Bottino, IJCV 2024.
 
 - [Unsupervised Video Domain Adaptation for Action Recognition: A Disentanglement Perspective](https://arxiv.org/abs/2208.07365) - Pengfei Wei, Lingdong Kong, Xinghua Qu, Yi Ren, Zhiqiang Xu, Jing Jiang, Xiang Yin, NeurIPS 2023. [[code]](https://github.com/ldkong1205/TranSVAE)
@@ -260,6 +262,8 @@ better view here -> https://egocentricvision.github.io/EgocentricVision/
 - [Multi-Modal Domain Adaptation for Fine-Grained Action Recognition](https://openaccess.thecvf.com/content_CVPR_2020/html/Munro_Multi-Modal_Domain_Adaptation_for_Fine-Grained_Action_Recognition_CVPR_2020_paper.html) - Jonathan Munro, Dima Damen, CVPR 2020.
 
 #### Domain Generalization
+- [Egocentric zone-aware action recognition across environments](https://www.sciencedirect.com/science/article/pii/S0167865524003635) - Simone Alberto Peirone, Gabriele Goletto, Mirco Planamente, Andrea Bottino, Barbara Caputo, Giuseppe Averta, Pattern Recognition Letters 2025. [[code]](https://github.com/sapeirone/EgoZAR) [[project page]](https://gabrielegoletto.github.io/EgoZAR/)
+
 - [X-MIC: Cross-Modal Instance Conditioning for Egocentric Action Generalization](https://arxiv.org/abs/2403.19811) - Anna Kukleva, Fadime Sener, Edoardo Remelli, Bugra Tekin, Eric Sauser, Bernt Schiele, Shugao Ma, CVPR 2024. [[code]](https://github.com/annusha/xmic)
 
 - [MMG-Ego4D: Multimodal Generalization in Egocentric Action Recognition](https://openaccess.thecvf.com/content/CVPR2023/papers/Gong_MMG-Ego4D_Multimodal_Generalization_in_Egocentric_Action_Recognition_CVPR_2023_paper.pdf) - Xinyu Gong, Sreyas Mohan, Naina Dhingra, Jean-Charles Bazin, Yilei Li, Zhangyang Wang, Rakesh Ranjan, CVPR 2023.
