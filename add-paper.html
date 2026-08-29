@@ -1244,8 +1244,12 @@
             '- Category = Challenges or Devices: leave Section and Sub-section empty; "Link page" is the main link.',
             '- Wrap any field containing a comma in double quotes, doubling any internal double quotes (standard CSV escaping).',
             '- Author list: full names separated by ", ".',
-            '- Year: 4-digit number only.',
-            '- Link paper / Link page / Link code / Link video: the best URL you can find for each; leave empty if unknown, never invent one.',
+            '- Year: 4-digit number only, in the Year column ONLY.',
+            '- Conference: just the venue/workshop name, e.g. "CVPR", "ECCV", "CONTEXTUS Workshop @ ECCV". Never include the year in this field -- it already has its own column, so "ECCV 2026" or "ECCV, 2026" is wrong, just "ECCV" is right.',
+            '- Link paper / Link page / Link code / Link video: each must be ONE plain bare URL and nothing else -- e.g. https://arxiv.org/abs/1234.56789. Never use Markdown link syntax like [text](url), never put more than one URL in the same field, never wrap a URL in brackets or parentheses. If you have more than one relevant URL, put the most important one in "Link paper" and leave the rest of that field type empty rather than combining them. Leave a field empty if you don\'t have a URL for it -- never invent one.',
+            '',
+            'Example of one correctly formatted row (for reference only, do not output it):',
+            ',,Example Paper Title,"First Author, Second Author",CVPR,2025,Papers,Gaze,,,https://arxiv.org/abs/0000.00000,https://example-project-page.github.io,https://github.com/example/repo,,,,',
             '',
             'Paper link: ' + linkLine,
             '',
@@ -1289,7 +1293,11 @@
             for (const line of lines) {
                 const cols = parseCsvLine(line);
                 if (cols.length !== EXPECTED_COLUMNS) {
-                    setLazyStatus(`Couldn't read one of the lines (expected ${EXPECTED_COLUMNS} columns, got ${cols.length}). Make sure your LLM only output the CSV row(s), nothing else.`, 'error');
+                    let hint = '';
+                    if (/\]\(https?:\/\//.test(line) || /https?:\/\/[^,"]*,\s*https?:\/\//.test(line)) {
+                        hint = ' It looks like one of the link fields has Markdown formatting or more than one URL in it — each link field must be a single plain URL, e.g. https://arxiv.org/abs/1234.56789, nothing else.';
+                    }
+                    setLazyStatus(`Couldn't read one of the lines (expected ${EXPECTED_COLUMNS} columns, got ${cols.length}).${hint} Make sure your LLM only output the CSV row(s), nothing else.`, 'error');
                     return;
                 }
                 rows.push({

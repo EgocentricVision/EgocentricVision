@@ -361,94 +361,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* --- inline index tree: fills the space right after "Navigate", reveals as
-           you scroll to it, then scrolls away as the sidebar TOC takes over below.
-           Same content as .toc-wrap, just rendered a second time with a tree look
-           (thin curved connectors) and a scroll-triggered fade-in instead of the
-           sidebar's always-fixed positioning. --- */
-        .index-tree {
-            display: none; /* only relevant where the sidebar exists to hand off to -- see below */
-            max-width: 900px;
-            margin: 6px auto 0;
-            padding: 4px 20px 8px;
-        }
-
-        @media (min-width: 1400px) {
-            .index-tree {
-                display: block;
-            }
-        }
-
-        .index-tree ul {
-            list-style: none;
-            margin: 0;
-            padding-left: 1.3em;
-            margin-left: 0.55em;
-            border-left: 1px solid var(--border);
-        }
-
-        .index-tree > ul {
-            border-left: none;
-            margin-left: 0;
-            padding-left: 0;
-        }
-
-        .index-tree li {
-            position: relative;
-            padding: 3px 0 3px 1.05em;
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .index-tree.is-revealed li {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Curved elbow connector into the rail above -- "line bombate", not a sharp
-           right angle. Delicate and theme-adaptive since it's just var(--border). */
-        .index-tree li::before {
-            content: '';
-            position: absolute;
-            left: -1px;
-            top: 0;
-            width: 1.05em;
-            height: 1.4em;
-            border-left: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            border-bottom-left-radius: 12px;
-        }
-
-        .index-tree > ul > li::before {
-            display: none; /* top-level entries have no parent rail to connect into */
-        }
-
-        .index-tree li > a {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 6px;
-            color: var(--text);
-            font-size: 0.9em;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.15s, color 0.15s;
-        }
-
-        .index-tree li > a:hover {
-            background: color-mix(in srgb, var(--accent) 8%, transparent);
-            color: var(--accent);
-        }
-
-        /* Depth-based reveal stagger: each extra "ul" ancestor is one tree level
-           deeper (category -> section -> sub-section), and each selector below is
-           more specific than the last purely by having one more combinator, so the
-           deepest matching rule always wins without needing source-order tricks. */
-        .index-tree > ul li { transition-delay: 0s; }
-        .index-tree > ul ul li { transition-delay: 0.12s; }
-        .index-tree > ul ul ul li { transition-delay: 0.24s; }
-        .index-tree > ul ul ul ul li { transition-delay: 0.36s; }
-
         /* --- table of contents (short index built from headings) --- */
         .toc-wrap {
             max-width: 900px;
@@ -882,7 +794,6 @@
 </script>
 
     <h3 class="section-divider" id="index-heading"><span class="kicker">Navigate</span>Egocentric Vision Index <i class="fa fa-book"></i></h3>
-    <div class="index-tree" id="index-tree"></div>
 
     <div class="search-bar" id="search-bar">
         <div class="search-bar__row">
@@ -1234,22 +1145,6 @@
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
                         $("body").append('<nav class="toc-wrap" id="toc-wrap">' + $html + '</nav>');
-                        var $indexTree = document.getElementById('index-tree');
-                        if ($indexTree) {
-                            $indexTree.innerHTML = $html;
-                            if ('IntersectionObserver' in window) {
-                                new IntersectionObserver(function (entries, obs) {
-                                    entries.forEach(function (entry) {
-                                        if (entry.isIntersecting) {
-                                            $indexTree.classList.add('is-revealed');
-                                            obs.unobserve(entry.target);
-                                        }
-                                    });
-                                }, { threshold: 0.1 }).observe($indexTree);
-                            } else {
-                                $indexTree.classList.add('is-revealed'); // no IntersectionObserver support -- fail open
-                            }
-                        }
                         $(document).trigger('toc:ready');
                         return $html;
 
