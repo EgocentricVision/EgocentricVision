@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
      <!-- Aggiungi il CSS di Owl Carousel -->
@@ -45,7 +45,7 @@
         }
 
         .title {
-            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
             font-weight: 800;
             font-size: clamp(28px, 5vw, 42px);
             letter-spacing: -0.01em;
@@ -211,7 +211,7 @@
             max-width: 900px;
             margin: 48px auto 16px;
             padding: 0 20px;
-            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
             font-weight: 800;
             font-size: clamp(1.3rem, 3vw, 1.7rem);
             color: #16324f;
@@ -275,6 +275,76 @@
             text-decoration: none;
         }
 
+        /* --- sticky search bar above the full paper list --- */
+        .search-bar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            max-width: 900px;
+            margin: 24px auto 0;
+            padding: 12px 20px;
+            background: rgba(241, 241, 241, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .search-bar__row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            padding: 10px 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .search-bar__row i {
+            color: #1367a9;
+        }
+
+        .search-bar__row input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .search-bar__count {
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.7rem;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        .search-bar__chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .year-chip {
+            font-family: 'JetBrains Mono', 'Menlo', monospace;
+            font-size: 0.72rem;
+            padding: 4px 12px;
+            border-radius: 999px;
+            border: 1px solid #ccd;
+            background: #fff;
+            color: #1367a9;
+            cursor: pointer;
+            transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+        }
+
+        .year-chip:hover,
+        .year-chip.is-active {
+            background: #1367a9;
+            color: #fff;
+            border-color: #1367a9;
+        }
+
         /* --- full paper list: the row hover-magnify effect --- */
         .paper-index {
             max-width: 900px;
@@ -293,7 +363,7 @@
         }
 
         .paper-index li.paper-heading {
-            font-family: 'Syne', 'Open Sans', sans-serif;
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
             font-weight: 700;
             font-size: 1.02em;
             color: #16324f;
@@ -460,6 +530,92 @@
         });
     });
 </script>
+
+    <div class="search-bar" id="search-bar">
+        <div class="search-bar__row">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="search" id="paper-search" placeholder="Search by title, author, venue, year...">
+            <span class="search-bar__count" id="search-count"></span>
+        </div>
+        <div class="search-bar__chips" id="year-chips"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var searchInput = document.getElementById('paper-search');
+            var countEl = document.getElementById('search-count');
+            var chipsEl = document.getElementById('year-chips');
+            var chipsBuilt = false;
+
+            function filterPapers(query) {
+                var q = query.trim().toLowerCase();
+                var items = document.querySelectorAll('.paper-index li.paper-heading, .paper-index li.paper-row');
+                var currentHeading = null;
+                var currentHeadingHasMatch = false;
+                var matched = 0, total = 0;
+
+                function finalizeHeading() {
+                    if (currentHeading) currentHeading.style.display = currentHeadingHasMatch ? '' : 'none';
+                }
+
+                items.forEach(function (li) {
+                    if (li.classList.contains('paper-heading')) {
+                        finalizeHeading();
+                        currentHeading = li;
+                        currentHeadingHasMatch = false;
+                    } else {
+                        total++;
+                        var isMatch = !q || li.textContent.toLowerCase().indexOf(q) !== -1;
+                        li.style.display = isMatch ? '' : 'none';
+                        if (isMatch) { matched++; currentHeadingHasMatch = true; }
+                    }
+                });
+                finalizeHeading();
+
+                if (countEl) countEl.textContent = total ? (matched + ' / ' + total) : '';
+
+                document.querySelectorAll('.year-chip').forEach(function (chip) {
+                    chip.classList.toggle('is-active', chip.dataset.year === q);
+                });
+            }
+
+            function buildYearChips() {
+                if (chipsBuilt || !chipsEl) return;
+                var rows = document.querySelectorAll('.paper-index li.paper-row');
+                if (!rows.length) return;
+                chipsBuilt = true;
+
+                var years = new Set();
+                rows.forEach(function (li) {
+                    var m = li.textContent.match(/\b(19|20)\d{2}\b/g);
+                    if (m) m.forEach(function (y) { years.add(y); });
+                });
+                var sorted = Array.from(years).sort().reverse().slice(0, 10);
+                chipsEl.innerHTML = '';
+                sorted.forEach(function (year) {
+                    var chip = document.createElement('button');
+                    chip.type = 'button';
+                    chip.className = 'year-chip';
+                    chip.dataset.year = year;
+                    chip.textContent = year;
+                    chip.addEventListener('click', function () {
+                        var wasActive = chip.classList.contains('is-active');
+                        searchInput.value = wasActive ? '' : year;
+                        filterPapers(searchInput.value);
+                    });
+                    chipsEl.appendChild(chip);
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    filterPapers(searchInput.value);
+                });
+            }
+
+            $(document).on('paperlist:ready', buildYearChips);
+        });
+    </script>
 
     <div>
         <script>
@@ -766,6 +922,7 @@
                         $html = $html.replace(re, '');
                         $("body").append('<hr class="divider"><h4 class="section-divider"><span class="kicker">Full list</span>All Egocentric Vision Projects <i class="fa fa-database"></i></h4>');
                         $("body").append('<div class="paper-index">' + $html + '</div>');
+                        $(document).trigger('paperlist:ready');
                         return $html;
 
 
