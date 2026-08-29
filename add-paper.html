@@ -1,172 +1,416 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aggiungi un paper — Egocentric Vision</title>
+<title>Add a paper — Egocentric Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
+    :root {
+        --c-blue: #1367a9;
+        --c-ink: #0b0b08;
+        --c-surface: #151309;
+        --c-paper: #f3efe4;
+        --c-paper-muted: rgba(243,239,228,0.62);
+        --c-paper-dim: rgba(243,239,228,0.32);
+        --c-border: rgba(243,239,228,0.22);
+        --c-yellow: #ffe600;
+        --c-orange: #ff5a2f;
+        --c-pink: #f2a8ff;
+        --c-error: #ff6b6b;
+        --f-head: 'Syne', 'Open Sans', sans-serif;
+        --f-body: 'Inter', 'Open Sans', sans-serif;
+        --f-mono: 'JetBrains Mono', 'Menlo', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-        font-family: 'Open Sans', sans-serif;
-        background-color: #f1f1f1;
-        color: #222;
         margin: 0;
-        padding: 0;
+        background: #f1f1f1;
+        color: #222;
+        font-family: var(--f-body);
     }
-    header {
-        background-color: #1367a9;
+
+    a { color: var(--c-blue); }
+
+    header.topbar {
+        background: var(--c-blue);
         color: #fff;
-        padding: 24px 20px;
+        padding: 18px 20px;
     }
-    header h1 {
-        margin: 0 0 6px 0;
-        font-size: 1.5em;
-    }
-    header a {
+    header.topbar a {
         color: #fff;
+        font-family: var(--f-mono);
+        font-size: 0.85rem;
+        text-decoration: none;
     }
+    header.topbar a:hover { text-decoration: underline; }
+
     main {
-        max-width: 760px;
-        margin: 30px auto;
-        background: #fff;
-        padding: 24px 30px 30px;
-        border-radius: 6px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
     }
-    p.lead {
-        line-height: 1.5;
+
+    .hero {
+        padding: clamp(2rem, 6vw, 3.5rem) 0 1.5rem;
+    }
+    .kicker {
+        display: block;
+        font-family: var(--f-mono);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--c-blue);
+        margin-bottom: 0.6rem;
+    }
+    .hero h1 {
+        font-family: var(--f-head);
+        font-weight: 800;
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.6rem;
+        color: #16324f;
+    }
+    .hero p {
+        max-width: 60ch;
+        line-height: 1.55;
+        color: #444;
+        margin: 0;
+    }
+
+    /* --- dark contribute box, inspired by the "Your turn" box on plana93.github.io --- */
+    .contribute {
+        margin-top: 1.5rem;
+        padding: clamp(1.5rem, 4vw, 2.75rem);
+        background: var(--c-ink);
+        color: var(--c-paper);
+        border-radius: 4px;
+        clip-path: polygon(0 0.8%, 100% 0, 99% 98.5%, 0.6% 100%);
+    }
+    .contribute .kicker { color: var(--c-yellow); }
+    .contribute h2 {
+        font-family: var(--f-head);
+        font-weight: 800;
+        font-size: clamp(1.3rem, 3vw, 1.9rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.6rem;
+    }
+    .contribute > p {
+        max-width: 62ch;
+        line-height: 1.6;
+        color: var(--c-paper-muted);
+        margin: 0 0 1.75rem;
+        font-size: 0.94rem;
+    }
+
+    .token-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.75rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--c-border);
+    }
+    .token-status {
+        font-family: var(--f-mono);
+        font-size: 0.72rem;
+        color: var(--c-paper-dim);
+    }
+
+    form.contribute-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem 1.25rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field[hidden] { display: none; }
+    .field--full { grid-column: 1 / -1; }
+
+    label {
+        font-family: var(--f-mono);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--c-paper-muted);
+    }
+    label .req { color: var(--c-orange); }
+
+    input, select, textarea {
+        min-height: 46px;
+        border: 1px solid var(--c-border);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.04);
+        color: var(--c-paper);
+        font-family: var(--f-body);
+        font-size: 0.92rem;
+        padding: 0 0.85rem;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        width: 100%;
     }
     textarea {
-        width: 100%;
-        box-sizing: border-box;
-        min-height: 160px;
-        font-family: 'Menlo', 'Consolas', monospace;
-        font-size: 0.85em;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        min-height: 68px;
+        padding: 0.6rem 0.85rem;
         resize: vertical;
+        font-family: var(--f-body);
     }
-    .actions {
-        margin-top: 14px;
+    input:focus, select:focus, textarea:focus {
+        border-color: var(--c-yellow);
+        box-shadow: 0 0 0 3px rgba(255,230,0,0.14);
+    }
+    input::placeholder, textarea::placeholder { color: var(--c-paper-dim); }
+    select { cursor: pointer; }
+    select option { color: #111; }
+
+    .field.field--invalid input,
+    .field.field--invalid select,
+    .field.field--invalid textarea {
+        border-color: var(--c-error);
+        box-shadow: 0 0 0 3px rgba(255,107,107,0.14);
+    }
+    #field-subsection.field--invalid #subsection-list {
+        outline: 2px solid var(--c-error);
+        outline-offset: 6px;
+        border-radius: 8px;
+    }
+    #field-subsection.field--invalid .checkbox-list input {
+        border-color: initial;
+        box-shadow: none;
+    }
+
+    .checkbox-list {
         display: flex;
-        gap: 10px;
-        align-items: center;
         flex-wrap: wrap;
+        gap: 0.5rem;
     }
-    button {
-        background-color: #1367a9;
-        color: #fff;
-        border: none;
-        padding: 10px 18px;
-        border-radius: 4px;
-        font-size: 0.95em;
+    .checkbox-list label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid var(--c-border);
+        border-radius: 999px;
+        padding: 0.4rem 0.85rem;
+        font-family: var(--f-body);
+        font-size: 0.82rem;
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 500;
+        color: var(--c-paper);
         cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
     }
-    button:hover:not(:disabled) {
-        background-color: #0d517f;
+    .checkbox-list label:has(input:checked) {
+        border-color: var(--c-yellow);
+        background: rgba(255,230,0,0.1);
     }
-    button:disabled {
-        background-color: #9bb9cc;
+    .checkbox-list input {
+        min-height: 0;
+        width: auto;
+        accent-color: var(--c-yellow);
+    }
+
+    .form-actions {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--f-body);
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 0.01em;
+        padding: 0.8rem 1.6rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn--primary {
+        background: var(--c-yellow);
+        color: #111;
+    }
+    .btn--primary:hover:not(:disabled) {
+        background: var(--c-orange);
+        color: #111;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(255,90,47,0.35);
+    }
+    .btn--primary:disabled {
+        opacity: 0.5;
         cursor: not-allowed;
     }
-    button.secondary {
-        background-color: transparent;
-        color: #1367a9;
-        border: 1px solid #1367a9;
+    .btn--ghost {
+        background: transparent;
+        color: var(--c-paper-muted);
+        border: 1px solid var(--c-border);
+        padding: 0.55rem 1.1rem;
+        font-size: 0.8rem;
     }
-    button.secondary:hover {
-        background-color: #eef4f9;
-    }
-    #status {
-        margin-top: 18px;
-        padding: 12px 14px;
-        border-radius: 4px;
-        font-size: 0.92em;
-        line-height: 1.4;
-        display: none;
-    }
-    #status.info {
-        display: block;
-        background: #eef4f9;
-        color: #0d517f;
-    }
-    #status.success {
-        display: block;
-        background: #e6f4ea;
-        color: #1e7a34;
-    }
-    #status.error {
-        display: block;
-        background: #fbe7e7;
-        color: #a3282c;
+    .btn--ghost:hover { color: var(--c-paper); border-color: var(--c-paper-muted); }
+
+    .status {
+        grid-column: 1 / -1;
+        margin: 0;
+        font-family: var(--f-mono);
+        font-size: 0.78rem;
+        line-height: 1.6;
         white-space: pre-wrap;
     }
-    #status a {
-        color: inherit;
-        font-weight: bold;
-    }
-    details {
-        margin-top: 26px;
-        font-size: 0.9em;
+    .status[data-kind="error"] { color: var(--c-error); }
+    .status[data-kind="info"] { color: var(--c-paper-muted); }
+    .status[data-kind="success"] { color: var(--c-yellow); }
+    .status a { color: var(--c-yellow); font-weight: 600; }
+
+    details.notes {
+        margin-top: 1.75rem;
+        font-size: 0.88rem;
         color: #444;
+        line-height: 1.55;
     }
-    details summary {
+    details.notes summary {
         cursor: pointer;
-        font-weight: bold;
-        color: #1367a9;
+        font-weight: 700;
+        color: var(--c-blue);
+        font-family: var(--f-body);
     }
-    code {
-        background: #f1f1f1;
+    details.notes code {
+        background: #e9e9e9;
         padding: 1px 5px;
         border-radius: 3px;
     }
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        font-size: 0.9em;
+
+    @media (max-width: 640px) {
+        form.contribute-form { grid-template-columns: 1fr; }
+        .field--half { grid-column: auto; }
     }
 </style>
 </head>
 <body>
-<header>
-    <h1>Aggiungi un paper</h1>
-    <div><a href="./index.html">&larr; Torna alla pagina Egocentric Vision</a></div>
+<header class="topbar">
+    <a href="./index.html">&larr; Back to Egocentric Vision</a>
 </header>
 <main>
-    <p class="lead">
-        Incolla qui sotto una o più righe CSV già pronte (stesso schema di
-        <code>tools/egodata.csv</code>, ad esempio esportate da Elynd). Al click su
-        "Apri Pull Request" viene creato un branch, aggiunte le righe a
-        <code>tools/egodata.csv</code> e aperta una Pull Request verso <code>gh-pages</code>
-        per la revisione.
-    </p>
-
-    <textarea id="csv-rows" placeholder="Incolla qui una o più righe CSV..."></textarea>
-
-    <div class="actions">
-        <button id="submit-btn" onclick="openPullRequest()">Apri Pull Request</button>
-        <button class="secondary" onclick="resetToken()">Cambia token GitHub</button>
+    <div class="hero">
+        <span class="kicker">Contribute</span>
+        <h1>Add a paper</h1>
+        <p>Fill in the fields below. Submitting opens a Pull Request on GitHub automatically — nothing is published until it's reviewed and merged.</p>
     </div>
 
-    <div id="status"></div>
+    <section class="contribute">
+        <span class="kicker">Your turn</span>
+        <h2>Found something we're missing?</h2>
+        <p>Fields marked <span style="color:var(--c-orange)">*</span> are required. The rest help other readers but won't block your submission.</p>
 
-    <details>
-        <summary>Come funziona / note</summary>
+        <div class="token-row">
+            <button type="button" class="btn btn--ghost" id="token-btn">Manage GitHub token</button>
+            <span class="token-status" id="token-status"></span>
+        </div>
+
+        <form id="paper-form" class="contribute-form" novalidate>
+            <div class="field field--full" id="field-type">
+                <label for="f-type">Type <span class="req">*</span></label>
+                <select id="f-type">
+                    <option value="paper">Paper</option>
+                    <option value="survey">Survey</option>
+                    <option value="dataset">Dataset</option>
+                    <option value="challenge">Challenge</option>
+                    <option value="device">Device</option>
+                </select>
+            </div>
+
+            <div class="field field--full" id="field-title">
+                <label for="f-title">Title <span class="req">*</span></label>
+                <input id="f-title" type="text" maxlength="300" placeholder="Egocentric zone-aware action recognition across environments" autocomplete="off">
+            </div>
+
+            <div class="field field--full" id="field-authors">
+                <label for="f-authors">Authors <span class="req">*</span></label>
+                <input id="f-authors" type="text" placeholder="Simone Alberto Peirone, Gabriele Goletto, Mirco Planamente" autocomplete="off">
+            </div>
+
+            <div class="field field--half" id="field-conference">
+                <label for="f-conference">Conference / venue</label>
+                <input id="f-conference" type="text" placeholder="Pattern Recognition Letters" autocomplete="off">
+            </div>
+            <div class="field field--half" id="field-year">
+                <label for="f-year">Year</label>
+                <input id="f-year" type="number" min="1990" max="2100" placeholder="2025">
+            </div>
+
+            <div class="field field--full" id="field-section" hidden>
+                <label for="f-section">Section <span class="req">*</span></label>
+                <select id="f-section"></select>
+            </div>
+
+            <div class="field field--full" id="field-subsection" hidden>
+                <label>Sub-section — tick as many as apply, each one adds a row for this paper</label>
+                <div id="subsection-list" class="checkbox-list"></div>
+            </div>
+
+            <div class="field field--full" id="field-shortdesc" hidden>
+                <label for="f-shortdesc">Short description <span class="req">*</span></label>
+                <textarea id="f-shortdesc" rows="2" placeholder="One or two lines describing it."></textarea>
+            </div>
+
+            <div class="field field--half" id="field-link-paper">
+                <label for="f-link-paper">Link to paper <span class="req">*</span></label>
+                <input id="f-link-paper" type="url" placeholder="https://..." autocomplete="off">
+            </div>
+            <div class="field field--half" id="field-link-page">
+                <label for="f-link-page">Project / dataset page</label>
+                <input id="f-link-page" type="url" placeholder="https://..." autocomplete="off">
+            </div>
+            <div class="field field--half" id="field-link-code">
+                <label for="f-link-code">Code</label>
+                <input id="f-link-code" type="url" placeholder="https://github.com/..." autocomplete="off">
+            </div>
+            <div class="field field--half" id="field-link-video">
+                <label for="f-link-video">Video</label>
+                <input id="f-link-video" type="url" placeholder="https://..." autocomplete="off">
+            </div>
+
+            <div class="field field--full" id="field-note">
+                <label for="f-note">Note</label>
+                <input id="f-note" type="text" autocomplete="off">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn--primary" id="submit-btn">Open Pull Request &#8599;</button>
+            </div>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <details class="notes">
+        <summary>How it works / security notes</summary>
         <p>
-            Al primo utilizzo viene richiesto un GitHub Personal Access Token
-            <strong>fine-grained</strong>, con accesso limitato a questo solo repository e
-            permessi <code>Contents: Read and write</code> +
-            <code>Pull requests: Read and write</code>. Il token viene salvato solo nel
-            <code>localStorage</code> di questo browser e usato per chiamare direttamente
-            <code>api.github.com</code>: non viene mai inviato altrove.
+            At first use you'll be asked for a GitHub Personal Access Token, <strong>fine-grained</strong>,
+            scoped to only this repository, with <code>Contents: Read and write</code> and
+            <code>Pull requests: Read and write</code> permissions. It's stored only in this
+            browser's <code>localStorage</code> and used to call <code>api.github.com</code>
+            directly — it's never sent anywhere else.
         </p>
         <p>
-            Non condividere il link di questa pagina con la capacità di scrittura attiva
-            (token già salvato) se non vuoi che chi la apre possa scrivere nel repository.
+            Don't share this page's link while your token is saved, unless you want whoever opens
+            it to be able to write to the repository.
         </p>
         <p>
-            Il merge della Pull Request (passo manuale di revisione) fa scattare la GitHub
-            Action che rigenera automaticamente la pagina pubblica.
+            Merging the Pull Request (a manual review step) triggers the GitHub Action that
+            regenerates the public page.
         </p>
     </details>
 </main>
@@ -177,6 +421,188 @@
     const BASE_BRANCH = "gh-pages";
     const CSV_PATH = "tools/egodata.csv";
     const TOKEN_KEY = "egovision_add_paper_pat";
+
+    // Mirrors tools/read_cvs_generate_readme.py's Egoindex section/sub-section keys exactly
+    // (including its typos) -- these strings are matched verbatim by the script.
+    const SECTIONS = {
+        "Action / Activity Recognition": ["Action Recognition", "Hand-Object Interactions", "Usupervised Domain Adaptation", "Domain Generalization", "Source Free Domain Adaptation", "Test Time Training (Adaptation)", "Zero-Shot Learning"],
+        "Action Anticipation": ["Short-Term Action Anticipation", "Long-Term Action Anticipation", "Future Gaze Prediction", "Trajectory prediction", "Region prediction"],
+        "Multi-Modalities": ["Audio-Visual", "Depth", "Thermal", "Event", "IMU"],
+        "Temporal Segmentation (Action Detection)": null,
+        "Retrieval": null,
+        "Segmentation": null,
+        "Video-Language": null,
+        "Few-Shot Action Recognition": null,
+        "Gaze": null,
+        "From Third-Person to First-Person": null,
+        "NeRF": null,
+        "User Data from an Egocentric Point of View": null,
+        "Localization": null,
+        "Privacy protection": null,
+        "Tracking": null,
+        "Social Interactions": null,
+        "Multiple Egocentric Tasks": null,
+        "Activity-context": null,
+        "Diffusion models": null,
+        "Video summarization": null,
+        "Applications": null,
+        "Human to Robot": null,
+        "Asssitive Egocentric Vision": null,
+        "Popular Architectures": ["2D", "3D", "RNN", "Transformer"],
+        "Other EGO-Context": null,
+        "Not Yet Explored Task": null
+    };
+
+    const els = {
+        type: document.getElementById('f-type'),
+        title: document.getElementById('f-title'),
+        authors: document.getElementById('f-authors'),
+        conference: document.getElementById('f-conference'),
+        year: document.getElementById('f-year'),
+        section: document.getElementById('f-section'),
+        subsectionList: document.getElementById('subsection-list'),
+        shortdesc: document.getElementById('f-shortdesc'),
+        linkPaper: document.getElementById('f-link-paper'),
+        linkPage: document.getElementById('f-link-page'),
+        linkCode: document.getElementById('f-link-code'),
+        linkVideo: document.getElementById('f-link-video'),
+        note: document.getElementById('f-note'),
+    };
+
+    function populateSections() {
+        els.section.innerHTML = '';
+        Object.keys(SECTIONS).forEach(name => {
+            const opt = document.createElement('option');
+            opt.value = name;
+            opt.textContent = name;
+            els.section.appendChild(opt);
+        });
+    }
+
+    function populateSubsections() {
+        const subs = SECTIONS[els.section.value];
+        els.subsectionList.innerHTML = '';
+        const field = document.getElementById('field-subsection');
+        if (!subs) { field.hidden = true; return; }
+        field.hidden = false;
+        subs.forEach(name => {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.value = name;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(name));
+            els.subsectionList.appendChild(label);
+        });
+    }
+
+    function applyTypeVisibility() {
+        const type = els.type.value;
+        const showSection = type === 'paper';
+        const showShortdesc = type === 'dataset' || type === 'challenge';
+
+        document.getElementById('field-section').hidden = !showSection;
+        document.getElementById('field-subsection').hidden = !showSection || !SECTIONS[els.section.value];
+        document.getElementById('field-shortdesc').hidden = !showShortdesc;
+
+        const linkPaperReq = document.getElementById('field-link-paper').querySelector('.req');
+        const linkPageLabel = document.getElementById('field-link-page').querySelector('label');
+        // Link to paper is required for paper/survey; link page is required for dataset/challenge/device.
+        linkPaperReq.style.display = (type === 'paper' || type === 'survey') ? 'inline' : 'none';
+        linkPageLabel.innerHTML = (type === 'dataset' || type === 'challenge' || type === 'device')
+            ? 'Project / dataset page <span class="req">*</span>'
+            : 'Project / dataset page';
+    }
+
+    els.type.addEventListener('change', applyTypeVisibility);
+    els.section.addEventListener('change', populateSubsections);
+
+    populateSections();
+    populateSubsections();
+    applyTypeVisibility();
+
+    function clearInvalid() {
+        document.querySelectorAll('.field--invalid').forEach(f => f.classList.remove('field--invalid'));
+    }
+
+    function markInvalid(fieldId) {
+        const el = document.getElementById(fieldId);
+        if (el) el.classList.add('field--invalid');
+    }
+
+    function validate() {
+        clearInvalid();
+        const type = els.type.value;
+        const missing = [];
+
+        if (!els.title.value.trim()) { missing.push('Title'); markInvalid('field-title'); }
+        if (!els.authors.value.trim()) { missing.push('Authors'); markInvalid('field-authors'); }
+
+        if (type === 'paper' || type === 'survey') {
+            if (!els.linkPaper.value.trim()) { missing.push('Link to paper'); markInvalid('field-link-paper'); }
+        }
+        if (type === 'dataset' || type === 'challenge' || type === 'device') {
+            if (!els.linkPage.value.trim()) { missing.push('Project / dataset page'); markInvalid('field-link-page'); }
+        }
+        if (type === 'dataset' || type === 'challenge') {
+            if (!els.shortdesc.value.trim()) { missing.push('Short description'); markInvalid('field-shortdesc'); }
+        }
+        if (type === 'paper') {
+            const subs = SECTIONS[els.section.value];
+            if (subs) {
+                const anyChecked = Array.from(els.subsectionList.querySelectorAll('input:checked')).length > 0;
+                if (!anyChecked) { missing.push('at least one Sub-section'); markInvalid('field-subsection'); }
+            }
+        }
+
+        return missing;
+    }
+
+    function csvEscape(value) {
+        const v = (value == null ? '' : String(value)).trim();
+        if (/[",\n]/.test(v)) {
+            return '"' + v.replace(/"/g, '""') + '"';
+        }
+        return v;
+    }
+
+    function buildRows() {
+        const type = els.type.value;
+        const title = els.title.value.trim();
+        const authors = els.authors.value.trim();
+        const conference = els.conference.value.trim();
+        const year = els.year.value.trim();
+        const linkPaper = els.linkPaper.value.trim();
+        const linkPage = els.linkPage.value.trim();
+        const linkCode = els.linkCode.value.trim();
+        const linkVideo = els.linkVideo.value.trim();
+        const note = els.note.value.trim();
+        const shortdesc = els.shortdesc.value.trim();
+
+        let category, section, subsections;
+        if (type === 'paper') {
+            category = 'Papers';
+            section = els.section.value;
+            const subs = SECTIONS[section];
+            subsections = subs
+                ? Array.from(els.subsectionList.querySelectorAll('input:checked')).map(i => i.value)
+                : [''];
+        } else if (type === 'survey') {
+            category = 'Surveys'; section = ''; subsections = [''];
+        } else if (type === 'dataset') {
+            category = 'Papers'; section = 'Datasets'; subsections = [''];
+        } else if (type === 'challenge') {
+            category = 'Challenges'; section = ''; subsections = [''];
+        } else {
+            category = 'Devices'; section = ''; subsections = [''];
+        }
+
+        return subsections.map(sub => {
+            const fields = ['', '', title, authors, conference, year, category, section, sub,
+                shortdesc, linkPaper, linkPage, linkCode, linkVideo, note, '', ''];
+            return fields.map(csvEscape).join(',');
+        });
+    }
 
     function b64EncodeUnicode(str) {
         const bytes = new TextEncoder().encode(str);
@@ -191,36 +617,13 @@
         return new TextDecoder('utf-8').decode(bytes);
     }
 
-    function parseCsvLine(line) {
-        const fields = [];
-        let field = '';
-        let inQuotes = false;
-        for (let i = 0; i < line.length; i++) {
-            const c = line[i];
-            if (inQuotes) {
-                if (c === '"') {
-                    if (line[i + 1] === '"') { field += '"'; i++; }
-                    else { inQuotes = false; }
-                } else {
-                    field += c;
-                }
-            } else {
-                if (c === '"') inQuotes = true;
-                else if (c === ',') { fields.push(field); field = ''; }
-                else field += c;
-            }
-        }
-        fields.push(field);
-        return fields;
-    }
-
     function getToken() {
         let token = localStorage.getItem(TOKEN_KEY);
         if (!token) {
             token = window.prompt(
-                "Incolla il tuo GitHub Personal Access Token (fine-grained, scopato a questo repo, " +
-                "permessi Contents + Pull requests: Read and write).\n" +
-                "Viene salvato solo in questo browser (localStorage) e usato per chiamare api.github.com direttamente."
+                "Paste your GitHub Personal Access Token (fine-grained, scoped to this repo, " +
+                "Contents + Pull requests: Read and write).\n" +
+                "It's stored only in this browser (localStorage) and used to call api.github.com directly."
             );
             if (token) {
                 token = token.trim();
@@ -232,12 +635,24 @@
 
     function resetToken() {
         localStorage.removeItem(TOKEN_KEY);
-        setStatus('Token rimosso da questo browser. Verrà richiesto di nuovo al prossimo invio.', 'info');
+        updateTokenStatus();
+        setStatus('Token removed from this browser. You\'ll be asked for it again on the next submission.', 'info');
     }
+
+    function updateTokenStatus() {
+        const has = !!localStorage.getItem(TOKEN_KEY);
+        document.getElementById('token-status').textContent = has ? 'Token saved in this browser.' : 'No token saved yet.';
+        document.getElementById('token-btn').textContent = has ? 'Remove saved token' : 'Manage GitHub token';
+    }
+    document.getElementById('token-btn').addEventListener('click', () => {
+        if (localStorage.getItem(TOKEN_KEY)) resetToken();
+        else getToken() && updateTokenStatus();
+    });
+    updateTokenStatus();
 
     function setStatus(html, kind) {
         const el = document.getElementById('status');
-        el.className = kind;
+        el.dataset.kind = kind;
         el.innerHTML = html;
     }
 
@@ -266,33 +681,36 @@
             } catch (e) { /* ignore */ }
             if (res.status === 401 || res.status === 403) {
                 throw new Error(
-                    `Token non valido o senza i permessi necessari (HTTP ${res.status}). ${detail}\n` +
-                    `Verifica che il token abbia accesso a questo repo con permessi Contents e Pull requests in scrittura.`
+                    `Token invalid or missing permissions (HTTP ${res.status}). ${detail}\n` +
+                    `Check that it has Contents and Pull requests write access to this repo.`
                 );
             }
-            throw new Error(`Richiesta a ${path} fallita (HTTP ${res.status}). ${detail}`);
+            throw new Error(`Request to ${path} failed (HTTP ${res.status}). ${detail}`);
         }
         return res.status === 204 ? null : res.json();
     }
 
-    async function openPullRequest() {
-        const textarea = document.getElementById('csv-rows');
-        const rawLines = textarea.value.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+    document.getElementById('paper-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-        if (rawLines.length === 0) {
-            setStatus('Incolla almeno una riga CSV prima di continuare.', 'error');
+        const missing = validate();
+        if (missing.length > 0) {
+            setStatus('Missing required fields: ' + missing.join(', '), 'error');
             return;
         }
 
         const token = getToken();
         if (!token) {
-            setStatus('Serve un token GitHub per aprire la Pull Request.', 'error');
+            setStatus('A GitHub token is needed to open the Pull Request.', 'error');
             return;
         }
 
+        const newRows = buildRows();
+        const title = els.title.value.trim();
+
         setBusy(true);
         try {
-            setStatus(`Recupero ${CSV_PATH} attuale da ${BASE_BRANCH}...`, 'info');
+            setStatus(`Fetching current ${CSV_PATH} from ${BASE_BRANCH}...`, 'info');
             const currentFile = await githubRequest(
                 `/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}?ref=${BASE_BRANCH}`, token
             );
@@ -300,32 +718,18 @@
             const sha = currentFile.sha;
 
             const headerLine = currentContent.split(/\r?\n/)[0];
-            const expectedColumns = parseCsvLine(headerLine).length;
-
-            const newLines = rawLines.filter(l => l !== headerLine);
-            if (newLines.length === 0) {
-                setStatus('Nessuna riga da aggiungere (solo l\'header è stato incollato?).', 'error');
-                return;
-            }
-
-            for (const line of newLines) {
-                const cols = parseCsvLine(line);
-                if (cols.length !== expectedColumns) {
-                    setStatus(
-                        `Riga con numero di colonne errato (${cols.length} invece di ${expectedColumns} attese):\n` +
-                        `${line.slice(0, 200)}`,
-                        'error'
-                    );
-                    return;
-                }
+            const expectedColumns = headerLine.split(',').length;
+            const gotColumns = newRows[0].split(',').length;
+            if (gotColumns !== expectedColumns) {
+                throw new Error(`Internal column mismatch (built ${gotColumns}, CSV expects ${expectedColumns}). Please report this.`);
             }
 
             let newContent = currentContent;
             if (!newContent.endsWith('\n')) newContent += '\n';
-            newContent += newLines.join('\n') + '\n';
+            newContent += newRows.join('\n') + '\n';
 
             const branchName = `add-paper-${Date.now()}`;
-            setStatus(`Creo il branch ${branchName}...`, 'info');
+            setStatus(`Creating branch ${branchName}...`, 'info');
             const baseRef = await githubRequest(
                 `/repos/${REPO_OWNER}/${REPO_NAME}/git/ref/heads/${BASE_BRANCH}`, token
             );
@@ -334,39 +738,35 @@
                 sha: baseRef.object.sha
             });
 
-            setStatus(`Aggiorno ${CSV_PATH} sul branch ${branchName}...`, 'info');
+            setStatus(`Updating ${CSV_PATH} on ${branchName}...`, 'info');
             await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CSV_PATH}`, token, 'PUT', {
-                message: `Aggiungi ${newLines.length} riga/e a egodata.csv`,
+                message: `Add "${title}" to egodata.csv`,
                 content: b64EncodeUnicode(newContent),
                 sha: sha,
                 branch: branchName
             });
 
-            setStatus('Apro la Pull Request...', 'info');
-            const titles = newLines.map(l => parseCsvLine(l)[2]).filter(Boolean);
-            const prTitle = titles.length === 1
-                ? `Aggiungi paper: ${titles[0]}`
-                : `Aggiungi ${newLines.length} righe a egodata.csv`;
-            const prBody = titles.length
-                ? 'Righe aggiunte:\n' + titles.map(t => `- ${t}`).join('\n')
-                : 'Nuove righe aggiunte a tools/egodata.csv.';
-
+            setStatus('Opening the Pull Request...', 'info');
+            const prBody = `Adds **${title}**` + (newRows.length > 1 ? ` as ${newRows.length} rows (multiple sub-sections).` : '.');
             const pr = await githubRequest(`/repos/${REPO_OWNER}/${REPO_NAME}/pulls`, token, 'POST', {
-                title: prTitle,
+                title: `Add paper: ${title}`,
                 body: prBody,
                 head: branchName,
                 base: BASE_BRANCH
             });
 
-            setStatus(`Pull Request aperta: <a href="${pr.html_url}" target="_blank" rel="noopener">${pr.html_url}</a>`, 'success');
-            textarea.value = '';
+            setStatus(`Pull Request opened: <a href="${pr.html_url}" target="_blank" rel="noopener">${pr.html_url}</a>`, 'success');
+            document.getElementById('paper-form').reset();
+            populateSections();
+            populateSubsections();
+            applyTypeVisibility();
         } catch (err) {
             console.error(err);
-            setStatus(`Errore: ${err.message}`, 'error');
+            setStatus(`Error: ${err.message}`, 'error');
         } finally {
             setBusy(false);
         }
-    }
+    });
 </script>
 </body>
 </html>
