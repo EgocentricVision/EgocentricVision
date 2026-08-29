@@ -110,7 +110,7 @@
            different colors, so the theme actually reads as a different design language. */
         :root[data-theme="brutalist"] .intro,
         :root[data-theme="brutalist"] .person,
-        :root[data-theme="brutalist"] .toc-wrap,
+        :root[data-theme="brutalist"] .index-morph,
         :root[data-theme="brutalist"] .search-bar__row,
         :root[data-theme="brutalist"] .recent-added {
             border-width: 2px;
@@ -120,7 +120,7 @@
 
         :root[data-theme="minimal"] .intro,
         :root[data-theme="minimal"] .person,
-        :root[data-theme="minimal"] .toc-wrap,
+        :root[data-theme="minimal"] .index-morph,
         :root[data-theme="minimal"] .search-bar__row,
         :root[data-theme="minimal"] .recent-added {
             box-shadow: none;
@@ -361,8 +361,17 @@
             border-top: 1px solid var(--border);
         }
 
-        /* --- table of contents (short index built from headings) --- */
-        .toc-wrap {
+        /* --- index morph: ONE element, the whole time. On wide screens it starts as
+           an inline card, builds up category-by-category as you scroll through it
+           (position: sticky keeps it visually still while the spacer around it is
+           what actually scrolls -- no scroll-jacking, no preventDefault, just the
+           standard sticky-inside-a-tall-spacer technique), then shrinks and docks
+           into the compact sidebar spot for the rest of the (very long) list. Since
+           it's a single element being transformed rather than two separately-timed
+           copies, it's structurally impossible for two versions to be on screen at
+           once. On narrower screens all of the media-query rules below simply don't
+           apply, so it's just a plain inline card, same as before. */
+        .index-morph {
             max-width: 900px;
             margin: 12px auto 0;
             padding: 20px 26px;
@@ -372,21 +381,22 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .toc-wrap ul {
+        .index-morph ul {
             list-style: none;
             margin: 0;
             padding-left: 1.15em;
         }
 
-        .toc-wrap > ul {
+        .index-morph > ul {
             padding-left: 0;
         }
 
-        .toc-wrap li {
+        .index-morph li {
+            position: relative;
             margin: 2px 0;
         }
 
-        .toc-wrap li > a {
+        .index-morph li > a {
             display: inline-block;
             padding: 3px 8px;
             border-radius: 6px;
@@ -397,54 +407,110 @@
             transition: background-color 0.15s, color 0.15s;
         }
 
-        .toc-wrap li > a:hover {
+        .index-morph li > a:hover {
             background: color-mix(in srgb, var(--accent) 8%, transparent);
             color: var(--accent);
             text-decoration: none;
         }
 
-        /* On wide screens the TOC becomes a real sticky sidebar instead of an inline
-           card, so you always know where you are while scrolling the long list. It's
-           fixed-positioned in the margin, so it never affects the centered content's
-           layout. It stays invisible (but already in place) until you actually scroll
-           down to the index/list section -- no point showing navigation for content
-           you haven't reached yet -- and once visible, the entry for the section
-           you're currently reading stays fully lit while the rest dim down, so you
-           always know exactly where you are without the whole list competing for
-           attention. */
+        /* Thin, delicate, curved connectors -- an elbow via border-radius, never a
+           sharp straight segment -- that adapt to the theme (var(--border)) and to
+           how compressed the tree currently is (--compress, set continuously from
+           scroll progress on wide screens: 0 while still an open tree, 1 once fully
+           docked into the sidebar, so the connectors visibly shorten as it shrinks). */
+        @media (min-width: 900px) {
+            .index-morph ul {
+                margin-left: 0.5em;
+                border-left: 1px solid var(--border);
+            }
+
+            .index-morph > ul {
+                margin-left: 0;
+                border-left: none;
+            }
+
+            .index-morph li {
+                padding-left: calc(1em - var(--compress, 0) * 0.35em);
+            }
+
+            .index-morph li::before {
+                content: '';
+                position: absolute;
+                left: -1px;
+                top: 0;
+                width: calc(1em - var(--compress, 0) * 0.35em);
+                height: calc(1.3em - var(--compress, 0) * 0.4em);
+                border-left: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                border-bottom-left-radius: 10px;
+                pointer-events: none;
+            }
+
+            .index-morph > ul > li::before {
+                display: none; /* top-level entries have no parent rail to connect into */
+            }
+        }
+
         @media (min-width: 1400px) {
-            .toc-wrap {
+            .index-morph-spacer {
+                position: relative;
+            }
+
+            .index-morph {
+                position: sticky;
+                top: 100px;
+                width: min(520px, 92vw);
+                max-height: calc(100vh - 150px);
+                overflow-y: auto;
+                z-index: 30;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease, width 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .index-morph.is-visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .index-morph.is-docked {
                 position: fixed;
                 top: 110px;
                 right: 22px;
-                width: 230px;
-                max-width: 230px;
-                max-height: calc(100vh - 150px);
-                overflow-y: auto;
-                margin: 0;
-                z-index: 30;
+                left: auto;
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            }
+
+            /* Reveal tiers: hidden by default, lit up depth-by-depth (category,
+               then section, then sub-section, ...) as data-revealed-depth climbs,
+               driven straight from scroll progress -- see the JS. */
+            .index-morph li[data-depth] {
                 opacity: 0;
-                pointer-events: none;
-                transform: translateX(14px);
-                transition: opacity 0.35s ease, transform 0.35s ease;
+                transition: opacity 0.4s ease;
             }
 
-            .toc-wrap.is-active {
+            .index-morph[data-revealed-depth="1"] li[data-depth="1"],
+            .index-morph[data-revealed-depth="2"] li[data-depth="1"],
+            .index-morph[data-revealed-depth="2"] li[data-depth="2"],
+            .index-morph[data-revealed-depth="3"] li[data-depth="1"],
+            .index-morph[data-revealed-depth="3"] li[data-depth="2"],
+            .index-morph[data-revealed-depth="3"] li[data-depth="3"],
+            .index-morph[data-revealed-depth="4"] li[data-depth="1"],
+            .index-morph[data-revealed-depth="4"] li[data-depth="2"],
+            .index-morph[data-revealed-depth="4"] li[data-depth="3"],
+            .index-morph[data-revealed-depth="4"] li[data-depth="4"] {
                 opacity: 1;
-                pointer-events: auto;
-                transform: translateX(0);
             }
 
-            .toc-wrap li > a {
+            .index-morph li > a {
                 transition: opacity 0.2s ease, color 0.2s ease;
             }
 
-            .toc-wrap.has-active li > a {
+            .index-morph.has-active li > a {
                 opacity: 0.46;
             }
 
-            .toc-wrap.has-active li > a.is-current-section {
+            .index-morph.has-active li > a.is-current-section {
                 opacity: 1;
                 font-weight: 700;
                 color: var(--accent);
@@ -794,6 +860,9 @@
 </script>
 
     <h3 class="section-divider" id="index-heading"><span class="kicker">Navigate</span>Egocentric Vision Index <i class="fa fa-book"></i></h3>
+    <div class="index-morph-spacer" id="index-morph-spacer">
+        <nav class="index-morph" id="index-morph"></nav>
+    </div>
 
     <div class="search-bar" id="search-bar">
         <div class="search-bar__row">
@@ -906,43 +975,71 @@
     </script>
 
     <script>
-        // TOC sidebar (>=1400px only, see .toc-wrap CSS): stays invisible until the
-        // reader scrolls down to the index/list section, then fades in; the entry for
-        // whichever section is currently on screen stays fully lit while the rest dim.
+        // Index morph (>=1400px, see .index-morph CSS): a single element that
+        // reveals depth-by-depth as you scroll through its spacer (position:sticky
+        // keeps it visually in place while the spacer -- not the page -- is what's
+        // actually being scrolled through, so this is a plain scroll-linked effect,
+        // never scroll-jacking/preventDefault), then shrinks and docks into the
+        // compact sidebar spot for the rest of the list. One element the whole
+        // time, driven by one progress value, so there is never a second copy of it
+        // on screen. Below 1400px none of this runs and it's just a plain inline card.
         $(document).ready(function () {
-            var tocWrap = null;
+            var morphEl = null;
+            var spacerEl = null;
             var headingEls = [];
             var tocLinks = {};
+            var maxDepth = 1;
             var ticking = false;
 
+            function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+            // Tags every <li> with how many <ul> ancestors it has inside the
+            // container, so the depth-based reveal/stagger CSS has something exact
+            // to key off instead of guessing from selector nesting.
+            function annotateDepths(container) {
+                var max = 1;
+                Array.prototype.forEach.call(container.querySelectorAll('li'), function (li) {
+                    var depth = 0;
+                    var el = li;
+                    while (el && el !== container) {
+                        if (el.tagName === 'UL') depth++;
+                        el = el.parentElement;
+                    }
+                    li.setAttribute('data-depth', depth || 1);
+                    if (depth > max) max = depth;
+                });
+                return max;
+            }
+
             function refreshLookups() {
-                tocWrap = document.getElementById('toc-wrap');
-                if (!tocWrap) return;
+                morphEl = document.getElementById('index-morph');
+                spacerEl = document.getElementById('index-morph-spacer');
+                if (!morphEl) return;
                 headingEls = Array.prototype.slice.call(
                     document.querySelectorAll('.paper-index li.paper-heading a[id]')
                 );
                 tocLinks = {};
-                Array.prototype.forEach.call(tocWrap.querySelectorAll('a[data-target]'), function (a) {
+                Array.prototype.forEach.call(morphEl.querySelectorAll('a[data-target]'), function (a) {
                     tocLinks[a.dataset.target] = a;
                 });
             }
 
-            // Scrolls only the sidebar's own internal list (never the page) so the
-            // highlighted entry stays in view as you move through a very long index.
+            // Scrolls only the morph element's own internal list (never the page)
+            // so the highlighted entry stays in view once it's docked as a sidebar.
             function keepLinkVisibleInSidebar(link) {
-                if (!tocWrap || !link) return;
-                var containerRect = tocWrap.getBoundingClientRect();
+                if (!morphEl || !link || !morphEl.classList.contains('is-docked')) return;
+                var containerRect = morphEl.getBoundingClientRect();
                 var linkRect = link.getBoundingClientRect();
                 var margin = 16;
                 if (linkRect.top < containerRect.top + margin) {
-                    tocWrap.scrollTop -= (containerRect.top + margin - linkRect.top);
+                    morphEl.scrollTop -= (containerRect.top + margin - linkRect.top);
                 } else if (linkRect.bottom > containerRect.bottom - margin) {
-                    tocWrap.scrollTop += (linkRect.bottom - (containerRect.bottom - margin));
+                    morphEl.scrollTop += (linkRect.bottom - (containerRect.bottom - margin));
                 }
             }
 
             function updateActiveSection() {
-                if (!tocWrap || !headingEls.length) return;
+                if (!morphEl || !headingEls.length) return;
                 var threshold = 110;
                 var current = null;
                 for (var i = 0; i < headingEls.length; i++) {
@@ -957,31 +1054,79 @@
                 }
                 if (current && tocLinks[current.id]) {
                     tocLinks[current.id].classList.add('is-current-section');
-                    tocWrap.classList.add('has-active');
+                    morphEl.classList.add('has-active');
                     keepLinkVisibleInSidebar(tocLinks[current.id]);
                 } else {
-                    tocWrap.classList.remove('has-active');
+                    morphEl.classList.remove('has-active');
                 }
             }
 
-            function setupVisibilityObserver() {
-                var marker = document.getElementById('search-bar');
-                if (!tocWrap || !marker) return;
-                if ('IntersectionObserver' in window) {
-                    new IntersectionObserver(function (entries) {
-                        entries.forEach(function (entry) {
-                            tocWrap.classList.toggle('is-active', entry.isIntersecting);
-                        });
-                    }, { threshold: 0 }).observe(marker);
-                } else {
-                    tocWrap.classList.add('is-active'); // no IntersectionObserver support -- fail open
+            // Sizes the spacer so the whole reveal+shrink sequence takes about 1.4
+            // viewport-heights of scrolling, then hands off to .is-docked with zero
+            // leftover empty scroll space -- see updateMorph for how these agree.
+            function computeSpacerHeight() {
+                if (!spacerEl || window.innerWidth < 1400) {
+                    if (spacerEl) spacerEl.style.height = '';
+                    return;
                 }
+                var desiredScrollDistance = window.innerHeight * 1.4;
+                var stickyTop = 100;
+                var approxHeight = morphEl ? morphEl.offsetHeight : 400;
+                spacerEl.style.height = (desiredScrollDistance + stickyTop + approxHeight) + 'px';
+            }
+
+            function updateMorph() {
+                if (!morphEl || !spacerEl || window.innerWidth < 1400) {
+                    if (morphEl) {
+                        morphEl.classList.remove('is-visible', 'is-docked');
+                        morphEl.removeAttribute('data-revealed-depth');
+                        morphEl.style.width = '';
+                        morphEl.style.removeProperty('--compress');
+                    }
+                    return;
+                }
+
+                var rect = spacerEl.getBoundingClientRect();
+                var viewportH = window.innerHeight;
+                var stickyTop = 100;
+
+                // Long past the spacer and already docked -- the morph itself is
+                // done changing, just keep tracking which section is active.
+                if (morphEl.classList.contains('is-docked') && rect.bottom < -viewportH) {
+                    updateActiveSection();
+                    return;
+                }
+
+                if (rect.top > viewportH * 0.6) {
+                    morphEl.classList.remove('is-visible', 'is-docked');
+                    morphEl.removeAttribute('data-revealed-depth');
+                    return;
+                }
+
+                morphEl.classList.add('is-visible');
+
+                var scrollable = Math.max(1, rect.height - stickyTop - morphEl.offsetHeight);
+                var progress = clamp(-rect.top / scrollable, 0, 1);
+
+                var revealDepth = clamp(Math.ceil(progress * maxDepth * 1.3), 1, maxDepth);
+                morphEl.setAttribute('data-revealed-depth', String(revealDepth));
+
+                var startWidth = Math.min(520, window.innerWidth * 0.92);
+                var endWidth = 230;
+                var shrinkProgress = clamp((progress - 0.5) / 0.5, 0, 1);
+                morphEl.style.width = (startWidth - (startWidth - endWidth) * shrinkProgress) + 'px';
+                morphEl.style.setProperty('--compress', shrinkProgress.toFixed(3));
+
+                morphEl.classList.toggle('is-docked', progress >= 0.999);
+
+                updateActiveSection();
             }
 
             $(document).on('toc:ready', function () {
                 refreshLookups();
-                setupVisibilityObserver();
-                updateActiveSection();
+                maxDepth = morphEl ? annotateDepths(morphEl) : 1;
+                computeSpacerHeight();
+                updateMorph();
             });
             $(document).on('paperlist:ready', function () {
                 refreshLookups();
@@ -992,10 +1137,15 @@
                 if (ticking) return;
                 ticking = true;
                 window.requestAnimationFrame(function () {
-                    updateActiveSection();
+                    updateMorph();
                     ticking = false;
                 });
             }, { passive: true });
+
+            window.addEventListener('resize', function () {
+                computeSpacerHeight();
+                updateMorph();
+            });
         });
     </script>
 
@@ -1144,7 +1294,8 @@
                         var find = '#';
                         var re = new RegExp(find, 'g');
                         $html = $html.replace(re, '');
-                        $("body").append('<nav class="toc-wrap" id="toc-wrap">' + $html + '</nav>');
+                        var $indexMorph = document.getElementById('index-morph');
+                        if ($indexMorph) $indexMorph.innerHTML = $html;
                         $(document).trigger('toc:ready');
                         return $html;
 
