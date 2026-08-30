@@ -928,6 +928,17 @@
         return fields;
     }
 
+    function normalizeLazyLink(value) {
+        const v = value.trim();
+        // LLMs occasionally ignore the prompt and wrap an otherwise valid URL in
+        // Markdown. Accept that harmless variation when the whole field is one link.
+        const markdown = v.match(/^\[[^\]]*\]\((https?:\/\/[^\s)]+)\)$/i);
+        if (markdown) return markdown[1];
+        const angleBrackets = v.match(/^<(https?:\/\/[^\s>]+)>$/i);
+        if (angleBrackets) return angleBrackets[1];
+        return v;
+    }
+
     function buildRows() {
         const type = currentType;
         const title = els.title.value.trim();
@@ -1282,7 +1293,9 @@
     if (lazyFillBtn) {
         lazyFillBtn.addEventListener('click', () => {
             const raw = document.getElementById('lazy-paste').value;
-            const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+            const lines = raw.split(/\r?\n/)
+                .map(l => l.trim())
+                .filter(l => l && !/^```(?:csv)?$/i.test(l));
             if (!lines.length) {
                 setLazyStatus('Paste your LLM\'s answer first.', 'error');
                 return;
@@ -1292,13 +1305,28 @@
             const rows = [];
             for (const line of lines) {
                 const cols = parseCsvLine(line);
+
+                // The final CSV column is intentionally empty. Some LLMs add one
+                // or more superfluous trailing commas; those are unambiguous and
+                // safe to discard.
+                while (cols.length > EXPECTED_COLUMNS && cols[cols.length - 1].trim() === '') {
+                    cols.pop();
+                }
                 if (cols.length !== EXPECTED_COLUMNS) {
-                    let hint = '';
-                    if (/\]\(https?:\/\//.test(line) || /https?:\/\/[^,"]*,\s*https?:\/\//.test(line)) {
-                        hint = ' It looks like one of the link fields has Markdown formatting or more than one URL in it — each link field must be a single plain URL, e.g. https://arxiv.org/abs/1234.56789, nothing else.';
-                    }
-                    setLazyStatus(`Couldn't read one of the lines (expected ${EXPECTED_COLUMNS} columns, got ${cols.length}).${hint} Make sure your LLM only output the CSV row(s), nothing else.`, 'error');
+                    const hint = cols.length > EXPECTED_COLUMNS
+                        ? ' A field probably contains an unquoted comma (commonly Title, Author list, Conference, or Short description). Put that entire field in double quotes.'
+                        : ' One or more comma-separated fields are missing.';
+                    setLazyStatus(`Couldn't read one of the lines (expected ${EXPECTED_COLUMNS} columns, got ${cols.length}).${hint} Make sure your LLM only outputs the CSV row(s), nothing else.`, 'error');
                     return;
+                }
+
+                for (const index of [10, 11, 12, 13]) {
+                    cols[index] = normalizeLazyLink(cols[index]);
+                    const urls = cols[index].match(/https?:\/\/\S+/gi) || [];
+                    if (cols[index] && (urls.length !== 1 || cols[index] !== urls[0])) {
+                        setLazyStatus(`Couldn't read the link in column ${index + 1}. Each link field must contain one plain URL only.`, 'error');
+                        return;
+                    }
                 }
                 rows.push({
                     title: cols[2].trim(),
