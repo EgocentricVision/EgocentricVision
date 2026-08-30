@@ -939,6 +939,17 @@
         return v;
     }
 
+    function normalizeLazyCsvLine(line) {
+        // Repair Markdown links before splitting on commas. In particular, LLMs
+        // sometimes put both an arXiv PDF and abstract URL inside one Markdown
+        // link; its comma would otherwise be mistaken for a CSV delimiter.
+        return line.replace(/\[[^\]]*\]\(([^)]*)\)/gi, (match, destination) => {
+            const urls = destination.match(/https?:\/\/[^\s,]+/gi) || [];
+            if (!urls.length) return match;
+            return urls.find(url => /arxiv\.org\/abs\//i.test(url)) || urls[0];
+        }).replace(/\\\s*$/, '').trim();
+    }
+
     function buildRows() {
         const type = currentType;
         const title = els.title.value.trim();
@@ -1304,13 +1315,19 @@
             const EXPECTED_COLUMNS = 17;
             const rows = [];
             for (const line of lines) {
-                const cols = parseCsvLine(line);
+                const normalizedLine = normalizeLazyCsvLine(line);
+                const cols = parseCsvLine(normalizedLine);
 
                 // The final CSV column is intentionally empty. Some LLMs add one
                 // or more superfluous trailing commas; those are unambiguous and
                 // safe to discard.
                 while (cols.length > EXPECTED_COLUMNS && cols[cols.length - 1].trim() === '') {
                     cols.pop();
+                }
+                // The last columns are optional bookkeeping fields. If the LLM
+                // omits only those empty trailing fields, restore them.
+                if (cols.length >= 15 && ['Papers', 'Surveys', 'Challenges', 'Devices'].includes(cols[6].trim())) {
+                    while (cols.length < EXPECTED_COLUMNS) cols.push('');
                 }
                 if (cols.length !== EXPECTED_COLUMNS) {
                     const hint = cols.length > EXPECTED_COLUMNS
