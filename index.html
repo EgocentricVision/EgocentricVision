@@ -478,25 +478,16 @@
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             }
 
-            /* Reveal tiers: hidden by default, lit up depth-by-depth (category,
-               then section, then sub-section, ...) as data-revealed-depth climbs,
-               driven straight from scroll progress -- see the JS. */
-            .index-morph li[data-depth] {
-                opacity: 0;
-                transition: opacity 0.4s ease;
-            }
-
-            .index-morph[data-revealed-depth="1"] li[data-depth="1"],
-            .index-morph[data-revealed-depth="2"] li[data-depth="1"],
-            .index-morph[data-revealed-depth="2"] li[data-depth="2"],
-            .index-morph[data-revealed-depth="3"] li[data-depth="1"],
-            .index-morph[data-revealed-depth="3"] li[data-depth="2"],
-            .index-morph[data-revealed-depth="3"] li[data-depth="3"],
-            .index-morph[data-revealed-depth="4"] li[data-depth="1"],
-            .index-morph[data-revealed-depth="4"] li[data-depth="2"],
-            .index-morph[data-revealed-depth="4"] li[data-depth="3"],
-            .index-morph[data-revealed-depth="4"] li[data-depth="4"] {
-                opacity: 1;
+            /* Reveal: each top-level wrapper <ul> (rails + connectors + text of one
+               entry, all together) fades in from one continuous, scroll-driven value.
+               --t is set from scroll every frame (see the JS), --d is the entry's
+               depth and --s its 0..1 position among entries of that depth (a light
+               stagger). No CSS transition on purpose: the scroll itself is the
+               animation, and a transition would only make the text lag behind. */
+            .index-morph > ul {
+                --o: clamp(0, calc(var(--t, 0) - (var(--d, 1) - 1) - var(--s, 0) * 0.6), 1);
+                opacity: var(--o);
+                transform: translateY(calc((1 - var(--o)) * 6px));
             }
 
             .index-morph li > a {
@@ -990,20 +981,35 @@
 
             function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
-            // Tags every <li> with how many <ul> ancestors it has inside the
-            // container, so the depth-based reveal/stagger CSS has something exact
-            // to key off instead of guessing from selector nesting.
+            // The index markup is flat: every entry is its own top-level <ul>
+            // wrapping N nested <ul>s (N = heading level) around a single <li>.
+            // Tags each wrapper with its depth (--d) and its 0..1 position among
+            // wrappers of that depth (--s), so the CSS can fade whole entries --
+            // rails, connectors and text together -- from one scroll-driven value.
             function annotateDepths(container) {
+                var wrappers = Array.prototype.slice.call(container.children);
+                var perDepth = {};
                 var max = 1;
-                Array.prototype.forEach.call(container.querySelectorAll('li'), function (li) {
+                wrappers.forEach(function (w) {
+                    var li = w.querySelector('li');
+                    if (!li) return;
                     var depth = 0;
                     var el = li;
                     while (el && el !== container) {
                         if (el.tagName === 'UL') depth++;
                         el = el.parentElement;
                     }
-                    li.setAttribute('data-depth', depth || 1);
+                    depth = depth || 1;
+                    w._depth = depth;
+                    perDepth[depth] = (perDepth[depth] || 0) + 1;
+                    w._idx = perDepth[depth] - 1;
                     if (depth > max) max = depth;
+                });
+                wrappers.forEach(function (w) {
+                    if (!w._depth) return;
+                    var n = perDepth[w._depth];
+                    w.style.setProperty('--d', w._depth);
+                    w.style.setProperty('--s', n > 1 ? (w._idx / (n - 1)).toFixed(3) : '0');
                 });
                 return max;
             }
@@ -1076,7 +1082,7 @@
                 if (!morphEl || !spacerEl || window.innerWidth < 1400) {
                     if (morphEl) {
                         morphEl.classList.remove('is-docked');
-                        morphEl.removeAttribute('data-revealed-depth');
+                        morphEl.style.removeProperty('--t');
                         morphEl.style.width = '';
                         morphEl.style.removeProperty('--compress');
                     }
@@ -1085,7 +1091,7 @@
 
                 var rect = spacerEl.getBoundingClientRect();
                 var viewportH = window.innerHeight;
-                var stickyTop = 100;
+                var scrollY = window.pageYOffset;
 
                 // Long past the spacer and already docked -- the morph itself is
                 // done changing, just keep tracking which section is active.
@@ -1094,31 +1100,27 @@
                     return;
                 }
 
-                // Nowhere near the viewport yet -- nothing to compute. No separate
-                // "not visible yet" flag needed: the reveal tiers below default to
-                // hidden on their own, so there's no blank placeholder box sitting
-                // in the scroll path before you actually reach it.
-                if (rect.top > viewportH || rect.bottom < 0) {
-                    return;
-                }
+                // Two scroll-linked phases on one timeline (all in page-scroll px):
+                //  - reveal: starts the moment the card comes into view (or on the
+                //    very first pixel of scroll if it is already on screen), so the
+                //    text is composing while the card is still arriving -- never an
+                //    empty box waiting for it to stick. Ends before the shrink.
+                //  - shrink/dock: same as before, over the sticky part of the spacer.
+                var docTop = rect.top + scrollY;
+                var scrollable = Math.max(1, rect.height - 100 - morphEl.offsetHeight);
+                var revealStart = Math.max(0, docTop - viewportH * 0.85);
+                var revealEnd = Math.max(docTop + scrollable * 0.35, revealStart + viewportH * 0.4);
+                var revealProgress = clamp((scrollY - revealStart) / (revealEnd - revealStart), 0, 1);
+                morphEl.style.setProperty('--t', (revealProgress * (maxDepth + 0.6)).toFixed(3));
 
-                var scrollable = Math.max(1, rect.height - stickyTop - morphEl.offsetHeight);
-                var progress = clamp(-rect.top / scrollable, 0, 1);
-
-                if (progress <= 0) {
-                    morphEl.removeAttribute('data-revealed-depth');
-                } else {
-                    var revealDepth = clamp(Math.ceil(progress * maxDepth * 1.3), 1, maxDepth);
-                    morphEl.setAttribute('data-revealed-depth', String(revealDepth));
-                }
-
+                var dockProgress = clamp((scrollY - docTop) / scrollable, 0, 1);
+                var shrinkProgress = clamp((dockProgress - 0.5) / 0.5, 0, 1);
                 var startWidth = Math.min(520, window.innerWidth * 0.92);
                 var endWidth = 230;
-                var shrinkProgress = clamp((progress - 0.5) / 0.5, 0, 1);
                 morphEl.style.width = (startWidth - (startWidth - endWidth) * shrinkProgress) + 'px';
                 morphEl.style.setProperty('--compress', shrinkProgress.toFixed(3));
 
-                morphEl.classList.toggle('is-docked', progress >= 0.999);
+                morphEl.classList.toggle('is-docked', dockProgress >= 0.999);
 
                 updateActiveSection();
             }
